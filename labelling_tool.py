@@ -81,8 +81,8 @@ def print_two_pictures_with_masks():
         r = random.randint(0, len(picture_list) - 1)
         #Random choice of one picture
         p_name = picture_list[r]
-
         p_name_full = os.path.join(*[ESCA_dataset[k]['pictures'], p_name])
+        p = plt.imread(p_name_full)
         m_name_full = os.path.join(*[ESCA_dataset[k]['masks'], f"{p_name[:-4]}_finalprediction.ome.tiff"])
         m = plt.imread(m_name_full)
         show_image_with_mask_in_alpha_channel(p, p_name, m, f"{p_name[:-4]}_finalprediction.ome.tiff")
@@ -91,7 +91,6 @@ def print_two_pictures_with_masks():
         for s_name in SAM_single_mask_list:
             s_name_full = os.path.join(*[ESCA_dataset[k]['SAM_masks'], f"{p_name[:-4]}", s_name])
             s = plt.imread(s_name_full)
-            p = plt.imread(p_name_full)
             show_image_with_mask_in_alpha_channel(p, p_name, s, s_name)
 
 def main():
