@@ -82,7 +82,8 @@ def show_image_with_mask_in_alpha_channel(img, img_filename, binary_msk, binary_
     rgba = cv2.cvtColor(img, cv2.COLOR_RGB2RGBA)
     max_opacity = 255
     rgba[:, :, 3] = np.where(binary_msk == 0, 0.4*max_opacity, max_opacity).astype('uint8')
-    new_name = os.path.join(*['elaborated_pictures', f"{strip_extension(binary_msk_filename)}_over_{strip_extension(img_filename)}.jpg"])
+    new_name = os.path.join(*['elaborated_pictures', f"{strip_extension(binary_msk_filename)}_over_{strip_extension(img_filename)}.png"])
+    #rgba.convert('RGB')
     Image.fromarray(rgba.astype(np.uint8)).save(new_name)
     plt.imshow(rgba)
     plt.title(f"Image {img_filename} of class {class_name} with mask {binary_msk_filename}\n\n")
