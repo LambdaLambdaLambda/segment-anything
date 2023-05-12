@@ -157,7 +157,7 @@ def plot_avg_color_histogram(obj, label):
     plt.xlim([0, 256])
     plt.plot(obj["b_hist"], color='b')
     plt.xlim([0, 256])
-    plt.title(f'Histogram for backgrounds of {label} pictures')
+    plt.title(f'Histogram for backgrounds of {label} elaborated_pictures')
     plt.show()
 
 
@@ -334,7 +334,7 @@ def compute_matching_list_and_merge(foreground_obj, background_obj):
     """
     :param foreground_obj:
     :param background_obj:
-    :return: for every mask im1 of pictures in the class associated to the background_obj,
+    :return: for every mask im1 of elaborated_pictures in the class associated to the background_obj,
      select a corresponding mask im2 such that:
      the complement of the Region-Of_Interest (co-ROI) of im2, once padded c
      (ROI) im2 of the class associated to the foreground_obj to be put over the ROI of im1.
