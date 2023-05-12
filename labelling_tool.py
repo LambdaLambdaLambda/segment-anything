@@ -82,9 +82,15 @@ def show_image_with_mask_in_alpha_channel(img, img_filename, binary_msk, binary_
     rgba = cv2.cvtColor(img, cv2.COLOR_RGB2RGBA)
     max_opacity = 255
     rgba[:, :, 3] = np.where(binary_msk == 0, 0.4*max_opacity, max_opacity).astype('uint8')
-    new_name = os.path.join(*['elaborated_pictures', f"{strip_extension(binary_msk_filename)}_over_{strip_extension(img_filename)}.png"])
-    #rgba.convert('RGB')
-    Image.fromarray(rgba.astype(np.uint8)).save(new_name)
+    #new_name = os.path.join(*['elaborated_pictures', f"{strip_extension(binary_msk_filename)}_over_{strip_extension(img_filename)}.png"])
+    #Image.fromarray(rgba.astype(np.uint8)).save(new_name)
+
+    contours, hierarchy = cv2.findContours(binary_msk, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    #out = np.zeros_like(binary_msk)
+    cv2.drawContours(binary_msk, contours, -1, (0, 255, 0), 3)
+    plt.imshow(binary_msk)
+    plt.title(f"Boundary of mask {binary_msk_filename}\n\n")
+    plt.show()
     plt.imshow(rgba)
     plt.title(f"Image {img_filename} of class {class_name} with mask {binary_msk_filename}\n\n")
     plt.show()
@@ -98,13 +104,14 @@ def print_two_pictures_with_masks():
         p_name_full = os.path.join(*[ESCA_dataset[k]['pictures'], p_name])
         p = plt.imread(p_name_full)
         m_name_full = os.path.join(*[ESCA_dataset[k]['masks'], f"{strip_extension(p_name)}_finalprediction.ome.tiff"])
-        m = plt.imread(m_name_full)
-        show_image_with_mask_in_alpha_channel(p, p_name, m, f"{strip_extension(p_name)}_finalprediction.ome.tiff", k)
+        m = plt.imread(m_name_full).astype(np.uint8)
+        #show_image_with_mask_in_alpha_channel(p, p_name, m, f"{strip_extension(p_name)}_finalprediction.ome.tiff", k)
         SAM_single_mask_list = sorted(os.listdir(os.path.join(*[ESCA_dataset[k]['SAM_masks'], strip_extension(p_name)])))
         SAM_single_mask_list = [x for x in SAM_single_mask_list if x.endswith('.png') and not x.startswith(strip_extension(p_name))]
         for s_name in SAM_single_mask_list:
             s_name_full = os.path.join(*[ESCA_dataset[k]['SAM_masks'], f"{strip_extension(p_name)}", s_name])
             s = plt.imread(s_name_full)
+            s = (s/255).astype(np.uint8)
             show_image_with_mask_in_alpha_channel(p, p_name, s, s_name, k)
 
 def main():
