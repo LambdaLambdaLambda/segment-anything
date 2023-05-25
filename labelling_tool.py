@@ -76,6 +76,7 @@ def draw_superposition(img_filename, msk_filename, save_pics=False):
     if save_pics:
         new_name = os.path.join(*['elaborated_pictures', f"{strip_extension(path2name(msk_filename))}_over_{strip_extension(path2name(img_filename))}.png"])
         Image.fromarray(rgba.astype(np.uint8)).save(new_name)
+        print(f"Saved file: {new_name}")
 def sam_masks_ground_truth_annotation():
     dest_filename = 'mask_ground_truth.csv'
     df = None
@@ -166,8 +167,8 @@ def apeer_mask_showcase(p_name_full=None, pic_class = None, save_pics=False):
 def main():
     random.seed(10)
     filename = 'ESCA_dataset/healthy/pictures/healthy_033_cam3.jpg'
-    sam_mask_showcase(filename, save_pics=True)
-    #apeer_mask_showcase(filename)
+    #sam_mask_showcase(filename, save_pics=True)
+    apeer_mask_showcase(filename, save_pics=True)
     #sam_masks_ground_truth_annotation()
 
 if __name__ == "__main__":

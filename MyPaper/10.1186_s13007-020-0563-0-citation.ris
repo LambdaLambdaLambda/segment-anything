@@ -1,0 +1,18 @@
+TY  - JOUR
+AU  - Smith, Abraham George
+AU  - Petersen, Jens
+AU  - Selvan, Raghavendra
+AU  - Rasmussen, Camilla Ruø
+PY  - 2020
+DA  - 2020/02/08
+TI  - Segmentation of roots in soil with U-Net
+JO  - Plant Methods
+SP  - 13
+VL  - 16
+IS  - 1
+AB  - Plant root research can provide a way to attain stress-tolerant crops that produce greater yield in a diverse array of conditions. Phenotyping roots in soil is often challenging due to the roots being difficult to access and the use of time consuming manual methods. Rhizotrons allow visual inspection of root growth through transparent surfaces. Agronomists currently manually label photographs of roots obtained from rhizotrons using a line-intersect method to obtain root length density and rooting depth measurements which are essential for their experiments. We investigate the effectiveness of an automated image segmentation method based on the U-Net Convolutional Neural Network (CNN) architecture to enable such measurements. We design a data-set of 50 annotated chicory (Cichorium intybus L.) root images which we use to train, validate and test the system and compare against a baseline built using the Frangi vesselness filter. We obtain metrics using manual annotations and line-intersect counts.
+SN  - 1746-4811
+UR  - https://doi.org/10.1186/s13007-020-0563-0
+DO  - 10.1186/s13007-020-0563-0
+ID  - Smith2020
+ER  - 

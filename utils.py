@@ -9,6 +9,20 @@ from PIL import Image
 FOLIAGE = 0
 BACKGROUND = 255
 
+def contraction(filename):
+    possible_suffixes = [".jpg", ".JPG", ".png", ".tiff", ".mat"]
+    for suffix in possible_suffixes:
+        if filename.endswith(suffix):
+            result = filename[:-len(suffix)]
+            return result
+    return filename
+
+def path2name(p_name_full):
+    path = os.path.normpath(p_name_full)
+    parts = path.split(os.sep)
+    p_name = parts[-1]
+    return p_name
+
 def plot_foreground_background(image, mask):
     """
     :param image: a 3D numpy matrix of dimension (rows, cols, 3) representing an RGB image
