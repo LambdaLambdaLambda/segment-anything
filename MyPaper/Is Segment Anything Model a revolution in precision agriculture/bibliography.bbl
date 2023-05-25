@@ -1,0 +1,309 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\doi}[1]{https://doi.org/#1}
+
+\bibitem{DRIVE}
+Drive: Digital retinal images for vessel extraction (2023),
+  \url{https://drive.grand-challenge.org/}, accessed: 2023-04-05
+
+\bibitem{BUSIDataset}
+Al-Dhabyani, W., Gomaa, M., Khaled, H., Fahmy, A.: Dataset of breast ultrasound
+  images. Data in Brief  \textbf{28},  104863 (2020)
+
+\bibitem{polyp-nature-data}
+Ali, S., Jha, D., Ghatwary, N., Realdon, S., Cannizzaro, R., Salem, O.E.,
+  Lamarque, D., Daul, C., Riegler, M.A., Anonsen, K.V., et~al.: A multi-centre
+  polyp detection and segmentation dataset for generalisability assessment.
+  Scientific Data  \textbf{10}(1), ~75 (2023)
+
+\bibitem{HECKTOR2021overview}
+Andrearczyk, V., Oreiller, V., Jreige, M., Valli{\`e}res, M., Castelli, J.,
+  Elhalawani, H., Boughdad, S., Prior, J.O., Depeursinge, A.: Overview of the
+  hecktor challenge at miccai 2020: Automatic head and neck tumor segmentation
+  in pet/ct. In: Head and Neck Tumor Segmentation. pp. 1--21 (2021)
+
+\bibitem{bakas2018brats}
+Bakas, S., Reyes, M., Jakab, A., Bauer, S., Rempfler, M., Crimi, A., et~al.:
+  Identifying the best machine learning algorithms for brain tumor
+  segmentation, progression assessment, and overall survival prediction in the
+  brats challenge. arXiv preprint arXiv:1811.02629  (2018)
+
+\bibitem{ACDC}
+Bernard, O., Lalande, A., Zotti, C., Cervenansky, F., Yang, X., Heng, P.A.,
+  Cetin, I., Lekadir, K., Camara, O., Ballester, M.A.G., et~al.: Deep learning
+  techniques for automatic mri cardiac multi-structures segmentation and
+  diagnosis: is the problem solved? IEEE Transactions on Medical Imaging
+  \textbf{37}(11),  2514--2525 (2018)
+
+\bibitem{LiTS}
+Bilic, P., Christ, P., Li, H.B., Vorontsov, E., Ben-Cohen, A., Kaissis, G.,
+  Szeskin, A., Jacobs, C., Mamani, G.E.H., Chartrand, G., et~al.: The liver
+  tumor segmentation benchmark (lits). Medical Image Analysis  \textbf{84},
+  102680 (2023)
+
+\bibitem{nci_prostate_dataset}
+Bloch, N., Madabhushi, A., Huisman, H., et~al.: Nci-isbi 2013 challenge:
+  automated segmentation of prostate structures (2015),
+  \url{https://wiki.cancerimagingarchive.net/}
+
+\bibitem{GPT-3}
+Brown, T.B., Mann, B., Ryder, N., Subbiah, M., Kaplan, J., Dhariwal, P.,
+  Neelakantan, A., Shyam, P., Sastry, G., Askell, A., et~al.: Language models
+  are few-shot learners. arXiv preprint arXiv:2005.14165  (2020)
+
+\bibitem{MMs2020}
+Campello, V.M., Gkontra, P., Izquierdo, C., Martín-Isla, C., Sojoudi, A.,
+  Full, P.M., Maier-Hein, K., Zhang, Y., He, Z., Ma, J., Parreño, M., Albiol,
+  A., Kong, F., Shadden, S.C., Acero, J.C., Sundaresan, V., Saber, M., Elattar,
+  M., Li, H., Menze, B., Khader, F., Haarburger, C., Scannell, C.M., Veta, M.,
+  Carscadden, A., Punithakumar, K., Liu, X., Tsaftaris, S.A., Huang, X., Yang,
+  X., Li, L., Zhuang, X., Viladés, D., Descalzo, M.L., Guala, A., La~Mura, L.,
+  Friedrich, M.G., Garg, R., Lebel, J., Henriques, F., Karakas, M., Çavuş,
+  E., Petersen, S.E., Escalera, S., Seguí, S., Rodríguez-Palomares, J.F.,
+  Lekadir, K.: Multi-centre, multi-vendor and multi-disease cardiac
+  segmentation: The m\&ms challenge. IEEE Transactions on Medical Imaging
+  pp.~1--1 (2021)
+
+\bibitem{SAM-Infrared}
+Chen, J., Bai, X.: Learning to" segment anything" in thermal infrared images
+  through knowledge distillation with a large scale dataset satir. arXiv
+  preprint arXiv:2304.07969  (2023)
+
+\bibitem{TCIA}
+Clark, K., Vendt, B., Smith, K., Freymann, J., Kirby, J., Koppel, P., Moore,
+  S., Phillips, S., Maffitt, D., Pringle, M., et~al.: The cancer imaging
+  archive (tcia): maintaining and operating a public information repository.
+  Journal of Digital Imaging  \textbf{26}(6),  1045--1057 (2013)
+
+\bibitem{SAM-pathology}
+Deng, R., Cui, C., Liu, Q., Yao, T., Remedios, L.W., Bao, S., Landman, B.A.,
+  Wheless, L.E., Coburn, L.A., Wilson, K.T., et~al.: Segment anything model
+  (sam) for digital pathology: Assess zero-shot segmentation on whole slide
+  imaging. arXiv preprint arXiv:2304.04155  (2023)
+
+\bibitem{ViT2020}
+Dosovitskiy, A., Beyer, L., Kolesnikov, A., Weissenborn, D., Zhai, X.,
+  Unterthiner, T., Dehghani, M., Minderer, M., Heigold, G., Gelly, S., et~al.:
+  An image is worth 16x16 words: Transformers for image recognition at scale.
+  In: International Conference on Learning Representations (2020)
+
+\bibitem{RECIST09}
+Eisenhauer, E.A., Therasse, P., Bogaerts, J., Schwartz, L.H., Sargent, D.,
+  Ford, R., Dancey, J., Arbuck, S., Gwyther, S., Mooney, M., et~al.: New
+  response evaluation criteria in solid tumours: revised recist guideline
+  (version 1.1). European Journal of Cancer  \textbf{45}(2),  228--247 (2009)
+
+\bibitem{Endo-instrument}
+Garcia-Peraza-Herrera, L.C., Fidon, L., D’Ettorre, C., Stoyanov, D.,
+  Vercauteren, T., Ourselin, S.: Image compositing for segmentation of surgical
+  tools without manual annotations. IEEE Transactions on Medical Imaging
+  \textbf{40}(5),  1450--1460 (2021)
+
+\bibitem{MAE}
+He, K., Chen, X., Xie, S., Li, Y., Doll{\'a}r, P., Girshick, R.: Masked
+  autoencoders are scalable vision learners. In: Proceedings of the IEEE/CVF
+  Conference on Computer Vision and Pattern Recognition. pp. 16000--16009
+  (2022)
+
+\bibitem{SAM-Meds}
+He, S., Bao, R., Li, J., Grant, P.E., Ou, Y.: Accuracy of segment-anything
+  model (sam) in medical image segmentation tasks. arXiv preprint
+  arXiv:2304.09324  (2023)
+
+\bibitem{KiTS2021MIA}
+Heller, N., Isensee, F., Maier-Hein, K.H., Hou, X., Xie, C., Li, F., et~al.:
+  The state of the art in kidney and kidney tumor segmentation in
+  contrast-enhanced ct imaging: Results of the kits19 challenge. Medical Image
+  Analysis  \textbf{67},  101821 (2021)
+
+\bibitem{SAM-LiverTumor}
+Hu, C., Li, X.: When sam meets medical images: An investigation of segment
+  anything model (sam) on multi-phase liver tumor segmentation. arXiv preprint
+  arXiv:2304.08506  (2023)
+
+\bibitem{nnunet21}
+Isensee, F., Jaeger, P.F., Kohl, S.A., Petersen, J., Maier-Hein, K.H.: nnu-net:
+  a self-configuring method for deep learning-based biomedical image
+  segmentation. Nature Methods  \textbf{18}(2),  203--211 (2021)
+
+\bibitem{SAM-Camouflaged2}
+Ji, G.P., Fan, D.P., Xu, P., Cheng, M.M., Zhou, B., Van~Gool, L.: Sam struggles
+  in concealed scenes--empirical study on" segment anything". arXiv preprint
+  arXiv:2304.06022  (2023)
+
+\bibitem{SAM-RealworldApplication}
+Ji, W., Li, J., Bi, Q., Li, W., Cheng, L.: Segment anything is not always
+  perfect: An investigation of sam on different real-world applications. arXiv
+  preprint arXiv:2304.05750  (2023)
+
+\bibitem{AMOS22}
+Ji, Y., Bai, H., Yang, J., Ge, C., Zhu, Y., Zhang, R., Li, Z., Zhang, L., Ma,
+  W., Wan, X., et~al.: Amos: A large-scale abdominal multi-organ benchmark for
+  versatile medical image segmentation. arXiv preprint arXiv:2206.08023  (2022)
+
+\bibitem{ADAM15}
+Kingma, D.P., Ba, J.: Adam: A method for stochastic optimization. In:
+  International Conference on Learning Representations (2015)
+
+\bibitem{2023-SAM-Meta}
+Kirillov, A., Mintun, E., Ravi, N., Mao, H., Rolland, C., Gustafson, L., Xiao,
+  T., Whitehead, S., Berg, A.C., Lo, W.Y., et~al.: Segment anything. arXiv
+  preprint arXiv:2304.02643  (2023)
+
+\bibitem{NSCLC2}
+Kiser, K.J., Barman, A., Stieb, S., Fuller, C.D., Giancardo, L.: Novel
+  autosegmentation spatial similarity metrics capture the time required to
+  correct segmentations better than traditional metrics in a thoracic cavity
+  segmentation workflow. Journal of Digital Imaging  \textbf{34},  541--553
+  (2021)
+
+\bibitem{NSCLC1}
+Kiser, K., Ahmed, S., Stieb, S., Mohamed, A., Elhalawani, H., Park, P., Doyle,
+  N., Wang, B., Barman, A., Fuller, C., Giancardo, L.: Data from the thoracic
+  volume and pleural effusion segmentations in diseased lungs for benchmarking
+  chest ct processing pipelines. The Cancer Imaging Archive  (2020).
+  \doi{10.7937/tcia.2020.6c7y-gq39},
+  \url{https://doi.org/10.7937/tcia.2020.6c7y-gq39}
+
+\bibitem{PROMISE12}
+Litjens, G., Toth, R., van~de Ven, W., Hoeks, C., Kerkstra, S., van Ginneken,
+  B., Vincent, G., Guillard, G., Birbeck, N., Zhang, J., et~al.: Evaluation of
+  prostate segmentation algorithms for mri: the promise12 challenge. Medical
+  Image Analysis  \textbf{18}(2),  359--373 (2014)
+
+\bibitem{SAM-3DSlicer}
+Liu, Y., Zhang, J., She, Z., Kheradmand, A., Armand, M.: Samm (segment any
+  medical model): A 3d slicer integration to sam. arXiv preprint
+  arXiv:2304.05622  (2023)
+
+\bibitem{SegLossOdyssey}
+Ma, J., Chen, J., Ng, M., Huang, R., Li, Y., Li, C., Yang, X., Martel, A.: Loss
+  odyssey in medical image segmentation. Medical Image Analysis  \textbf{71},
+  102035 (2021)
+
+\bibitem{ma2021-COVID-Data}
+Ma, J., Wang, Y., An, X., Ge, C., Yu, Z., Chen, J., Zhu, Q., Dong, G., He, J.,
+  He, Z., Cao, T., Zhu, Y., Nie, Z., Yang, X.: Towards data‐efficient
+  learning: A benchmark for covid‐19 ct lung and infection segmentation.
+  Medical Physics  \textbf{48}(3),  1197--1210 (2021)
+
+\bibitem{FLARE21-MIA}
+Ma, J., Zhang, Y., Gu, S., An, X., Wang, Z., Ge, C., Wang, C., Zhang, F., Wang,
+  Y., Xu, Y., Gou, S., Thaler, F., Payer, C., Štern, D., Henderson, E.G.,
+  McSweeney, D.M., Green, A., Jackson, P., McIntosh, L., Nguyen, Q.C., Qayyum,
+  A., Conze, P.H., Huang, Z., Zhou, Z., Fan, D.P., Xiong, H., Dong, G., Zhu,
+  Q., He, J., Yang, X.: Fast and low-gpu-memory abdomen ct organ segmentation:
+  The flare challenge. Medical Image Analysis  \textbf{82},  102616 (2022)
+
+\bibitem{Ma-2020-abdomenCT-1K}
+Ma, J., Zhang, Y., Gu, S., Zhu, C., Ge, C., Zhang, Y., An, X., Wang, C., Wang,
+  Q., Liu, X., Cao, S., Zhang, Q., Liu, S., Wang, Y., Li, Y., He, J., Yang, X.:
+  Abdomenct-1k: Is abdominal organ segmentation a solved problem? IEEE
+  Transactions on Pattern Analysis and Machine Intelligence  \textbf{44}(10),
+  6695--6714 (2022)
+
+\bibitem{SAM-Meds-2}
+Maciej, A.M., Haoyu, D., Hanxue, G., Jichen, Y., Nicholas, K., Yixin, Z.:
+  Segment anything model for medical image analysis: an experimental study.
+  arXiv preprint arXiv:2304.10517  (2023)
+
+\bibitem{metric-reload}
+Maier-Hein, L., Reinke, A., Godau, P., Tizabi, M.D., B\"uttner, F., et~al.:
+  Metrics reloaded: Pitfalls and recommendations for image analysis validation.
+  arXiv preprint arXiv:2206.01653  (2022)
+
+\bibitem{SAM-BrainMR}
+Mohapatra, S., Gosai, A., Schlaug, G.: Sam vs bet: A comparative study for
+  brain extraction and segmentation of magnetic resonance images using deep
+  learning. arXiv preprint arXiv:2304.04738  (2023)
+
+\bibitem{CLIP-ICML2021}
+Radford, A., Kim, J.W., Hallacy, C., Ramesh, A., Goh, G., Agarwal, S., Sastry,
+  G., Askell, A., Mishkin, P., Clark, J., et~al.: Learning transferable visual
+  models from natural language supervision. In: International Conference on
+  Machine Learning. pp. 8748--8763 (2021)
+
+\bibitem{SAM-DKFZ-Abdomen}
+Roy, S., Wald, T., Koehler, G., Rokuss, M.R., Disch, N., Holzschuh, J.,
+  Zimmerer, D., Maier-Hein, K.H.: Sam. md: Zero-shot medical image segmentation
+  capabilities of the segment anything model. arXiv preprint arXiv:2304.05396
+  (2023)
+
+\bibitem{XRay-JSRT}
+Shiraishi, J., Katsuragawa, S., Ikezoe, J., Matsumoto, T., Kobayashi, T.,
+  Komatsu, K.i., Matsui, M., Fujita, H., Kodera, Y., Doi, K.: Development of a
+  digital image database for chest radiographs with and without a lung nodule:
+  receiver operating characteristic analysis of radiologists' detection of
+  pulmonary nodules. American Journal of Roentgenology  \textbf{174}(1),
+  71--74 (2000)
+
+\bibitem{ABCs-MICCAI20}
+Shusharina, N., Bortfeld, T., Cardenas, C., Yang, J.: {Anatomical Brain
+  Barriers to Cancer Spread: Segmentation from CT and MR Images} (Mar 2020).
+  \doi{10.5281/zenodo.3746561}, \url{https://doi.org/10.5281/zenodo.3746561}
+
+\bibitem{MSD-Dataset}
+Simpson, A.L., Antonelli, M., Bakas, S., Bilello, M., Farahani, K.,
+  Van~Ginneken, B., Kopp-Schneider, A., Landman, B.A., Litjens, G., Menze, B.,
+  et~al.: A large annotated medical image dataset for the development and
+  evaluation of segmentation algorithms. arXiv preprint arXiv:1902.09063
+  (2019)
+
+\bibitem{gland-patho1}
+Sirinukunwattana, K., Pluim, J.P., Chen, H., Qi, X., Heng, P.A., Guo, Y.B.,
+  Wang, L.Y., Matuszewski, B.J., Bruni, E., Sanchez, U., et~al.: Gland
+  segmentation in colon histology images: The glas challenge contest. Medical
+  Image Analysis  \textbf{35},  489--502 (2017)
+
+\bibitem{gland-patho2}
+Sirinukunwattana, K., Snead, D.R., Rajpoot, N.M.: A stochastic polygons model
+  for glandular structures in colon histology images. IEEE Transactions on
+  Medical Imaging  \textbf{34}(11),  2366--2378 (2015)
+
+\bibitem{FourierPE-Nips20}
+Tancik, M., Srinivasan, P., Mildenhall, B., Fridovich-Keil, S., Raghavan, N.,
+  Singhal, U., Ramamoorthi, R., Barron, J., Ng, R.: Fourier features let
+  networks learn high frequency functions in low dimensional domains. Advances
+  in Neural Information Processing Systems  \textbf{33},  7537--7547 (2020)
+
+\bibitem{SAM-Camouflaged}
+Tang, L., Xiao, H., Li, B.: Can sam segment anything? when sam meets
+  camouflaged object detection. arXiv preprint arXiv:2304.04709  (2023)
+
+\bibitem{attention-Nips17}
+Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.N.,
+  Kaiser, {\L}., Polosukhin, I.: Attention is all you need. Advances in neural
+  Information Processing Systems  \textbf{30} (2017)
+
+\bibitem{US-abdomen-data}
+Vitale, S., Orlando, J.I., Iarussi, E., Larrabide, I.: Improving realism in
+  patient-specific abdominal ultrasound simulation using cyclegans.
+  International Journal of Computer Assisted Radiology and Surgery
+  \textbf{15}(2),  183--192 (2020)
+
+\bibitem{wang-interactive2}
+Wang, G., Li, W., Zuluaga, M.A., Pratt, R., Patel, P.A., Aertsen, M., Doel, T.,
+  David, A.L., Deprest, J., Ourselin, S., et~al.: Interactive medical image
+  segmentation using deep learning with image-specific fine tuning. IEEE
+  Transactions on Medical Imaging  \textbf{37}(7),  1562--1573 (2018)
+
+\bibitem{wang-deepigeos-PAMI}
+Wang, G., Zuluaga, M.A., Li, W., Pratt, R., Patel, P.A., Aertsen, M., Doel, T.,
+  David, A.L., Deprest, J., Ourselin, S., et~al.: Deepigeos: a deep interactive
+  geodesic framework for medical image segmentation. IEEE Transactions on
+  Pattern Analysis and Machine Intelligence  \textbf{41}(7),  1559--1572 (2018)
+
+\bibitem{2023-SegGPT}
+Wang, X., Zhang, X., Cao, Y., Wang, W., Shen, C., Huang, T.: Seggpt: Segmenting
+  everything in context. arXiv preprint arXiv:2304.03284  (2023)
+
+\bibitem{SAM-Polyps}
+Zhou, T., Zhang, Y., Zhou, Y., Wu, Y., Gong, C.: Can sam segment polyps? arXiv
+  preprint arXiv:2304.07583  (2023)
+
+\bibitem{2023-SEEM}
+Zou, X., Yang, J., Zhang, H., Li, F., Li, L., Gao, J., Lee, Y.J.: Segment
+  everything everywhere all at once. arXiv preprint arXiv:2304.06718  (2023)
+
+\end{thebibliography}
