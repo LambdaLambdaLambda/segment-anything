@@ -33,39 +33,129 @@ test_pictures = {
 }
 
 def intersectionOverUnion(ground_truth_mask, computed_mask):
-    result = None
+    """
+    @:ground_truth_mask: numpy matrix containing only zeros and ones
+    @:computed_mask: numpy matrix containing only zeros and ones
+    :return: a real number representing the Intersection over Union of the computed mask relative to ground_truth_mask
+    """
+    assert ground_truth_mask is not None
+    assert computed_mask.shape is not None
+    assert ground_truth_mask.shape == computed_mask.shape
+    intersection = np.logical_and(ground_truth_mask, computed_mask)
+    union = np.logical_or(ground_truth_mask, computed_mask)
+    result = np.sum(intersection) / np.sum(union)
     return result
 
 def diceCoefficient(ground_truth_mask, computed_mask):
-    result = None
+    """
+    @:ground_truth_mask: numpy matrix containing only zeros and ones
+    @:computed_mask: numpy matrix containing only zeros and ones
+    :return: a real number representing the Dice Coefficient of the computed mask relative to ground_truth_mask
+    """
+    assert ground_truth_mask is not None
+    assert computed_mask.shape is not None
+    assert ground_truth_mask.shape == computed_mask.shape
+    TP = np.sum(computed_mask[ground_truth_mask == 1])
+    pred_pos = np.sum(computed_mask)
+    ground_pos = np.sum(ground_truth_mask)
+    result = (2.0*TP) / (pred_pos + ground_pos)
     return result
 
 def pixelAccuracy(ground_truth_mask, computed_mask):
-    result = None
+    """
+    @:ground_truth_mask: numpy matrix containing only zeros and ones
+    @:computed_mask: numpy matrix containing only zeros and ones
+    :return: a real number representing the pixel accuracy of the computed mask relative to ground_truth_mask
+    (TP + TN) / (TP + TN + FP + FN)
+    """
+    assert ground_truth_mask is not None
+    assert computed_mask.shape is not None
+    assert ground_truth_mask.shape == computed_mask.shape
+    dual_computed_mask = 1-computed_mask
+    TP = np.sum(computed_mask[ground_truth_mask == 1])
+    TN = np.sum(dual_computed_mask[ground_truth_mask == 0])
+    all = computed_mask.shape[0]*computed_mask.shape[1]
+    result = (TP + TN) / all
     return result
 
 def precision(ground_truth_mask, computed_mask):
-    result = None
+    """
+    @:ground_truth_mask: numpy matrix containing only zeros and ones
+    @:computed_mask: numpy matrix containing only zeros and ones
+    :return: a real number representing the precision of the computed mask relative to ground_truth_mask
+    (TP) / (TP + FP)
+    """
+    assert ground_truth_mask is not None
+    assert computed_mask.shape is not None
+    assert ground_truth_mask.shape == computed_mask.shape
+    TP = np.sum(computed_mask[ground_truth_mask == 1])
+    result = TP / (computed_mask.shape[0]*computed_mask.shape[1])
     return result
 
 def recall(ground_truth_mask, computed_mask):
-    result = None
+    """
+    @:ground_truth_mask: numpy matrix containing only zeros and ones
+    @:computed_mask: numpy matrix containing only zeros and ones
+    :return: a real number representing the F1 score for computed_mask relative to ground_truth_mask
+    TP / (TP + FN)
+    """
+    assert ground_truth_mask is not None
+    assert computed_mask.shape is not None
+    assert ground_truth_mask.shape == computed_mask.shape
+    TP = np.sum(computed_mask[ground_truth_mask == 1])
+    dual_computed_mask = 1 - computed_mask
+    FN = np.sum(dual_computed_mask[ground_truth_mask == 1])
+    result = TP / (TP + FN)
     return result
 
 def f1Score(ground_truth_mask, computed_mask):
-    result = None
+    """
+    @:ground_truth_mask: numpy matrix containing only zeros and ones
+    @:computed_mask: numpy matrix containing only zeros and ones
+    :return: a real number representing the F1 score for computed_mask relative to ground_truth_mask
+    """
+    assert ground_truth_mask is not None
+    assert computed_mask.shape is not None
+    assert ground_truth_mask.shape == computed_mask.shape
+    p = precision(ground_truth_mask, computed_mask)
+    r = recall(ground_truth_mask, computed_mask)
+    result = (2*p*r) / (p + r)
     return result
 
 def normalizedSurfaceDistance(ground_truth_mask, computed_mask):
-    result = None
+    """
+    @:ground_truth_mask: numpy matrix containing only zeros and ones
+    @:computed_mask: numpy matrix containing only zeros and ones
+    :return: a real number representing the Normalized Surface Distance between the two masks
+    """
+    assert ground_truth_mask is not None
+    assert computed_mask.shape is not None
+    assert ground_truth_mask.shape == computed_mask.shape
+    result = 0 # TODO
     return result
 
 def symmetricContourDistance(ground_truth_mask, computed_mask):
-    result = None
+    """
+    @:ground_truth_mask: numpy matrix containing only zeros and ones
+    @:computed_mask: numpy matrix containing only zeros and ones
+    :return: a real number representing the Symmetric Contour Distance between the two masks
+    """
+    assert ground_truth_mask is not None
+    assert computed_mask.shape is not None
+    assert ground_truth_mask.shape == computed_mask.shape
+    result = 0 # TODO
     return result
 
 def hausdorffDistance(ground_truth_mask, computed_mask):
-    result = None
+    """
+    @:ground_truth_mask: numpy matrix containing only zeros and ones
+    @:computed_mask: numpy matrix containing only zeros and ones
+    :return: a real number representing the Hausdorff Distance between the two masks
+    """
+    assert ground_truth_mask is not None
+    assert computed_mask.shape is not None
+    assert ground_truth_mask.shape == computed_mask.shape
+    result = 0 # TODO
     return result
 
 def main():
