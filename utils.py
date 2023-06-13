@@ -9,6 +9,46 @@ from PIL import Image
 FOLIAGE = 0
 BACKGROUND = 255
 
+def merge_SAM_masks(containing_folder):
+    """
+    @:containing_folder: full path to a folder that contains a subfolder for each image processed by SAM.
+                Example:
+                SAM_masks --> containing folder
+                SAM_masks/002_image/0.png
+                ...
+                SAM_masks/002_image/165.png
+                SAM_masks/002_image/metadata.csv
+    @:computed_mask: numpy matrix containing only zeros and ones
+    :return: a real number representing the Hausdorff Distance between the two masks
+    """
+    mask_folder_list = [os.path.join(*[containing_folder, x]) for x in os.listdir(containing_folder) if
+                        os.path.isdir(os.path.join(*[containing_folder, x]))
+                        and (not x.endswith('.csv'))
+                        and (not x.startswith('.'))
+                        ]
+    mask_folder_list.sort()
+    for folder in mask_folder_list:
+        # SAM generates a "metadata.csv" file inside containing_folder, and this file should not be processed by this function
+        # Mac OS also puts a file '.DS_Store' inside every folder
+        mask_file_list = [os.path.join(*[folder, file]) for file in os.listdir(folder) if
+                          os.path.isfile(os.path.join(*[containing_folder, file]))
+                          and (not file.endswith('.csv'))
+                          and (not file.startswith('.'))
+                          ]
+        mask_file_list.sort()
+        result = None
+        if len(mask_file_list) > 0:
+            for i, filename in enumerate(mask_file_list):
+                msk = plt.imread(filename)
+                if i == 0:
+                    result = np.zeros(msk.shape)#all generated masks have the same shape (equal to the container image)
+                else:
+                    result = np.logical_or(result, msk)
+            result_filename = os.path.join(*[folder, f"{path2name(folder)}.tiff"])
+            Image.fromarray(result.astype('uint8'), mode='L').save(result_filename)
+            print(f"File {result_filename} saved.")
+    pass
+
 def contraction(filename):
     possible_suffixes = [".jpg", ".JPG", ".png", ".tiff", ".mat"]
     for suffix in possible_suffixes:
