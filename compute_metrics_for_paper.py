@@ -7,22 +7,27 @@ import random
 from PIL import Image
 from utils import contraction
 
-base_folder_path = ['ESCA_dataset']
+CWFID_dataset = {
+    'annotations': os.path.join(*['CWFID_dataset', 'annotations']),
+    'images': os.path.join(*['CWFID_dataset', 'images']),
+    'masks': os.path.join(*['CWFID_dataset', 'masks']),
+    'SAM_masks': os.path.join(*['CWFID_dataset', 'SAM_masks'])
+}
 
 ESCA_dataset = {
     'esca': {
-        'folder': os.path.join(*(base_folder_path + ['esca'])),
-        'esca_foliage_over_healthy_bg': os.path.join(*(base_folder_path + ['esca', 'esca_foliage_over_healthy_bg'])),
-        'masks': os.path.join(*(base_folder_path + ['esca', 'masks'])),
-        'pictures': os.path.join(*(base_folder_path + ['esca', 'pictures'])),
-        'SAM_masks': os.path.join(*(base_folder_path + ['esca', 'SAM_masks']))
+        'folder': os.path.join(*['ESCA_dataset', 'esca']),
+        'esca_foliage_over_healthy_bg': os.path.join(*['ESCA_dataset', 'esca', 'esca_foliage_over_healthy_bg']),
+        'masks': os.path.join(*['ESCA_dataset', 'esca', 'masks']),
+        'pictures': os.path.join(*['ESCA_dataset', 'esca', 'pictures']),
+        'SAM_masks': os.path.join(*['ESCA_dataset', 'esca', 'SAM_masks'])
     },
     'healthy': {
-        'folder': os.path.join(*(base_folder_path + ['healthy'])),
-        'healthy_foliage_over_esca_bg': os.path.join(*(base_folder_path + ['esca', 'healthy_foliage_over_esca_bg'])),
-        'masks': os.path.join(*(base_folder_path + ['healthy', 'masks'])),
-        'pictures': os.path.join(*(base_folder_path + ['healthy', 'pictures'])),
-        'SAM_masks': os.path.join(*(base_folder_path + ['healthy', 'SAM_masks']))
+        'folder': os.path.join(*['ESCA_dataset', 'healthy']),
+        'healthy_foliage_over_esca_bg': os.path.join(*['ESCA_dataset', 'esca', 'healthy_foliage_over_esca_bg']),
+        'masks': os.path.join(*['ESCA_dataset', 'healthy', 'masks']),
+        'pictures': os.path.join(*['ESCA_dataset', 'healthy', 'pictures']),
+        'SAM_masks': os.path.join(*['ESCA_dataset', 'healthy', 'SAM_masks'])
     }
 }
 
@@ -159,8 +164,13 @@ def hausdorffDistance(ground_truth_mask, computed_mask):
     return result
 
 def main():
+    msk_list = os.listdir(CWFID_dataset['masks'])
+    msk_list = [x for x in msk_list if x.endswith('.png') and not x.startswith('.')]
+    msk = plt.imread(msk_list[0])
+
     file_list = os.listdir(test_pictures['pictures']['folder'])
-    file_list = [x for x in file_list if x.endswith('.jpg') or x.endswith('.JPG')]
+    file_list = [x for x in file_list if (x.endswith('.jpg') or x.endswith('.JPG')) and (not x.startswith('.'))]
+    file_list.sort()
     APEER_records = []
     SAM_records = []
     for file in file_list:
