@@ -165,7 +165,7 @@ def hausdorffDistance(ground_truth_mask, computed_mask):
 
 def main():
     msk_list = os.listdir(CWFID_dataset['masks'])
-    msk_list = [x for x in msk_list if x.endswith('.png') and not x.startswith('.')]
+    msk_list = [os.path.join(*[CWFID_dataset['masks'], x]) for x in msk_list if x.endswith('.png') and not x.startswith('.')]
     msk = plt.imread(msk_list[0])
 
     file_list = os.listdir(test_pictures['pictures']['folder'])
