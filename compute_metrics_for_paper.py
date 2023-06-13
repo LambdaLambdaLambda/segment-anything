@@ -168,10 +168,35 @@ def compute_metrics_and_save(predicted_masks_folder, ground_truth_masks_folder, 
     @:predicted_masks_folder: full path to a folder that contains all predicted masks. It is assumed that the mask files
                             are direct children of the predicted_masks_folder
     @:ground_truth_masks_folder: full path to a folder that contains all ground truth masks. It is assumed that the mask files
-                            are direct children of the ground_truth_masks_folder
+                            are direct children of the ground_truth_masks_folder.
+                            It is also assumed that there is a 1-to-1 correspondence between the masks
+                            directly contained in the two folders predicted_masks_folder and predicted_masks_folder.
     @:result_file: the full name of a csv file in which all results of the performance metrics will be saved
     :return: does not return anything. Creates a file on the disk.
     """
+    predicted_mask_list = os.listdir(predicted_masks_folder)
+    predicted_mask_list = [os.path.join(*[predicted_masks_folder, x]) for x in predicted_mask_list if
+                           (x.endswith('.png') or x.endswith('.tiff'))
+                           and not x.startswith('.')
+                           and os.path.isfile(os.path.join(*[predicted_masks_folder, x]))
+                           and not os.path.isdir(os.path.join(*[predicted_masks_folder, x]))
+                        ]
+    predicted_mask_list.sort()
+    ground_truth_mask_list = os.listdir(ground_truth_masks_folder)
+    ground_truth_mask_list = [os.path.join(*[ground_truth_masks_folder, x]) for x in ground_truth_mask_list if
+                           (x.endswith('.png') or x.endswith('.tiff'))
+                           and not x.startswith('.')
+                           and os.path.isfile(os.path.join(*[ground_truth_masks_folder, x]))
+                           and not os.path.isdir(os.path.join(*[ground_truth_masks_folder, x]))
+                           ]
+    ground_truth_mask_list.sort()
+    for file in msk_list:
+        msk = plt.imread(file)
+        print(f"Values in file {file}:  {np.unique(msk)}")
+
+    file_list = os.listdir(test_pictures['pictures']['folder'])
+    file_list = [x for x in file_list if (x.endswith('.jpg') or x.endswith('.JPG')) and (not x.startswith('.'))]
+    file_list.sort()
     pass
 
 def main():
