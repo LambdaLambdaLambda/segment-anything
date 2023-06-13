@@ -212,7 +212,7 @@ def compute_metrics_and_save(image_folder, predicted_masks_folder, ground_truth_
     ground_truth_mask_list.sort()
     records = []
     for image, predicted, ground_truth in list(zip(image_list, predicted_mask_list, ground_truth_mask_list)):
-        if contraction(path2name(image)) == contraction(path2name(predicted)) == contraction(path2name(predicted)):
+        if contraction(path2name(image)) == contraction(path2name(predicted)) == contraction(path2name(ground_truth)):
             rec = {
                 'image': image,
                 'predicted_mask': predicted,
