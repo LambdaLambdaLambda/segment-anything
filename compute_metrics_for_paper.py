@@ -167,6 +167,8 @@ def compute_metrics_and_save(image_folder, predicted_masks_folder, ground_truth_
     """
     @:image_folder: full path to a folder that contains all images of which the masks are either predicted or annotated.
                     It is assumed that the image files are direct children of the image_folder
+                    It is assumed that the masks are binary:
+                     - they are 2D matrices (contains )
     @:predicted_masks_folder: full path to a folder that contains all predicted masks. It is assumed that the mask files
                             are direct children of the predicted_masks_folder
     @:ground_truth_masks_folder: full path to a folder that contains all ground truth masks. It is assumed that the mask files
@@ -226,66 +228,10 @@ def compute_metrics_and_save(image_folder, predicted_masks_folder, ground_truth_
                 'hausdorffDistance': hausdorffDistance(ground_truth, predicted)
             }
             records.append(rec)
-    pass
-
-def main():
-    msk_list = os.listdir(CWFID_dataset['masks'])
-    msk_list = [os.path.join(*[CWFID_dataset['masks'], x]) for x in msk_list if x.endswith('.png') and not x.startswith('.')]
-    for file in msk_list:
-        msk = plt.imread(file)
-        print(f"Values in file {file}:  {np.unique(msk)}")
-
-    file_list = os.listdir(test_pictures['pictures']['folder'])
-    file_list = [x for x in file_list if (x.endswith('.jpg') or x.endswith('.JPG')) and (not x.startswith('.'))]
-    file_list.sort()
-    APEER_records = []
-    SAM_records = []
-    for file in file_list:
-        ground_truth_mask = plt.imread(os.path.join(*[test_pictures['pictures'], file]))
-        assert os.path.exists(os.path.join(*[test_pictures['APEER_masks'], f"{contraction(file)}.tiff"]))
-        APEER_mask = plt.imread(os.path.join(*[test_pictures['APEER_masks'], f"{contraction(file)}.tiff"]))
-        rec = {
-            'file': os.path.join(*[test_pictures['pictures']['folder'], file]),
-            'intersectionOverUnion': intersectionOverUnion(ground_truth_mask, APEER_mask),
-            'diceCoefficient': diceCoefficient(ground_truth_mask, APEER_mask),
-            'pixelAccuracy': pixelAccuracy(ground_truth_mask, APEER_mask),
-            'precision': precision(ground_truth_mask, APEER_mask),
-            'recall': recall(ground_truth_mask, APEER_mask),
-            'f1Score': f1Score(ground_truth_mask, APEER_mask),
-            'normalizedSurfaceDistance': normalizedSurfaceDistance(ground_truth_mask, APEER_mask),
-            'symmetricContourDistance': symmetricContourDistance(ground_truth_mask, APEER_mask),
-            'hausdorffDistance': hausdorffDistance(ground_truth_mask, APEER_mask)
-        }
-        APEER_records.append(rec)
-        assert os.path.exists(os.path.join(*[test_pictures['SAM_masks'], f"{contraction(file)}.tiff"]))
-        SAM_mask = plt.imread(os.path.join(*[test_pictures['SAM_masks'], f"{contraction(file)}.tiff"]))
-        rec = {
-            'file': os.path.join(*[test_pictures['pictures']['folder'], file]),
-            'intersectionOverUnion': intersectionOverUnion(ground_truth_mask, SAM_mask),
-            'diceCoefficient': diceCoefficient(ground_truth_mask, SAM_mask),
-            'pixelAccuracy': pixelAccuracy(ground_truth_mask, SAM_mask),
-            'precision': precision(ground_truth_mask, SAM_mask),
-            'recall': recall(ground_truth_mask, SAM_mask),
-            'f1Score': f1Score(ground_truth_mask, SAM_mask),
-            'normalizedSurfaceDistance': normalizedSurfaceDistance(ground_truth_mask, SAM_mask),
-            'symmetricContourDistance': symmetricContourDistance(ground_truth_mask, SAM_mask),
-            'hausdorffDistance': hausdorffDistance(ground_truth_mask, SAM_mask)
-        }
-        SAM_records.append(rec)
-
-    APEER_df = pd.DataFrame(APEER_records, columns=[
-                'file',
-                'intersectionOverUnion',
-                'diceCoefficient'
-                'pixelAccuracy'
-                'precision'
-                'recall',
-                'f1Score',
-                'normalizedSurfaceDistance',
-                'symmetricContourDistance',
-                'hausdorffDistance'])
-    SAM_df = pd.DataFrame(SAM_records, columns=[
-        'file',
+    result = pd.DataFrame(records, columns=[
+        'image',
+        'predicted_mask',
+        'ground_truth_mask',
         'intersectionOverUnion',
         'diceCoefficient'
         'pixelAccuracy'
@@ -295,8 +241,15 @@ def main():
         'normalizedSurfaceDistance',
         'symmetricContourDistance',
         'hausdorffDistance'])
-    APEER_df.to_csv('APEER_metrics.csv', index=False, header=True)
-    SAM_df.to_csv('SAM_metrics.csv', index=False, header=True)
+    result.to_csv(result_file, index=False, header=True)
+    pass
+
+def main():
+    msk_list = os.listdir(CWFID_dataset['masks'])
+    msk_list = [os.path.join(*[CWFID_dataset['masks'], x]) for x in msk_list if x.endswith('.png') and not x.startswith('.')]
+    for file in msk_list:
+        msk = plt.imread(file)
+        print(f"Values in file {file}:  {np.unique(msk)}")
 
 if __name__ == "__main__":
     main()
