@@ -5,7 +5,7 @@ import cv2
 import pandas as pd
 import random
 from PIL import Image
-from utils import contraction
+from utils import contraction, path2name
 
 CWFID_dataset = {
     'annotations': os.path.join(*['CWFID_dataset', 'annotations']),
@@ -163,8 +163,10 @@ def hausdorffDistance(ground_truth_mask, computed_mask):
     result = 0 # TODO
     return result
 
-def compute_metrics_and_save(predicted_masks_folder, ground_truth_masks_folder, result_file):
+def compute_metrics_and_save(image_folder, predicted_masks_folder, ground_truth_masks_folder, result_file):
     """
+    @:image_folder: full path to a folder that contains all images of which the masks are either predicted or annotated.
+                    It is assumed that the image files are direct children of the image_folder
     @:predicted_masks_folder: full path to a folder that contains all predicted masks. It is assumed that the mask files
                             are direct children of the predicted_masks_folder
     @:ground_truth_masks_folder: full path to a folder that contains all ground truth masks. It is assumed that the mask files
@@ -174,6 +176,21 @@ def compute_metrics_and_save(predicted_masks_folder, ground_truth_masks_folder, 
     @:result_file: the full name of a csv file in which all results of the performance metrics will be saved
     :return: does not return anything. Creates a file on the disk.
     """
+    assert predicted_masks_folder is not None
+    assert os.path.exists(predicted_masks_folder)
+    assert ground_truth_masks_folder is not None
+    assert os.path.exists(ground_truth_masks_folder)
+    assert result_file is not None
+
+    image_list = os.listdir(image_folder)
+    image_list = [os.path.join(*[image_folder, x]) for x in image_list if
+                    (x.endswith('.png') or x.endswith('.tiff') or x.endswith('.jpg') or x.endswith('.JPG') or x.endswith('.jpeg'))
+                    and not x.startswith('.')
+                    and os.path.isfile(os.path.join(*[image_folder, x]))
+                    and not os.path.isdir(os.path.join(*[image_folder, x]))
+                ]
+    image_list.sort()
+
     predicted_mask_list = os.listdir(predicted_masks_folder)
     predicted_mask_list = [os.path.join(*[predicted_masks_folder, x]) for x in predicted_mask_list if
                            (x.endswith('.png') or x.endswith('.tiff'))
@@ -182,6 +199,7 @@ def compute_metrics_and_save(predicted_masks_folder, ground_truth_masks_folder, 
                            and not os.path.isdir(os.path.join(*[predicted_masks_folder, x]))
                         ]
     predicted_mask_list.sort()
+
     ground_truth_mask_list = os.listdir(ground_truth_masks_folder)
     ground_truth_mask_list = [os.path.join(*[ground_truth_masks_folder, x]) for x in ground_truth_mask_list if
                            (x.endswith('.png') or x.endswith('.tiff'))
@@ -190,13 +208,24 @@ def compute_metrics_and_save(predicted_masks_folder, ground_truth_masks_folder, 
                            and not os.path.isdir(os.path.join(*[ground_truth_masks_folder, x]))
                            ]
     ground_truth_mask_list.sort()
-    for file in msk_list:
-        msk = plt.imread(file)
-        print(f"Values in file {file}:  {np.unique(msk)}")
-
-    file_list = os.listdir(test_pictures['pictures']['folder'])
-    file_list = [x for x in file_list if (x.endswith('.jpg') or x.endswith('.JPG')) and (not x.startswith('.'))]
-    file_list.sort()
+    records = []
+    for image, predicted, ground_truth in list(zip(image_list, predicted_mask_list, ground_truth_mask_list)):
+        if contraction(path2name(image)) == contraction(path2name(predicted)) == contraction(path2name(predicted)):
+            rec = {
+                'image': image,
+                'predicted_mask': predicted,
+                'ground_truth_mask': ground_truth,
+                'intersectionOverUnion': intersectionOverUnion(ground_truth, predicted),
+                'diceCoefficient': diceCoefficient(ground_truth, predicted),
+                'pixelAccuracy': pixelAccuracy(ground_truth, predicted),
+                'precision': precision(ground_truth, predicted),
+                'recall': recall(ground_truth, predicted),
+                'f1Score': f1Score(ground_truth, predicted),
+                'normalizedSurfaceDistance': normalizedSurfaceDistance(ground_truth, predicted),
+                'symmetricContourDistance': symmetricContourDistance(ground_truth, predicted),
+                'hausdorffDistance': hausdorffDistance(ground_truth, predicted)
+            }
+            records.append(rec)
     pass
 
 def main():
