@@ -163,10 +163,23 @@ def hausdorffDistance(ground_truth_mask, computed_mask):
     result = 0 # TODO
     return result
 
+def compute_metrics_and_save(predicted_masks_folder, ground_truth_masks_folder, result_file):
+    """
+    @:predicted_masks_folder: full path to a folder that contains all predicted masks. It is assumed that the mask files
+                            are direct children of the predicted_masks_folder
+    @:ground_truth_masks_folder: full path to a folder that contains all ground truth masks. It is assumed that the mask files
+                            are direct children of the ground_truth_masks_folder
+    @:result_file: the full name of a csv file in which all results of the performance metrics will be saved
+    :return: does not return anything. Creates a file on the disk.
+    """
+    pass
+
 def main():
     msk_list = os.listdir(CWFID_dataset['masks'])
     msk_list = [os.path.join(*[CWFID_dataset['masks'], x]) for x in msk_list if x.endswith('.png') and not x.startswith('.')]
-    msk = plt.imread(msk_list[0])
+    for file in msk_list:
+        msk = plt.imread(file)
+        print(f"Values in file {file}:  {np.unique(msk)}")
 
     file_list = os.listdir(test_pictures['pictures']['folder'])
     file_list = [x for x in file_list if (x.endswith('.jpg') or x.endswith('.JPG')) and (not x.startswith('.'))]
