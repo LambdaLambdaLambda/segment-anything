@@ -75,6 +75,7 @@ for filename in yaml_file_list:
             # input_labels[j] == 1 ---> the point input_points[j] belongs to the mask
             # input_labels[j] == 0 ---> the point input_points[j] does not belong to the mask
             input_labels = np.ones(n).astype(int)
+        img = plt.imread('truck.jpg')
         img = plt.imread(filename)
         plt.figure(figsize=(10, 10))
         plt.imshow(img)
