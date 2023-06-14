@@ -31,7 +31,7 @@ yaml_file_list.sort() # contains ordered list of full paths only of yaml files i
 for filename in yaml_file_list:
     with open(filename, 'r') as stream:
         data_loaded = yaml.safe_load(stream)
-        print(f"Full name: {os.path.join(*[CWFID_dataset['annotations'], data_loaded['filename']])}")
+        print(f"Full name: {os.path.join(*[CWFID_dataset['images'], data_loaded['filename']])}")
         for rec in data_loaded['annotation']:
             print(f"{rec['type']}")
             try: # some annotations do not contain coordinates represented as lists
