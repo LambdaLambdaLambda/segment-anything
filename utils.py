@@ -33,7 +33,7 @@ def merge_SAM_masks(containing_folder):
         # SAM generates a "metadata.csv" file inside containing_folder, and this file should not be processed by this function
         # Mac OS also puts a file '.DS_Store' inside every folder
         mask_file_list = [os.path.join(*[folder, file]) for file in os.listdir(folder) if
-                          os.path.isfile(os.path.join(*[containing_folder, file]))
+                          os.path.isfile(os.path.join(*[folder, file]))
                           and (not file.endswith('.csv'))
                           and (not file.startswith('.'))
                           ]
