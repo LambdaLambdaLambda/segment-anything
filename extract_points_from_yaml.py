@@ -69,11 +69,10 @@ for filename in yaml_file_list:
             else:
                 input_points = [[x,y] for (x,y) in list(zip(rec['points']['x'], rec['points']['y']))]
             n = len(input_points)
-            input_labels = np.empty(n) #prepare the array of labels as requested by SAM in predictor mode
-            if rec['type'] == 'weed':
-                input_labels.fill(Labels.WEED.value)
-            elif rec['type'] == 'crop':
-                input_labels.fill(Labels.CROP.value)
+            # prepare the array of labels as requested by SAM in predictor mode
+            # input_labels[j] == 1 ---> the point input_points[j] belongs to the mask
+            # input_labels[j] == 0 ---> the point input_points[j] does not belong to the mask
+            input_labels = np.ones(n).astype(np.int)
         img = plt.imread(filename)
         plt.figure(figsize=(10,10))
         plt.imshow(img)
