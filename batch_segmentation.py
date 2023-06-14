@@ -188,7 +188,7 @@ def get_amg_kwargs(args):
         "crop_nms_thresh": args.crop_nms_thresh,
         "crop_overlap_ratio": args.crop_overlap_ratio,
         "crop_n_points_downscale_factor": args.crop_n_points_downscale_factor,
-        "min_mask_region_area": args.min_mask_region_area,
+        "min_mask_region_area": args.min_mask_region_area
     }
     amg_kwargs = {k: v for k, v in amg_kwargs.items() if v is not None}
     return amg_kwargs
