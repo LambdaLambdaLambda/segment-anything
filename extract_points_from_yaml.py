@@ -65,16 +65,18 @@ for filename in yaml_file_list:
                 iterator = iter(rec['points']['x'])
                 iterator = iter(rec['points']['y'])
             except TypeError:
-                input_points = [[rec['points']['x'], rec['points']['y']]]
+                x = int(rec['points']['x'])
+                y = int(rec['points']['y'])
+                input_points = np.array([[x, y]])
             else:
-                input_points = [[x,y] for (x,y) in list(zip(rec['points']['x'], rec['points']['y']))]
+                input_points = np.array([[int(x), int(y)] for (x, y) in list(zip(rec['points']['x'], rec['points']['y']))])
             n = len(input_points)
             # prepare the array of labels as requested by SAM in predictor mode
             # input_labels[j] == 1 ---> the point input_points[j] belongs to the mask
             # input_labels[j] == 0 ---> the point input_points[j] does not belong to the mask
-            input_labels = np.ones(n).astype(np.int)
+            input_labels = np.ones(n).astype(int)
         img = plt.imread(filename)
-        plt.figure(figsize=(10,10))
+        plt.figure(figsize=(10, 10))
         plt.imshow(img)
         show_points(input_points, input_labels, plt.gca())
         plt.axis('on')
