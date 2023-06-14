@@ -11,7 +11,7 @@ CWFID_dataset = {
 }
 
 
-yaml_folder = os.path.join(*['annotations'])
+yaml_folder = CWFID_dataset['annotations']
 yaml_file_list = os.listdir(yaml_folder)
 yaml_file_list = [os.path.join(*[yaml_folder, f]) for f in yaml_file_list if f.endswith('.yaml') and not f.startswith('._')]
 yaml_file_list.sort() # contains ordered list of full paths only of yaml files inside yaml_folder
@@ -26,9 +26,3 @@ for filename in yaml_file_list:
             labels = np.empty(n)
             labels.fill(1)
         pass
-
-def main():
-
-
-if __name__ == "__main__":
-    main()
