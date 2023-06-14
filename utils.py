@@ -27,6 +27,8 @@ def merge_SAM_masks(containing_folder):
                         and (not x.startswith('.'))
                         ]
     mask_folder_list.sort()
+    print(f"Executing merge_SAM_masks({containing_folder})")
+    print(f"mask_folder_list has {len(mask_folder_list)} elements.")
     for folder in mask_folder_list:
         # SAM generates a "metadata.csv" file inside containing_folder, and this file should not be processed by this function
         # Mac OS also puts a file '.DS_Store' inside every folder
@@ -36,6 +38,7 @@ def merge_SAM_masks(containing_folder):
                           and (not file.startswith('.'))
                           ]
         mask_file_list.sort()
+        print(f"{folder} has {len(mask_file_list)} elements.")
         result = None
         if len(mask_file_list) > 0:
             for i, filename in enumerate(mask_file_list):

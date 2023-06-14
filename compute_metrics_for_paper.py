@@ -5,7 +5,7 @@ import cv2
 import pandas as pd
 import random
 from PIL import Image
-from utils import contraction, path2name
+from utils import contraction, path2name, merge_SAM_masks
 
 CWFID_dataset = {
     'annotations': os.path.join(*['CWFID_dataset', 'annotations']),
@@ -245,6 +245,7 @@ def compute_metrics_and_save(image_folder, predicted_masks_folder, ground_truth_
     pass
 
 def main():
+    merge_SAM_masks(CWFID_dataset['SAM_masks'])
     msk_list = os.listdir(CWFID_dataset['masks'])
     msk_list = [os.path.join(*[CWFID_dataset['masks'], x]) for x in msk_list if x.endswith('.png') and not x.startswith('.')]
     for file in msk_list:
