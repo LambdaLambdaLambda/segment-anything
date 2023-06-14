@@ -28,7 +28,7 @@ def show_mask(mask, ax, random_color=False):
     mask_image = mask.reshape(h, w, 1) * color.reshape(1, 1, -1)
     ax.imshow(mask_image)
 
-def show_points(coords, labels, ax, marker_size=375):
+def show_points(coords, labels, ax, marker_size=280):
     pos_points = coords[labels==1]
     neg_points = coords[labels==0]
     ax.scatter(pos_points[:, 0], pos_points[:, 1], color='green', marker='*', s=marker_size, edgecolor='white', linewidth=1.25)
@@ -75,8 +75,10 @@ for filename in yaml_file_list:
             # input_labels[j] == 1 ---> the point input_points[j] belongs to the mask
             # input_labels[j] == 0 ---> the point input_points[j] does not belong to the mask
             input_labels = np.ones(n).astype(int)
-        img = plt.imread('truck.jpg')
-        img = plt.imread(filename)
+        img = plt.imread(filename) # the png image when read becomes a 3D matrix of shape (width, height, 3) with float32 values in the interval [0, 1]
+        # SAM predictor does not work on this data type and prefers jpg images which are 3D matrices of shape (width, height, 3) with int values in the interval [0, 255]
+        # for example try to see the content of img = plt.imread('truck.jpg') in debugging mode
+        img = (img*255).astype(int)
         plt.figure(figsize=(10, 10))
         plt.imshow(img)
         show_points(input_points, input_labels, plt.gca())
