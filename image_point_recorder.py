@@ -9,7 +9,7 @@ global img
 global CWFID_dataset
 global window_name
 
-# function to display the coordinates of
+# function to display the coordinates
 # of the points clicked on the image
 def click_event(event, x, y, flags, params):
     font = cv2.FONT_HERSHEY_SIMPLEX

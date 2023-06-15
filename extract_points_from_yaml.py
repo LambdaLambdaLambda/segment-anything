@@ -50,10 +50,23 @@ def main():
     yaml_file_list = os.listdir(CWFID_dataset['annotations'])
     yaml_file_list = [os.path.join(*[CWFID_dataset['annotations'], f]) for f in yaml_file_list if
                       f.endswith('.yaml')
-                      and not f.startswith('._')
+                      and not f.startswith('.')
                       and os.path.isfile(os.path.join(*[CWFID_dataset['annotations'], f]))
                       ]
     yaml_file_list.sort() # contains ordered list of full paths only of yaml files inside yaml_folder
+
+    json_file_list = os.listdir(CWFID_dataset['SAM_annotations'])
+    json_file_list = [os.path.join(*[CWFID_dataset['SAM_annotations'], f]) for f in json_file_list if
+                      f.endswith('.json')
+                      and not f.startswith('.')
+                      and os.path.isfile(os.path.join(*[CWFID_dataset['SAM_annotations'], f]))
+                      ]
+    json_file_list.sort()  # contains ordered list of full paths only of yaml files inside yaml_folder
+
+    for filename in json_file_list:
+        with open(filename, 'r') as stream:
+            data_loaded = yaml.safe_load(stream)
+
 
     for filename in yaml_file_list:
         input_points = []
