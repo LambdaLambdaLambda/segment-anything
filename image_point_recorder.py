@@ -55,9 +55,9 @@ if __name__ == "__main__":
         # reading the image
         img = cv2.imread(filename, 1)
         cv2.namedWindow(window_name)
-        cv2.setMouseCallback('image', click_event)
+        cv2.setMouseCallback(window_name, click_event)
         # displaying the image
-        cv2.imshow('image', img)
+        cv2.imshow(window_name, img)
         # setting mouse handler for the image
         # and calling the click_event() function
         # wait for a key to be pressed to exit
