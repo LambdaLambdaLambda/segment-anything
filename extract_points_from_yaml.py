@@ -83,7 +83,7 @@ def main():
         img = plt.imread(img_file) # the png image when read becomes a 3D matrix of shape (width, height, 3) with float32 values in the interval [0, 1]
         # SAM predictor does not work on this data type and prefers jpg images which are 3D matrices of shape (width, height, 3) with int values in the interval [0, 255]
         # for example try to see the content of img = plt.imread('truck.jpg') in debugging mode
-        img = (img*255).astype(int)
+        img = (img*255).astype(np.uint8)
         plt.figure(figsize=(10, 10))
         plt.imshow(img)
         input_points = np.array(input_points)
