@@ -16,6 +16,7 @@ class Labels(Enum):
 
 CWFID_dataset = {
     'annotations': os.path.join(*['CWFID_dataset', 'annotations']),
+    'SAM_annotations': os.path.join(*['CWFID_dataset', 'SAM_annotations']),
     'images': os.path.join(*['CWFID_dataset', 'images']),
     'masks': os.path.join(*['CWFID_dataset', 'masks']),
     'SAM_masks': os.path.join(*['CWFID_dataset', 'SAM_masks'])

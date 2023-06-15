@@ -53,7 +53,7 @@ def merge_SAM_masks(containing_folder):
     pass
 
 def contraction(filename):
-    possible_suffixes = [".jpg", ".JPG", ".png", ".tiff", ".mat"]
+    possible_suffixes = [".jpg", ".JPG", ".png", ".tiff", ".mat", ".json", ".yaml", ".jpeg"]
     for suffix in possible_suffixes:
         if filename.endswith(suffix):
             result = filename[:-len(suffix)]
