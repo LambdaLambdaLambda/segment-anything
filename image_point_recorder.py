@@ -11,6 +11,7 @@ CWFID_dataset = {
         'masks': os.path.join(*['CWFID_dataset', 'masks']),
         'SAM_masks': os.path.join(*['CWFID_dataset', 'SAM_masks'])
     }
+
 dictionary = {
             'add_points': [],
             'rem_ponts': []
@@ -19,21 +20,22 @@ dictionary = {
 # function to display the coordinates of
 # of the points clicked on the image
 def click_event(event, x, y, flags, params):
+    global dictionary
     # checking for left mouse clicks
     if event == cv2.EVENT_LBUTTONDOWN:
         dictionary['add_points'].extend([[int(x),int(y)]])
-        # displaying the coordinates on the image window
-        font = cv2.FONT_HERSHEY_SIMPLEX
-        cv2.putText(img, str(x) + ',' + str(y), (x, y), font, 1, (255, 0, 0), 2)
-        cv2.imshow('image', img)
-
+        color = (255, 0, 0)
+        print(f"Points inside the mask: {dictionary['add_points']}")
     # checking for right mouse clicks
     if event == cv2.EVENT_RBUTTONDOWN:
         dictionary['rem_points'].extend([[int(x), int(y)]])
-        # displaying the coordinates on the image window
-        font = cv2.FONT_HERSHEY_SIMPLEX
-        cv2.putText(img, str(x) + ',' + str(y), (x, y), font, 1, (255, 255, 0), 2)
-        cv2.imshow('image', img)
+        color = (255, 255, 0)
+        print(f"Points outside the mask: {dictionary['rem_points']}")
+    # displaying the coordinates on the image window
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    msg = f"{str(int(x))} , {str(int(y))}"
+    cv2.putText(img, msg, (x, y), font, 1, color, 2)
+    cv2.imshow('image', img)
 
 # driver function
 if __name__ == "__main__":
