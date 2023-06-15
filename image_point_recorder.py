@@ -58,6 +58,8 @@ if __name__ == "__main__":
         cv2.waitKey(0)
         # close the window
         cv2.destroyAllWindows()
-        jsonfile = f"{contraction(path2name(filename))}.json"
+        jsonfile = os.path.join(*[CWFID_dataset['SAM_annotations'], f"{contraction(path2name(filename))}.json"])
         with open(jsonfile, "w") as outfile:
             json.dump(dictionary, outfile)
+    print("list terminated")
+    pass
