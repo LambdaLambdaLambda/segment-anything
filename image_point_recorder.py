@@ -13,21 +13,26 @@ global window_name
 # of the points clicked on the image
 def click_event(event, x, y, flags, params):
     font = cv2.FONT_HERSHEY_SIMPLEX
+    msg = "*"
     if event == cv2.EVENT_LBUTTONDOWN:# checking for left mouse clicks
         dictionary['add_points'].append([[int(x), int(y)]])
-        color = (255, 0, 0)
         print(f"Points inside the mask: {dictionary['add_points']}")
         # displaying the coordinates on the image window
-        msg = f"{str(int(x))} , {str(int(y))}"
-        cv2.putText(img, msg, (x, y), font, 1, color, 2)
+        cv2.putText(img, msg, (x, y),
+                    fontFace=cv2.FONT_HERSHEY_SIMPLEX,
+                    fontScale=1, thickness=2,
+                    color=(255, 0, 0)
+                )
         cv2.imshow(window_name, img)
     elif event == cv2.EVENT_RBUTTONDOWN:# checking for right mouse clicks
         dictionary['rem_points'].append([[int(x), int(y)]])
-        color = (255, 255, 0)
         print(f"Points outside the mask: {dictionary['rem_points']}")
         # displaying the coordinates on the image window
-        msg = f"{str(int(x))} , {str(int(y))}"
-        cv2.putText(img, msg, (x, y), font, 1, color, 2)
+        cv2.putText(img, msg, (x, y),
+                    fontFace=cv2.FONT_HERSHEY_SIMPLEX,
+                    fontScale=1, thickness=2,
+                    color=(255, 255, 0)
+                )
         cv2.imshow(window_name, img)
 
 # driver function
