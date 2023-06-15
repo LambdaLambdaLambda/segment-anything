@@ -2,6 +2,7 @@
 import cv2
 import os
 import json
+from utils import path2name, contraction
 
 CWFID_dataset = {
         'annotations': os.path.join(*['CWFID_dataset', 'annotations']),
@@ -10,51 +11,29 @@ CWFID_dataset = {
         'masks': os.path.join(*['CWFID_dataset', 'masks']),
         'SAM_masks': os.path.join(*['CWFID_dataset', 'SAM_masks'])
     }
+dictionary = {
+            'add_points': [],
+            'rem_ponts': []
+}
 
 # function to display the coordinates of
 # of the points clicked on the image
 def click_event(event, x, y, flags, params):
     # checking for left mouse clicks
     if event == cv2.EVENT_LBUTTONDOWN:
-        # displaying the coordinates
-        # on the Shell
-        print(x, ' ', y)
-        # Data to be written
-        dictionary = {
-            'filename': os.path.join(*['CWFID_dataset', 'SAM_annotations', '001_annotation.json']),
-            'add_points': [],
-            'rem_ponts': []
-        }
-
-        with open("sample.json", "w") as outfile:
-            json.dump(dictionary, outfile)
-
-        # displaying the coordinates
-        # on the image window
+        dictionary['add_points'].extend([[int(x),int(y)]])
+        # displaying the coordinates on the image window
         font = cv2.FONT_HERSHEY_SIMPLEX
-        cv2.putText(img, str(x) + ',' +
-                    str(y), (x, y), font,
-                    1, (255, 0, 0), 2)
+        cv2.putText(img, str(x) + ',' + str(y), (x, y), font, 1, (255, 0, 0), 2)
         cv2.imshow('image', img)
 
     # checking for right mouse clicks
     if event == cv2.EVENT_RBUTTONDOWN:
-        # displaying the coordinates
-        # on the Shell
-        print(x, ' ', y)
-
-        # displaying the coordinates
-        # on the image window
+        dictionary['rem_points'].extend([[int(x), int(y)]])
+        # displaying the coordinates on the image window
         font = cv2.FONT_HERSHEY_SIMPLEX
-        b = img[y, x, 0]
-        g = img[y, x, 1]
-        r = img[y, x, 2]
-        cv2.putText(img, str(b) + ',' +
-                    str(g) + ',' + str(r),
-                    (x, y), font, 1,
-                    (255, 255, 0), 2)
+        cv2.putText(img, str(x) + ',' + str(y), (x, y), font, 1, (255, 255, 0), 2)
         cv2.imshow('image', img)
-
 
 # driver function
 if __name__ == "__main__":
@@ -66,6 +45,8 @@ if __name__ == "__main__":
                       ]
     img_file_list.sort()
 
+    cv2.setMouseCallback('image', click_event)
+
     for filename in img_file_list:
         # reading the image
         img = cv2.imread(filename, 1)
@@ -73,8 +54,10 @@ if __name__ == "__main__":
         cv2.imshow('image', img)
         # setting mouse handler for the image
         # and calling the click_event() function
-        cv2.setMouseCallback('image', click_event)
         # wait for a key to be pressed to exit
         cv2.waitKey(0)
         # close the window
         cv2.destroyAllWindows()
+        jsonfile = f"{contraction(path2name(filename))}.json"
+        with open(jsonfile, "w") as outfile:
+            json.dump(dictionary, outfile)
