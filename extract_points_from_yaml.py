@@ -2,6 +2,7 @@ import yaml
 import io
 import os
 from enum import Enum
+from utils import path2name, contraction
 import json
 import numpy as np
 import matplotlib.pyplot as plt
@@ -39,6 +40,48 @@ def show_box(box, ax):
     w, h = box[2] - box[0], box[3] - box[1]
     ax.add_patch(plt.Rectangle((x0, y0), w, h, edgecolor='green', facecolor=(0,0,0,0), lw=2))
 
+def read_from_yaml(filename):
+    input_points = []
+    input_labels = []
+    data_loaded = None
+    with open(filename, 'r') as stream:
+        data_loaded = yaml.safe_load(stream)
+    for rec in data_loaded['annotation']:
+        print(f"{rec['type']}")
+        temp = None
+        try:  # some annotations do not contain coordinates represented as lists
+            iterator = iter(rec['points']['x'])
+            iterator = iter(rec['points']['y'])
+        except TypeError:
+            x = rec['points']['x']
+            y = rec['points']['y']
+            temp = [[int(x), int(y)]]
+        else:
+            temp = [[int(x), int(y)] for (x, y) in list(zip(rec['points']['x'], rec['points']['y']))]
+        input_points.extend(temp)
+        # prepare the array of labels as requested by SAM in predictor mode
+        # input_labels[j] == 1 ---> the point input_points[j] belongs to the mask
+        # input_labels[j] == 0 ---> the point input_points[j] does not belong to the mask
+        input_labels.extend([1] * len(temp))
+    return input_points, input_labels
+
+def read_from_json(filename):
+    input_points = []
+    input_labels = []
+    data_loaded = None
+    with open(filename) as json_file:
+        data_loaded = json.load(json_file)
+    # prepare the array of labels as requested by SAM in predictor mode
+    # input_labels[j] == 1 ---> the point input_points[j] belongs to the mask
+    # input_labels[j] == 0 ---> the point input_points[j] does not belong to the mask
+    temp = data_loaded['add_points']
+    input_points.extend(temp)
+    input_labels.extend([1] * len(temp))
+    temp = data_loaded['rem_points']
+    input_points.extend(temp)
+    input_labels.extend([0] * len(temp))
+    return input_points, input_labels
+
 def main():
     sam_checkpoint = "sam_vit_h_4b8939.pth"
     model_type = "vit_h"
@@ -63,35 +106,11 @@ def main():
                       ]
     json_file_list.sort()  # contains ordered list of full paths only of yaml files inside yaml_folder
 
-    for filename in json_file_list:
-        with open(filename, 'r') as stream:
-            data_loaded = yaml.safe_load(stream)
 
-
-    for filename in yaml_file_list:
-        input_points = []
-        input_labels = []
-        data_loaded = None
-        with open(filename, 'r') as stream:
-            data_loaded = yaml.safe_load(stream)
-        for rec in data_loaded['annotation']:
-            print(f"{rec['type']}")
-            temp = None
-            try: # some annotations do not contain coordinates represented as lists
-                iterator = iter(rec['points']['x'])
-                iterator = iter(rec['points']['y'])
-            except TypeError:
-                x = rec['points']['x']
-                y = rec['points']['y']
-                temp = [[int(x), int(y)]]
-            else:
-                temp = [[int(x), int(y)] for (x, y) in list(zip(rec['points']['x'], rec['points']['y']))]
-            input_points.extend(temp)
-            # prepare the array of labels as requested by SAM in predictor mode
-            # input_labels[j] == 1 ---> the point input_points[j] belongs to the mask
-            # input_labels[j] == 0 ---> the point input_points[j] does not belong to the mask
-            input_labels.extend([1] * len(temp))
-        img_file = os.path.join(*[CWFID_dataset['images'], data_loaded['filename']])
+    for filename in json_file_list:#yaml_file_list
+        #input_points, input_labels = read_from_yaml(filename)
+        input_points, input_labels = read_from_json(filename)
+        img_file = os.path.join(*[CWFID_dataset['images'], f'{contraction(path2name(filename))}.png'])
         print(f"Full name: {img_file}")
         img = plt.imread(img_file) # the png image when read becomes a 3D matrix of shape (width, height, 3) with float32 values in the interval [0, 1]
         # SAM predictor does not work on this data type and prefers jpg images which are 3D matrices of shape (width, height, 3) with int values in the interval [0, 255]
