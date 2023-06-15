@@ -3,6 +3,7 @@ import cv2
 import os
 import json
 from utils import path2name, contraction
+import time
 
 global dictionary
 global img
@@ -61,9 +62,11 @@ if __name__ == "__main__":
         if os.path.exists(annotation_file):
             continue    # proceed with annotation only if the annotation does not exist yet
         else:
+            start = time.time()
             dictionary = {
                 'add_points': [],
-                'rem_points': []
+                'rem_points': [],
+                'time': 0
             }
             window_name = filename
             img = None
@@ -81,9 +84,12 @@ if __name__ == "__main__":
                 break
             # close the window
             cv2.destroyAllWindows()
+            end = time.time()
+            dictionary['time'] = end-start
             jsonfile = os.path.join(*[CWFID_dataset['SAM_annotations'], f"{contraction(path2name(filename))}.json"])
             with open(jsonfile, "w") as outfile:
                 json.dump(dictionary, outfile)
+
         print(f"Iteration on file {filename} completed. File {jsonfile} saved.")
     print("All images have been annotated.")
     pass
