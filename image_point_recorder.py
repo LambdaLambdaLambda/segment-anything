@@ -15,24 +15,28 @@ def click_event(event, x, y, flags, params):
     font = cv2.FONT_HERSHEY_SIMPLEX
     msg = "*"
     if event == cv2.EVENT_LBUTTONDOWN:# checking for left mouse clicks
-        dictionary['add_points'].append([[int(x), int(y)]])
+        dictionary['add_points'].append([int(x), int(y)])
         print(f"Points inside the mask: {dictionary['add_points']}")
-        # displaying the coordinates on the image window
+        cv2.circle(img, (x, y), radius=2, color=(255, 0, 0), thickness=1)
+        """
         cv2.putText(img, msg, (x, y),
                     fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                     fontScale=1, thickness=2,
                     color=(255, 0, 0)
                 )
+        """
         cv2.imshow(window_name, img)
     elif event == cv2.EVENT_RBUTTONDOWN:# checking for right mouse clicks
-        dictionary['rem_points'].append([[int(x), int(y)]])
+        dictionary['rem_points'].append([int(x), int(y)])
         print(f"Points outside the mask: {dictionary['rem_points']}")
-        # displaying the coordinates on the image window
+        cv2.circle(img, (x, y), radius=2, color=(255, 0, 0), thickness=1)
+        """
         cv2.putText(img, msg, (x, y),
                     fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                     fontScale=1, thickness=2,
                     color=(255, 255, 0)
                 )
+        """
         cv2.imshow(window_name, img)
 
 # driver function
