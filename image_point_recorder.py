@@ -59,7 +59,7 @@ if __name__ == "__main__":
     for filename in img_file_list:
         dictionary = {
             'add_points': [],
-            'rem_ponts': []
+            'rem_points': []
         }
         window_name = filename
         img = None
