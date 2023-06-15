@@ -57,29 +57,33 @@ if __name__ == "__main__":
     img_file_list.sort()
 
     for filename in img_file_list:
-        dictionary = {
-            'add_points': [],
-            'rem_points': []
-        }
-        window_name = filename
-        img = None
-        # reading the image
-        img = cv2.imread(filename, 1)
-        cv2.namedWindow(window_name)
-        cv2.setMouseCallback(window_name, click_event)
-        # displaying the image
-        cv2.imshow(window_name, img)
-        # setting mouse handler for the image
-        # and calling the click_event() function
-        # wait for a key to be pressed to exit
-        k = cv2.waitKey(0)
-        if k == 0 or k == 27:
-            break
-        # close the window
-        cv2.destroyAllWindows()
-        jsonfile = os.path.join(*[CWFID_dataset['SAM_annotations'], f"{contraction(path2name(filename))}.json"])
-        with open(jsonfile, "w") as outfile:
-            json.dump(dictionary, outfile)
+        annotation_file = os.path.join(*[CWFID_dataset['SAM_annotations'], f'{contraction(path2name(filename))}.json'])
+        if os.path.exists(annotation_file):
+            continue    # proceed with annotation only if the annotation does not exist yet
+        else:
+            dictionary = {
+                'add_points': [],
+                'rem_points': []
+            }
+            window_name = filename
+            img = None
+            # reading the image
+            img = cv2.imread(filename, 1)
+            cv2.namedWindow(window_name)
+            cv2.setMouseCallback(window_name, click_event)
+            # displaying the image
+            cv2.imshow(window_name, img)
+            # setting mouse handler for the image
+            # and calling the click_event() function
+            # wait for a key to be pressed to exit
+            k = cv2.waitKey(0)
+            if k == 0 or k == 27:
+                break
+            # close the window
+            cv2.destroyAllWindows()
+            jsonfile = os.path.join(*[CWFID_dataset['SAM_annotations'], f"{contraction(path2name(filename))}.json"])
+            with open(jsonfile, "w") as outfile:
+                json.dump(dictionary, outfile)
         print(f"Iteration on file {filename} completed. File {jsonfile} saved.")
-    print("list terminated")
+    print("All images have been annotated.")
     pass
