@@ -4,6 +4,7 @@ import os
 from enum import Enum
 from utils import path2name, contraction
 import json
+from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
 import torch
@@ -32,9 +33,11 @@ def show_mask(mask, ax, random_color=False):
 
 def show_points(coords, labels, ax, marker_size=280):
     pos_points = coords[labels==1]
+    ax.scatter(pos_points[:, 0], pos_points[:, 1], color='green')
     neg_points = coords[labels==0]
-    ax.scatter(pos_points[:, 0], pos_points[:, 1], color='green', marker='*', s=marker_size, edgecolor='white', linewidth=1.25)
-    ax.scatter(neg_points[:, 0], neg_points[:, 1], color='red', marker='*', s=marker_size, edgecolor='white', linewidth=1.25)
+    ax.scatter(neg_points[:, 0], neg_points[:, 1], color='red')
+    #ax.scatter(pos_points[:, 0], pos_points[:, 1], color='green', marker='*', s=marker_size, edgecolor='white', linewidth=1.25)
+    #ax.scatter(neg_points[:, 0], neg_points[:, 1], color='red', marker='*', s=marker_size, edgecolor='white', linewidth=1.25)
 
 def show_box(box, ax):
     x0, y0 = box[0], box[1]
@@ -128,11 +131,14 @@ def main():
         masks, scores, logits = predictor.predict(
             point_coords=input_points,
             point_labels=input_labels,
-            multimask_output=True
+            multimask_output=False#in order to get just the best mask
         )
         for i, (mask, score) in enumerate(zip(masks, scores)):
             plt.figure(figsize=(10, 10))
             plt.imshow(img)
+            dest_file = os.path.join(*[CWFID_dataset['SAM_masks'], f'{contraction(path2name(filename))}.tiff'])
+            if not os.path.exists(dest_file):  # save the file only if it does not yet exist
+                Image.fromarray(mask.astype(np.uint8)).save(dest_file)
             show_mask(mask, plt.gca())
             show_points(input_points, input_labels, plt.gca())
             plt.title(f"Mask {i + 1}, Score: {score:.3f}", fontsize=18)
