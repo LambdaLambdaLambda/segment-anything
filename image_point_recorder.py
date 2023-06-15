@@ -12,21 +12,23 @@ global window_name
 # function to display the coordinates of
 # of the points clicked on the image
 def click_event(event, x, y, flags, params):
-    # checking for left mouse clicks
-    if event == cv2.EVENT_LBUTTONDOWN:
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    if event == cv2.EVENT_LBUTTONDOWN:# checking for left mouse clicks
         dictionary['add_points'].append([[int(x), int(y)]])
         color = (255, 0, 0)
         print(f"Points inside the mask: {dictionary['add_points']}")
-    # checking for right mouse clicks
-    if event == cv2.EVENT_RBUTTONDOWN:
+        # displaying the coordinates on the image window
+        msg = f"{str(int(x))} , {str(int(y))}"
+        cv2.putText(img, msg, (x, y), font, 1, color, 2)
+        cv2.imshow(window_name, img)
+    elif event == cv2.EVENT_RBUTTONDOWN:# checking for right mouse clicks
         dictionary['rem_points'].append([[int(x), int(y)]])
         color = (255, 255, 0)
         print(f"Points outside the mask: {dictionary['rem_points']}")
-    # displaying the coordinates on the image window
-    font = cv2.FONT_HERSHEY_SIMPLEX
-    msg = f"{str(int(x))} , {str(int(y))}"
-    cv2.putText(img, msg, (x, y), font, 1, color, 2)
-    cv2.imshow(window_name, img)
+        # displaying the coordinates on the image window
+        msg = f"{str(int(x))} , {str(int(y))}"
+        cv2.putText(img, msg, (x, y), font, 1, color, 2)
+        cv2.imshow(window_name, img)
 
 # driver function
 if __name__ == "__main__":
