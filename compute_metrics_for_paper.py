@@ -11,7 +11,8 @@ CWFID_dataset = {
     'annotations': os.path.join(*['CWFID_dataset', 'annotations']),
     'images': os.path.join(*['CWFID_dataset', 'images']),
     'masks': os.path.join(*['CWFID_dataset', 'masks']),
-    'SAM_masks': os.path.join(*['CWFID_dataset', 'SAM_masks'])
+    'SAM_masks': os.path.join(*['CWFID_dataset', 'SAM_masks']),
+    'SAM_annotations': os.path.join(*['CWFID_dataset', 'SAM_annotations'])
 }
 
 ESCA_dataset = {
@@ -184,32 +185,30 @@ def compute_metrics_and_save(image_folder, predicted_masks_folder, ground_truth_
     assert os.path.exists(ground_truth_masks_folder)
     assert result_file is not None
 
-    image_list = os.listdir(image_folder)
-    image_list = [os.path.join(*[image_folder, x]) for x in image_list if
-                    (x.endswith('.png') or x.endswith('.tiff') or x.endswith('.jpg') or x.endswith('.JPG') or x.endswith('.jpeg'))
+    image_list = [os.path.join(*[image_folder, x]) for x in os.listdir(image_folder) if
+                    (x.endswith('.png') or x.endswith('.jpg') or x.endswith('.JPG') or x.endswith('.jpeg'))
                     and not x.startswith('.')
                     and os.path.isfile(os.path.join(*[image_folder, x]))
                     and not os.path.isdir(os.path.join(*[image_folder, x]))
                 ]
     image_list.sort()
 
-    predicted_mask_list = os.listdir(predicted_masks_folder)
-    predicted_mask_list = [os.path.join(*[predicted_masks_folder, x]) for x in predicted_mask_list if
-                           (x.endswith('.png') or x.endswith('.tiff'))
+    predicted_mask_list = [os.path.join(*[predicted_masks_folder, x]) for x in os.listdir(predicted_masks_folder) if
+                           x.endswith('.tiff')
                            and not x.startswith('.')
                            and os.path.isfile(os.path.join(*[predicted_masks_folder, x]))
                            and not os.path.isdir(os.path.join(*[predicted_masks_folder, x]))
                         ]
     predicted_mask_list.sort()
 
-    ground_truth_mask_list = os.listdir(ground_truth_masks_folder)
-    ground_truth_mask_list = [os.path.join(*[ground_truth_masks_folder, x]) for x in ground_truth_mask_list if
-                           (x.endswith('.png') or x.endswith('.tiff'))
+    ground_truth_mask_list = [os.path.join(*[ground_truth_masks_folder, x]) for x in os.listdir(ground_truth_masks_folder) if
+                           x.endswith('.tiff')
                            and not x.startswith('.')
                            and os.path.isfile(os.path.join(*[ground_truth_masks_folder, x]))
                            and not os.path.isdir(os.path.join(*[ground_truth_masks_folder, x]))
                            ]
     ground_truth_mask_list.sort()
+
     records = []
     for image, predicted, ground_truth in list(zip(image_list, predicted_mask_list, ground_truth_mask_list)):
         if contraction(path2name(image)) == contraction(path2name(predicted)) == contraction(path2name(ground_truth)):
@@ -245,12 +244,22 @@ def compute_metrics_and_save(image_folder, predicted_masks_folder, ground_truth_
     pass
 
 def main():
+    """
     merge_SAM_masks(CWFID_dataset['SAM_masks'])
-    msk_list = os.listdir(CWFID_dataset['masks'])
-    msk_list = [os.path.join(*[CWFID_dataset['masks'], x]) for x in msk_list if x.endswith('.png') and not x.startswith('.')]
-    for file in msk_list:
-        msk = plt.imread(file)
-        print(f"Values in file {file}:  {np.unique(msk)}")
+    for filename in ground_truth_msk_list:
+    msk = plt.imread(filename).astype(np.uint8)
+    msk = 1 - msk# the mask files represent with 1 the background a 0 the Region Of Interest, so we invert them
+    dest_file = os.path.join(*[CWFID_dataset['masks'], f'{contraction(path2name(filename))}.tiff'])
+    if not os.path.exists(dest_file):  # save the file only if it does not yet exist
+        Image.fromarray(msk.astype(np.uint8)).save(dest_file)
+    print(f"All masks inverted.")
+    """
+    compute_metrics_and_save(
+        image_folder=CWFID_dataset['images'],
+        predicted_masks_folder=CWFID_dataset['SAM_masks'],
+        ground_truth_masks_folder=CWFID_dataset['SAM_masks'],
+        result_file='SAM_vs_ground_truth_on_CWFID.csv'
+    )
 
 if __name__ == "__main__":
     main()
