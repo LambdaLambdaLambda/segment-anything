@@ -51,8 +51,10 @@ def click_event(event, x, y, flags, params):
     if event == cv2.EVENT_LBUTTONDOWN:# checking for left mouse clicks
         dictionary['input_points'].append([int(x), int(y)]) # point to add inside the mask
         dictionary['input_labels'].append(1) # point to add inside the mask
-        cv2.circle(img, (x, y), radius=2, color=(255, 0, 0), thickness=2)
-        cv2.imshow(window_name, img)
+        cv2.circle(dictionary['img'], (x, y), radius=2, color=(255, 0, 0), thickness=2)
+        cv2.imshow(window_name, dictionary['img'])
+        print(f"dictionary['input_points'] = {dictionary['input_points']}")
+        print(f"dictionary['input_labels'] = {dictionary['input_labels']}")
         predict_and_show_mask(
             dictionary['predictor'],
             dictionary['input_points'],
@@ -62,8 +64,10 @@ def click_event(event, x, y, flags, params):
     elif event == cv2.EVENT_RBUTTONDOWN:# checking for right mouse clicks
         dictionary['input_points'].append([int(x), int(y)])  # point to remove from the mask
         dictionary['input_labels'].append(0)  # point to remove from the mask
-        cv2.circle(img, (x, y), radius=2, color=(0, 0, 255), thickness=2)
-        cv2.imshow(window_name, img)
+        cv2.circle(dictionary['img'], (x, y), radius=2, color=(0, 0, 255), thickness=2)
+        cv2.imshow(window_name, dictionary['img'])
+        print(f"dictionary['input_points'] = {dictionary['input_points']}")
+        print(f"dictionary['input_labels'] = {dictionary['input_labels']}")
         predict_and_show_mask(
             dictionary['predictor'],
             dictionary['input_points'],
@@ -72,43 +76,48 @@ def click_event(event, x, y, flags, params):
         )
 
 def predict_and_show_mask(predictor, input_points, input_labels, img):
-    plt.figure(figsize=(10, 10))
-    plt.imshow(img)
-    input_points = np.array(input_points)
-    input_labels = np.array(input_labels)
-    show_points(input_points, input_labels, plt.gca())
-    plt.axis('on')
-    plt.show()
-    masks, scores, logits = predictor.predict(
-        point_coords=input_points,
-        point_labels=input_labels,
-        multimask_output=False  # in order to get just the best mask
-    )
-    for i, (mask, score) in enumerate(zip(masks, scores)):
+    if predictor is not None:
         plt.figure(figsize=(10, 10))
         plt.imshow(img)
-        show_mask(mask, plt.gca())
+        input_points = np.array(input_points)
+        input_labels = np.array(input_labels)
         show_points(input_points, input_labels, plt.gca())
-        plt.title(f"Mask {i + 1}, Score: {score:.3f}", fontsize=18)
-        plt.axis('off')
+        plt.axis('on')
         plt.show()
-    return masks, scores, logits
+        masks, scores, logits = predictor.predict(
+            point_coords=input_points,
+            point_labels=input_labels,
+            multimask_output=False  # in order to get just the best mask
+        )
+        for i, (mask, score) in enumerate(zip(masks, scores)):
+            plt.figure(figsize=(10, 10))
+            plt.imshow(img)
+            show_mask(mask, plt.gca())
+            show_points(input_points, input_labels, plt.gca())
+            plt.title(f"Mask {i + 1}, Score: {score:.3f}", fontsize=18)
+            plt.axis('off')
+            plt.show()
+        return masks, scores, logits
+    else:
+        return None, None, None
 
 # driver function
 if __name__ == "__main__":
-    sam_checkpoint = "sam_vit_h_4b8939.pth"
-    model_type = "vit_h"
-    device = "cpu"
-    sam = sam_model_registry[model_type](checkpoint=sam_checkpoint)
-    sam.to(device=device)
-    predictor = SamPredictor(sam)
+
+    #sam_checkpoint = "sam_vit_h_4b8939.pth"
+    #model_type = "vit_h"
+    #device = "cpu"
+    #sam = sam_model_registry[model_type](checkpoint=sam_checkpoint)
+    #sam.to(device=device)
+    #predictor = SamPredictor(sam)
 
     CWFID_dataset = {
         'annotations': os.path.join(*['CWFID_dataset', 'annotations']),
         'SAM_annotations': os.path.join(*['CWFID_dataset', 'SAM_annotations']),
         'images': os.path.join(*['CWFID_dataset', 'images']),
         'masks': os.path.join(*['CWFID_dataset', 'masks']),
-        'SamAutomaticMaskGenerator_masks': os.path.join(*['CWFID_dataset', 'SamAutomaticMaskGenerator_masks'])
+        'SamAutomaticMaskGenerator_masks': os.path.join(*['CWFID_dataset', 'SamAutomaticMaskGenerator_masks']),
+        'SamPredictor_masks': os.path.join(*['CWFID_dataset', 'SamPredictor_masks'])
     }
 
     img_file_list = os.listdir(CWFID_dataset['images'])
@@ -138,11 +147,11 @@ if __name__ == "__main__":
             'input_labels': [],
             'img_file': filename,
             'img': img,
-            'predictor': predictor,
+            'predictor': None, #predictor,
             'time': 0
         }
         start = time.time()#################
-        predictor.set_image(img)
+        #predictor.set_image(img)
         window_name = filename
         cv2.namedWindow(window_name)
         cv2.setMouseCallback(window_name, click_event)
