@@ -14,14 +14,14 @@ ESCA_dataset = {
         'esca_foliage_over_healthy_bg': os.path.join(*(base_folder_path + ['esca', 'esca_foliage_over_healthy_bg'])),
         'masks': os.path.join(*(base_folder_path + ['esca', 'masks'])),
         'pictures': os.path.join(*(base_folder_path + ['esca', 'pictures'])),
-        'SAM_masks': os.path.join(*(base_folder_path + ['esca', 'SAM_masks']))
+        'SamAutomaticMaskGenerator_masks': os.path.join(*(base_folder_path + ['esca', 'SamAutomaticMaskGenerator_masks']))
     },
     'healthy': {
         'folder': os.path.join(*(base_folder_path + ['healthy'])),
         'healthy_foliage_over_esca_bg': os.path.join(*(base_folder_path + ['esca', 'healthy_foliage_over_esca_bg'])),
         'masks': os.path.join(*(base_folder_path + ['healthy', 'masks'])),
         'pictures': os.path.join(*(base_folder_path + ['healthy', 'pictures'])),
-        'SAM_masks': os.path.join(*(base_folder_path + ['healthy', 'SAM_masks']))
+        'SamAutomaticMaskGenerator_masks': os.path.join(*(base_folder_path + ['healthy', 'SamAutomaticMaskGenerator_masks']))
     }
 }
 
@@ -89,7 +89,7 @@ def sam_masks_ground_truth_annotation():
     for k in ESCA_dataset.keys():
         #mask_list = sorted(os.listdir(ESCA_dataset[k]['masks']))
         #mask_list = [x for x in mask_list if x.endswith('.ome.tiff')]
-        #SAM_mask_list = sorted(os.listdir(ESCA_dataset[k]['SAM_masks']))
+        #SAM_mask_list = sorted(os.listdir(ESCA_dataset[k]['SamAutomaticMaskGenerator_masks']))
         picture_list = sorted(os.listdir(ESCA_dataset[k]['pictures']))
         picture_list = [x for x in picture_list if x.endswith('.jpg') or x.endswith('.JPG')]
         for i, p_name in enumerate(picture_list):
@@ -97,12 +97,12 @@ def sam_masks_ground_truth_annotation():
                 break
             p_name_full = os.path.join(*[ESCA_dataset[k]['pictures'], p_name])
             #m_name_full = os.path.join(*[ESCA_dataset[k]['masks'], f"{p_name[:-4]}_finalprediction.ome.tiff"])
-            SAM_single_mask_list = sorted(os.listdir(os.path.join(*[ESCA_dataset[k]['SAM_masks'], strip_extension(p_name)])))
+            SAM_single_mask_list = sorted(os.listdir(os.path.join(*[ESCA_dataset[k]['SamAutomaticMaskGenerator_masks'], strip_extension(p_name)])))
             SAM_single_mask_list = [x for x in SAM_single_mask_list if x.endswith('.png') and not x.startswith(strip_extension(p_name))]
             for s_name in SAM_single_mask_list:
                 if stop == True:
                     break
-                s_name_full = os.path.join(*[ESCA_dataset[k]['SAM_masks'], f"{strip_extension(p_name)}", s_name])
+                s_name_full = os.path.join(*[ESCA_dataset[k]['SamAutomaticMaskGenerator_masks'], f"{strip_extension(p_name)}", s_name])
                 draw_superposition(p_name_full, s_name_full)
                 choice = input("Leaf? [y/n] Enter 'q' to quit. If you quit a csv file will be saved.")
                 if choice == 'q':
@@ -139,13 +139,13 @@ def sam_mask_showcase(p_name_full=None, pic_class = None, save_pics=False):
         else:
             assert p_name.startswith(pic_class)
     SAM_single_mask_list = sorted(
-        os.listdir(os.path.join(*[ESCA_dataset[k]['SAM_masks'], strip_extension(p_name)])))#p_name is available due to hoisting
+        os.listdir(os.path.join(*[ESCA_dataset[k]['SamAutomaticMaskGenerator_masks'], strip_extension(p_name)])))#p_name is available due to hoisting
     SAM_single_mask_list = [x for x in SAM_single_mask_list if
                                 x.endswith('.png') and not x.startswith(strip_extension(p_name))]
     for s_name in SAM_single_mask_list:
-        s_name_full = os.path.join(*[ESCA_dataset[k]['SAM_masks'], f"{strip_extension(p_name)}", s_name])
+        s_name_full = os.path.join(*[ESCA_dataset[k]['SamAutomaticMaskGenerator_masks'], f"{strip_extension(p_name)}", s_name])
         draw_superposition(p_name_full, s_name_full, save_pics)
-    s_name_full = os.path.join(*[ESCA_dataset[k]['SAM_masks'], f"{strip_extension(p_name)}", f"{strip_extension(p_name)}_mask.png"])
+    s_name_full = os.path.join(*[ESCA_dataset[k]['SamAutomaticMaskGenerator_masks'], f"{strip_extension(p_name)}", f"{strip_extension(p_name)}_mask.png"])
     draw_superposition(p_name_full, s_name_full, save_pics)
 
 def apeer_mask_showcase(p_name_full=None, pic_class = None, save_pics=False):

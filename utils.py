@@ -13,17 +13,21 @@ def merge_SAM_masks(containing_folder):
     """
     @:containing_folder: full path to a folder that contains a subfolder for each image processed by SAM.
                 Example:
-                SAM_masks --> containing folder
-                SAM_masks/002_image/0.png
+                SamAutomaticMaskGenerator_masks --> containing folder
+                SamAutomaticMaskGenerator_masks/002_image/0.png
                 ...
-                SAM_masks/002_image/165.png
-                SAM_masks/002_image/metadata.csv
-    @:computed_mask: numpy matrix containing only zeros and ones
-    :return: a real number representing the Hausdorff Distance between the two masks
+                SamAutomaticMaskGenerator_masks/002_image/165.png
+                SamAutomaticMaskGenerator_masks/002_image/metadata.csv
+    :return: does not return a value. For each subfolder like SamAutomaticMaskGenerator_masks/002_image/ creates a file
+                SamAutomaticMaskGenerator_masks/002_mask.tiff that is the merge of all individual object masks
+                SamAutomaticMaskGenerator_masks/002_image/0.png, ..., SamAutomaticMaskGenerator_masks/002_image/165.png
+                The final tiff file is a binary 2D image whose pixels contain 1 for the Region Of Interest and
+                0 for the background
     """
     mask_folder_list = [os.path.join(*[containing_folder, x]) for x in os.listdir(containing_folder) if
                         os.path.isdir(os.path.join(*[containing_folder, x]))
                         and (not x.endswith('.csv'))
+                        and (not x.endswith('.png'))
                         and (not x.startswith('.'))
                         ]
     mask_folder_list.sort()
@@ -31,9 +35,10 @@ def merge_SAM_masks(containing_folder):
     print(f"mask_folder_list has {len(mask_folder_list)} elements.")
     for folder in mask_folder_list:
         # SAM generates a "metadata.csv" file inside containing_folder, and this file should not be processed by this function
-        # Mac OS also puts a file '.DS_Store' inside every folder
+        # MacOS also puts a file '.DS_Store' inside every folder
         mask_file_list = [os.path.join(*[folder, file]) for file in os.listdir(folder) if
                           os.path.isfile(os.path.join(*[folder, file]))
+                          and file.endswith('.png')
                           and (not file.endswith('.csv'))
                           and (not file.startswith('.'))
                           ]
@@ -47,9 +52,9 @@ def merge_SAM_masks(containing_folder):
                     result = np.zeros(msk.shape)#all generated masks have the same shape (equal to the container image)
                 else:
                     result = np.logical_or(result, msk)
-            result_filename = os.path.join(*[folder, f"{path2name(folder)}.tiff"])
-            Image.fromarray(result.astype('uint8'), mode='L').save(result_filename)
-            print(f"File {result_filename} saved.")
+            dest_file = os.path.join(*[containing_folder, f"{path2name(folder)[:3]}_mask.tiff"])
+            Image.fromarray(result.astype('uint8'), mode='L').save(dest_file)
+            print(f"File {dest_file} saved.")
     pass
 
 def contraction(filename):

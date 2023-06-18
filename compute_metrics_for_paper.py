@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import cv2
 import pandas as pd
+from skimage import metrics
 import random
 from PIL import Image
 from utils import contraction, path2name, merge_SAM_masks
@@ -11,7 +12,7 @@ CWFID_dataset = {
     'annotations': os.path.join(*['CWFID_dataset', 'annotations']),
     'images': os.path.join(*['CWFID_dataset', 'images']),
     'masks': os.path.join(*['CWFID_dataset', 'masks']),
-    'SAM_masks': os.path.join(*['CWFID_dataset', 'SAM_masks']),
+    'SamAutomaticMaskGenerator_masks': os.path.join(*['CWFID_dataset', 'SamAutomaticMaskGenerator_masks']),
     'SAM_annotations': os.path.join(*['CWFID_dataset', 'SAM_annotations'])
 }
 
@@ -21,20 +22,20 @@ ESCA_dataset = {
         'esca_foliage_over_healthy_bg': os.path.join(*['ESCA_dataset', 'esca', 'esca_foliage_over_healthy_bg']),
         'masks': os.path.join(*['ESCA_dataset', 'esca', 'masks']),
         'pictures': os.path.join(*['ESCA_dataset', 'esca', 'pictures']),
-        'SAM_masks': os.path.join(*['ESCA_dataset', 'esca', 'SAM_masks'])
+        'SamAutomaticMaskGenerator_masks': os.path.join(*['ESCA_dataset', 'esca', 'SamAutomaticMaskGenerator_masks'])
     },
     'healthy': {
         'folder': os.path.join(*['ESCA_dataset', 'healthy']),
         'healthy_foliage_over_esca_bg': os.path.join(*['ESCA_dataset', 'esca', 'healthy_foliage_over_esca_bg']),
         'masks': os.path.join(*['ESCA_dataset', 'healthy', 'masks']),
         'pictures': os.path.join(*['ESCA_dataset', 'healthy', 'pictures']),
-        'SAM_masks': os.path.join(*['ESCA_dataset', 'healthy', 'SAM_masks'])
+        'SamAutomaticMaskGenerator_masks': os.path.join(*['ESCA_dataset', 'healthy', 'SamAutomaticMaskGenerator_masks'])
     }
 }
 
 test_pictures = {
     'APEER_masks': os.path.join(*['test_data', 'APEER_masks']),
-    'SAM_masks': os.path.join(*['test_data', 'SAM_masks']),
+    'SamAutomaticMaskGenerator_masks': os.path.join(*['test_data', 'SamAutomaticMaskGenerator_masks']),
     'pictures': os.path.join(*['test_data', 'pictures'])
 }
 
@@ -245,7 +246,6 @@ def compute_metrics_and_save(image_folder, predicted_masks_folder, ground_truth_
 
 def main():
     """
-    merge_SAM_masks(CWFID_dataset['SAM_masks'])
     for filename in ground_truth_msk_list:
     msk = plt.imread(filename).astype(np.uint8)
     msk = 1 - msk# the mask files represent with 1 the background a 0 the Region Of Interest, so we invert them
@@ -256,8 +256,8 @@ def main():
     """
     compute_metrics_and_save(
         image_folder=CWFID_dataset['images'],
-        predicted_masks_folder=CWFID_dataset['SAM_masks'],
-        ground_truth_masks_folder=CWFID_dataset['SAM_masks'],
+        predicted_masks_folder=CWFID_dataset['SamAutomaticMaskGenerator_masks'],
+        ground_truth_masks_folder=CWFID_dataset['SamAutomaticMaskGenerator_masks'],
         result_file='SAM_vs_ground_truth_on_CWFID.csv'
     )
 
