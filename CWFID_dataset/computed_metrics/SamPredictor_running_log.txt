@@ -1,0 +1,423 @@
+Full name: CWFID_dataset/images/001_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/001_image.json terminated:
+Embedding time: 15.212954998016357 seconds.
+Embedding time: 0.04385876655578613 seconds.
+Embedding time: 7.200241088867188e-05 seconds.
+---------
+Full name: CWFID_dataset/images/002_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/002_image.json terminated:
+Embedding time: 14.597562313079834 seconds.
+Embedding time: 0.042171478271484375 seconds.
+Embedding time: 7.224082946777344e-05 seconds.
+---------
+Full name: CWFID_dataset/images/003_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/003_image.json terminated:
+Embedding time: 14.532570362091064 seconds.
+Embedding time: 0.04372000694274902 seconds.
+Embedding time: 8.0108642578125e-05 seconds.
+---------
+Full name: CWFID_dataset/images/004_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/004_image.json terminated:
+Embedding time: 14.320858478546143 seconds.
+Embedding time: 0.05859231948852539 seconds.
+Embedding time: 9.846687316894531e-05 seconds.
+---------
+Full name: CWFID_dataset/images/005_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/005_image.json terminated:
+Embedding time: 15.210914611816406 seconds.
+Embedding time: 0.04925227165222168 seconds.
+Embedding time: 7.271766662597656e-05 seconds.
+---------
+Full name: CWFID_dataset/images/006_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/006_image.json terminated:
+Embedding time: 14.659244537353516 seconds.
+Embedding time: 0.056516408920288086 seconds.
+Embedding time: 7.772445678710938e-05 seconds.
+---------
+Full name: CWFID_dataset/images/007_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/007_image.json terminated:
+Embedding time: 13.882452726364136 seconds.
+Embedding time: 0.056975603103637695 seconds.
+Embedding time: 7.534027099609375e-05 seconds.
+---------
+Full name: CWFID_dataset/images/008_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/008_image.json terminated:
+Embedding time: 13.613046407699585 seconds.
+Embedding time: 0.05601787567138672 seconds.
+Embedding time: 7.605552673339844e-05 seconds.
+---------
+Full name: CWFID_dataset/images/009_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/009_image.json terminated:
+Embedding time: 14.096734523773193 seconds.
+Embedding time: 0.09880828857421875 seconds.
+Embedding time: 8.296966552734375e-05 seconds.
+---------
+Full name: CWFID_dataset/images/010_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/010_image.json terminated:
+Embedding time: 13.663202047348022 seconds.
+Embedding time: 0.053926706314086914 seconds.
+Embedding time: 7.462501525878906e-05 seconds.
+---------
+Full name: CWFID_dataset/images/011_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/011_image.json terminated:
+Embedding time: 13.745232582092285 seconds.
+Embedding time: 0.08464217185974121 seconds.
+Embedding time: 7.772445678710938e-05 seconds.
+---------
+Full name: CWFID_dataset/images/012_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/012_image.json terminated:
+Embedding time: 13.783458709716797 seconds.
+Embedding time: 0.05300450325012207 seconds.
+Embedding time: 7.557868957519531e-05 seconds.
+---------
+Full name: CWFID_dataset/images/013_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/013_image.json terminated:
+Embedding time: 13.998948335647583 seconds.
+Embedding time: 0.07441401481628418 seconds.
+Embedding time: 7.653236389160156e-05 seconds.
+---------
+Full name: CWFID_dataset/images/014_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/014_image.json terminated:
+Embedding time: 13.926206111907959 seconds.
+Embedding time: 0.055600881576538086 seconds.
+Embedding time: 7.510185241699219e-05 seconds.
+---------
+Full name: CWFID_dataset/images/015_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/015_image.json terminated:
+Embedding time: 14.538798570632935 seconds.
+Embedding time: 0.05865192413330078 seconds.
+Embedding time: 7.43865966796875e-05 seconds.
+---------
+Full name: CWFID_dataset/images/016_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/016_image.json terminated:
+Embedding time: 13.65112042427063 seconds.
+Embedding time: 0.06108808517456055 seconds.
+Embedding time: 7.605552673339844e-05 seconds.
+---------
+Full name: CWFID_dataset/images/017_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/017_image.json terminated:
+Embedding time: 14.464264392852783 seconds.
+Embedding time: 0.059610843658447266 seconds.
+Embedding time: 7.390975952148438e-05 seconds.
+---------
+Full name: CWFID_dataset/images/018_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/018_image.json terminated:
+Embedding time: 13.649551630020142 seconds.
+Embedding time: 0.05920004844665527 seconds.
+Embedding time: 7.772445678710938e-05 seconds.
+---------
+Full name: CWFID_dataset/images/019_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/019_image.json terminated:
+Embedding time: 13.604951620101929 seconds.
+Embedding time: 0.05845832824707031 seconds.
+Embedding time: 7.462501525878906e-05 seconds.
+---------
+Full name: CWFID_dataset/images/020_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/020_image.json terminated:
+Embedding time: 13.68364953994751 seconds.
+Embedding time: 0.059284210205078125 seconds.
+Embedding time: 7.772445678710938e-05 seconds.
+---------
+Full name: CWFID_dataset/images/021_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/021_image.json terminated:
+Embedding time: 14.363192558288574 seconds.
+Embedding time: 0.061521053314208984 seconds.
+Embedding time: 7.367134094238281e-05 seconds.
+---------
+Full name: CWFID_dataset/images/022_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/022_image.json terminated:
+Embedding time: 15.330395698547363 seconds.
+Embedding time: 0.11699724197387695 seconds.
+Embedding time: 0.004098176956176758 seconds.
+---------
+Full name: CWFID_dataset/images/023_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/023_image.json terminated:
+Embedding time: 14.661466836929321 seconds.
+Embedding time: 0.07225155830383301 seconds.
+Embedding time: 0.0024716854095458984 seconds.
+---------
+Full name: CWFID_dataset/images/024_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/024_image.json terminated:
+Embedding time: 13.738213539123535 seconds.
+Embedding time: 0.08110451698303223 seconds.
+Embedding time: 0.001975536346435547 seconds.
+---------
+Full name: CWFID_dataset/images/025_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/025_image.json terminated:
+Embedding time: 14.221145868301392 seconds.
+Embedding time: 0.08600020408630371 seconds.
+Embedding time: 0.0017175674438476562 seconds.
+---------
+Full name: CWFID_dataset/images/026_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/026_image.json terminated:
+Embedding time: 14.491584777832031 seconds.
+Embedding time: 0.07652544975280762 seconds.
+Embedding time: 0.0017948150634765625 seconds.
+---------
+Full name: CWFID_dataset/images/027_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/027_image.json terminated:
+Embedding time: 13.92982292175293 seconds.
+Embedding time: 0.07583189010620117 seconds.
+Embedding time: 0.0017850399017333984 seconds.
+---------
+Full name: CWFID_dataset/images/028_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/028_image.json terminated:
+Embedding time: 14.5279221534729 seconds.
+Embedding time: 0.0687723159790039 seconds.
+Embedding time: 0.002960681915283203 seconds.
+---------
+Full name: CWFID_dataset/images/029_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/029_image.json terminated:
+Embedding time: 14.98798942565918 seconds.
+Embedding time: 0.08568501472473145 seconds.
+Embedding time: 0.0019252300262451172 seconds.
+---------
+Full name: CWFID_dataset/images/030_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/030_image.json terminated:
+Embedding time: 15.341375589370728 seconds.
+Embedding time: 0.058138132095336914 seconds.
+Embedding time: 0.0018868446350097656 seconds.
+---------
+Full name: CWFID_dataset/images/031_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/031_image.json terminated:
+Embedding time: 14.888015270233154 seconds.
+Embedding time: 0.06045985221862793 seconds.
+Embedding time: 0.0018625259399414062 seconds.
+---------
+Full name: CWFID_dataset/images/032_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/032_image.json terminated:
+Embedding time: 15.253817796707153 seconds.
+Embedding time: 0.12032437324523926 seconds.
+Embedding time: 0.002672910690307617 seconds.
+---------
+Full name: CWFID_dataset/images/033_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/033_image.json terminated:
+Embedding time: 14.579142808914185 seconds.
+Embedding time: 0.07185959815979004 seconds.
+Embedding time: 0.002009868621826172 seconds.
+---------
+Full name: CWFID_dataset/images/034_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/034_image.json terminated:
+Embedding time: 15.082371711730957 seconds.
+Embedding time: 0.08721232414245605 seconds.
+Embedding time: 0.0017743110656738281 seconds.
+---------
+Full name: CWFID_dataset/images/035_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/035_image.json terminated:
+Embedding time: 15.716623306274414 seconds.
+Embedding time: 0.09183216094970703 seconds.
+Embedding time: 0.0018405914306640625 seconds.
+---------
+Full name: CWFID_dataset/images/036_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/036_image.json terminated:
+Embedding time: 15.565810203552246 seconds.
+Embedding time: 0.0859978199005127 seconds.
+Embedding time: 0.0018093585968017578 seconds.
+---------
+Full name: CWFID_dataset/images/037_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/037_image.json terminated:
+Embedding time: 15.512449026107788 seconds.
+Embedding time: 0.11170244216918945 seconds.
+Embedding time: 0.0019218921661376953 seconds.
+---------
+Full name: CWFID_dataset/images/038_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/038_image.json terminated:
+Embedding time: 15.280127763748169 seconds.
+Embedding time: 0.16762256622314453 seconds.
+Embedding time: 0.0019097328186035156 seconds.
+---------
+Full name: CWFID_dataset/images/039_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/039_image.json terminated:
+Embedding time: 15.104071617126465 seconds.
+Embedding time: 0.10071969032287598 seconds.
+Embedding time: 0.0019769668579101562 seconds.
+---------
+Full name: CWFID_dataset/images/040_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/040_image.json terminated:
+Embedding time: 14.816206216812134 seconds.
+Embedding time: 0.11271405220031738 seconds.
+Embedding time: 0.002192258834838867 seconds.
+---------
+Full name: CWFID_dataset/images/041_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/041_image.json terminated:
+Embedding time: 15.951834678649902 seconds.
+Embedding time: 0.06209588050842285 seconds.
+Embedding time: 0.0017783641815185547 seconds.
+---------
+Full name: CWFID_dataset/images/042_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/042_image.json terminated:
+Embedding time: 15.950821161270142 seconds.
+Embedding time: 0.06883096694946289 seconds.
+Embedding time: 0.0017995834350585938 seconds.
+---------
+Full name: CWFID_dataset/images/043_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/043_image.json terminated:
+Embedding time: 15.266444683074951 seconds.
+Embedding time: 0.051113128662109375 seconds.
+Embedding time: 0.0017473697662353516 seconds.
+---------
+Full name: CWFID_dataset/images/044_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/044_image.json terminated:
+Embedding time: 16.420280933380127 seconds.
+Embedding time: 0.06969833374023438 seconds.
+Embedding time: 0.0018105506896972656 seconds.
+---------
+Full name: CWFID_dataset/images/045_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/045_image.json terminated:
+Embedding time: 15.672564268112183 seconds.
+Embedding time: 0.06902766227722168 seconds.
+Embedding time: 0.0019345283508300781 seconds.
+---------
+Full name: CWFID_dataset/images/046_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/046_image.json terminated:
+Embedding time: 16.667341709136963 seconds.
+Embedding time: 0.06323862075805664 seconds.
+Embedding time: 0.0017101764678955078 seconds.
+---------
+Full name: CWFID_dataset/images/047_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/047_image.json terminated:
+Embedding time: 17.055541276931763 seconds.
+Embedding time: 0.1031181812286377 seconds.
+Embedding time: 0.0018322467803955078 seconds.
+---------
+Full name: CWFID_dataset/images/048_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/048_image.json terminated:
+Embedding time: 15.96795129776001 seconds.
+Embedding time: 0.0740358829498291 seconds.
+Embedding time: 0.001870870590209961 seconds.
+---------
+Full name: CWFID_dataset/images/049_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/049_image.json terminated:
+Embedding time: 15.076627016067505 seconds.
+Embedding time: 0.07323837280273438 seconds.
+Embedding time: 0.001821756362915039 seconds.
+---------
+Full name: CWFID_dataset/images/050_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/050_image.json terminated:
+Embedding time: 16.378742218017578 seconds.
+Embedding time: 0.07322239875793457 seconds.
+Embedding time: 0.0017876625061035156 seconds.
+---------
+Full name: CWFID_dataset/images/051_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/051_image.json terminated:
+Embedding time: 16.644025325775146 seconds.
+Embedding time: 0.12221407890319824 seconds.
+Embedding time: 0.0018701553344726562 seconds.
+---------
+Full name: CWFID_dataset/images/052_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/052_image.json terminated:
+Embedding time: 16.72691583633423 seconds.
+Embedding time: 0.13270139694213867 seconds.
+Embedding time: 0.0019032955169677734 seconds.
+---------
+Full name: CWFID_dataset/images/053_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/053_image.json terminated:
+Embedding time: 16.26744532585144 seconds.
+Embedding time: 0.07003140449523926 seconds.
+Embedding time: 0.001817941665649414 seconds.
+---------
+Full name: CWFID_dataset/images/054_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/054_image.json terminated:
+Embedding time: 15.175997734069824 seconds.
+Embedding time: 0.08524370193481445 seconds.
+Embedding time: 0.00188446044921875 seconds.
+---------
+Full name: CWFID_dataset/images/055_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/055_image.json terminated:
+Embedding time: 15.075902223587036 seconds.
+Embedding time: 0.12661385536193848 seconds.
+Embedding time: 0.0019221305847167969 seconds.
+---------
+Full name: CWFID_dataset/images/056_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/056_image.json terminated:
+Embedding time: 14.775194644927979 seconds.
+Embedding time: 0.09176802635192871 seconds.
+Embedding time: 0.0017936229705810547 seconds.
+---------
+Full name: CWFID_dataset/images/057_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/057_image.json terminated:
+Embedding time: 14.823426008224487 seconds.
+Embedding time: 0.0977170467376709 seconds.
+Embedding time: 0.001750946044921875 seconds.
+---------
+Full name: CWFID_dataset/images/058_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/058_image.json terminated:
+Embedding time: 15.671022176742554 seconds.
+Embedding time: 0.12914490699768066 seconds.
+Embedding time: 0.0018343925476074219 seconds.
+---------
+Full name: CWFID_dataset/images/059_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/059_image.json terminated:
+Embedding time: 15.157843589782715 seconds.
+Embedding time: 0.14165806770324707 seconds.
+Embedding time: 0.0018668174743652344 seconds.
+---------
+Full name: CWFID_dataset/images/060_image.png
+---------
+Iteration for file CWFID_dataset/SamPredictor_annotations/060_image.json terminated:
+Embedding time: 16.52093529701233 seconds.
+Embedding time: 0.1362314224243164 seconds.
+Embedding time: 0.0018277168273925781 seconds.
+---------
+Function main terminated.
+
+Process finished with exit code 0

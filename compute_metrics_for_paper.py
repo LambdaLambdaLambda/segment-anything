@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import cv2
 import pandas as pd
+import re
 from skimage import metrics
 import random
 from PIL import Image
@@ -220,15 +221,14 @@ def compute_metrics_and_save(image_folder, ground_truth_masks_folder, predicted_
         print(f"path2name(ground_truth) = {path2name(ground_truth)}")
         print(f"path2name(image)[:3] = {path2name(image)[:3]}")
         if ok:
-            labels = [0, 1]
-            metrics = sg.write_metrics(labels=labels[1:],  # exclude background if needed
-                                       gdth_path=ground_truth,
-                                       pred_path=prediction,
-                                       csv_file=os.path.join(*['CWFID_dataset', 'computed_metrics',
-                                                               f"{path2name(image)[:3]}_comparison.csv"]),
-                                       metrics=['hd', 'msd'])
             gt = plt.imread(ground_truth)
             pr = plt.imread(prediction)
+            labels = [1]
+            metrics = sg.write_metrics(labels=labels,  # exclude background
+                                       gdth_img=gt,
+                                       pred_img=pr,
+                                       csv_file=None,#os.path.join(*['CWFID_dataset', 'computed_metrics', f"{path2name(image)[:3]}_comparison.csv"])
+                                       metrics=['hd', 'msd'])
             # hd  --> Hausdorff distance
             # msd --> Average symmetric surface distance
             rec = {
@@ -241,8 +241,8 @@ def compute_metrics_and_save(image_folder, ground_truth_masks_folder, predicted_
                 'precision': precision(gt, pr),
                 'recall': recall(gt, pr),
                 'f1Score': f1Score(gt, pr),
-                'avgSymmetricSurfaceDistance': metrics['msd'],
-                'hausdorffDistance': metrics['hd']
+                'avgSymmetricSurfaceDistance': (metrics[0])['msd'][0],
+                'hausdorffDistance': (metrics[0])['hd'][0]
             }
             records.append(rec)
             print(f"File {image} processed with its masks.")
@@ -263,6 +263,70 @@ def compute_metrics_and_save(image_folder, ground_truth_masks_folder, predicted_
     print(f"File {result_file} saved.")
     pass
 
+def save_predictor_running_times(source_txt, dest_csv):
+    source = open(source_txt, 'r')
+    allines = source.readlines()
+    records = []
+    for i, line in enumerate(allines):
+        txt = line.strip()  # Strips the newline character
+        arr = txt.split()
+        if i%7 == 0:
+            rec = {
+                'filename': arr[2],
+                'embedding_time': None,
+                'prediction_time': None,
+                'saving_time': None
+            }
+        elif i%7 == 1:
+            pass
+        elif i%7 == 2:
+            pass
+        elif i%7 == 3:
+            rec['embedding_time'] = float(arr[2])
+        elif i%7 == 4:
+            rec['prediction_time'] = float(arr[2])
+        elif i%7 == 5:
+            rec['saving_time'] = float(arr[2])
+        elif i%7 == 6:
+            records.append(rec)
+
+    result = pd.DataFrame(records, columns=[
+        'filename',
+        'embedding_time',
+        'prediction_time',
+        'saving_time'])
+    result.to_csv(dest_csv, index=False, header=True)
+    print(f"File {dest_csv} saved.")
+    pass
+
+def save_automatic_running_times(source_txt, dest_csv):
+    source = open(source_txt, 'r')
+    allines = source.readlines()
+    records = []
+    for i, line in enumerate(allines):
+        txt = line.strip()  # Strips the newline character
+        arr = txt.split()
+        if i % 3 == 0:
+            rec = {
+                'filename': None,
+                'prediction_time': None,
+                'saving_time': None
+            }
+        elif i % 3 == 1:
+            rec['prediction_time'] = float(arr[2])
+            rec['filename'] = arr[4]
+        elif i % 3 == 2:
+            rec['saving_time'] = float(arr[2])
+            records.append(rec)
+
+    result = pd.DataFrame(records, columns=[
+        'filename',
+        'prediction_time',
+        'saving_time'])
+    result.to_csv(dest_csv, index=False, header=True)
+    print(f"File {dest_csv} saved.")
+    pass
+
 def main():
     """
     for filename in ground_truth_msk_list:
@@ -271,7 +335,7 @@ def main():
     dest_file = os.path.join(*[CWFID_dataset['masks'], f'{contraction(path2name(filename))}.tiff'])
     if not os.path.exists(dest_file):  # save the file only if it does not yet exist
         Image.fromarray(msk.astype(np.uint8)).save(dest_file)
-    print(f"All masks inverted.")
+    print(f"All masks inverted.")#DONE
         image_list = [os.path.join(*[CWFID_dataset['SamPredictor_masks'], x]) for x in os.listdir(CWFID_dataset['SamPredictor_masks']) if
                   x.endswith('.tiff')
                   and not x.startswith('.')
@@ -286,14 +350,34 @@ def main():
             print("The file already exists")
         else:
             os.rename(old_name, new_name)
-    print(f"Renaming operation terminated")
-    """
-    compute_metrics_and_save(
+    print(f"Renaming operation terminated")#DONE
+
+    compute_metrics_and_save(#DONE
         image_folder=CWFID_dataset['images'],
         predicted_masks_folder=CWFID_dataset['SamAutomaticMaskGenerator_masks'],
         ground_truth_masks_folder=CWFID_dataset['masks'],
         result_file=os.path.join(*['CWFID_dataset', 'computed_metrics', 'SamAutomaticMaskGenerator_vs_ground_truth_on_CWFID.csv'])
     )
+    compute_metrics_and_save(#DONE
+        image_folder=CWFID_dataset['images'],
+        predicted_masks_folder=CWFID_dataset['SamPredictor_masks'],
+        ground_truth_masks_folder=CWFID_dataset['masks'],
+        result_file=os.path.join(
+            *['CWFID_dataset', 'computed_metrics', 'SamPredictor_vs_ground_truth_on_CWFID.csv'])
+    )
+    save_predictor_running_times(#DONE
+        source_txt=os.path.join(*['CWFID_dataset', 'computed_metrics', 'SamPredictor_running_log.txt']),
+        dest_csv=os.path.join(*['CWFID_dataset', 'computed_metrics', 'SamPredictor_running_times.csv'])
+    )
+    """
+    save_automatic_running_times(  # DONE
+        source_txt=os.path.join(*['CWFID_dataset', 'computed_metrics', 'SamAutomatic_running_log.txt']),
+        dest_csv=os.path.join(*['CWFID_dataset', 'computed_metrics', 'SamAutomatic_running_times.csv'])
+    )
+
+"""
+The SamAutomaticMaskGenerator took a total of 4290.769307374954 seconds to run on all 60 images 
+"""
 
 if __name__ == "__main__":
     main()
