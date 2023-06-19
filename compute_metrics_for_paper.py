@@ -369,11 +369,95 @@ def main():
         source_txt=os.path.join(*['CWFID_dataset', 'computed_metrics', 'SamPredictor_running_log.txt']),
         dest_csv=os.path.join(*['CWFID_dataset', 'computed_metrics', 'SamPredictor_running_times.csv'])
     )
-    """
     save_automatic_running_times(  # DONE
         source_txt=os.path.join(*['CWFID_dataset', 'computed_metrics', 'SamAutomatic_running_log.txt']),
         dest_csv=os.path.join(*['CWFID_dataset', 'computed_metrics', 'SamAutomatic_running_times.csv'])
     )
+    source_csv = os.path.join(*['CWFID_dataset', 'computed_metrics', 'SamAutomatic_running_times.csv'])
+    df = pd.read_csv(source_csv)
+    df = df.sort_values(by='filename')
+    dest_csv = os.path.join(*['CWFID_dataset', 'computed_metrics', 'SamAutomatic_running_times2.csv'])
+    df.to_csv(dest_csv, index=False, header=True)
+    print(f"File {dest_csv} saved.")#DONE
+    source_csv = os.path.join(*['CWFID_dataset', 'computed_metrics', 'SamAutomatic_running_times2.csv'])
+    df = pd.read_csv(source_csv)
+    for i, row in df.iterrows():
+        df.at[i, 'filename'] = path2name(row['filename'])
+        df.at[i, 'prediction_time'] = round(row['prediction_time'], 3)
+        df.at[i, 'saving_time'] = round(row['saving_time'], 3)
+    dest_csv = os.path.join(*['CWFID_dataset', 'computed_metrics', 'SamAutomatic_running_times2.csv'])
+    df.to_csv(dest_csv, index=False, header=True)
+    print(f"File {dest_csv} saved.")  # DONE
+    source_csv = os.path.join(*['CWFID_dataset', 'computed_metrics', 'SamPredictor_running_times.csv'])
+    df = pd.read_csv(source_csv)
+    for i, row in df.iterrows():
+        df.at[i, 'filename'] = path2name(row['filename'])
+        df.at[i, 'embedding_time'] = round(row['embedding_time'], 3)
+        df.at[i, 'prediction_time'] = round(row['prediction_time'], 3)
+        df.at[i, 'saving_time'] = round(row['saving_time'], 3)
+    dest_csv = os.path.join(*['CWFID_dataset', 'computed_metrics', 'SamPredictor_running_times2.csv'])
+    df.to_csv(dest_csv, index=False, header=True)
+    print(f"File {dest_csv} saved.")  # DONE
+    source_csv = os.path.join(*['CWFID_dataset', 'computed_metrics', 'SamPredictor_running_times2.csv'])
+    df = pd.read_csv(source_csv)
+    df = df.sort_values(by='filename')
+    dest_csv = os.path.join(*['CWFID_dataset', 'computed_metrics', 'SamPredictor_running_times2.csv'])
+    df.to_csv(dest_csv, index=False, header=True)
+    print(f"File {dest_csv} saved.")  # DONE
+
+    source_csv = os.path.join(*['CWFID_dataset', 'computed_metrics', 'Statistics_manual_masks.csv'])
+    df = pd.read_csv(source_csv)
+    df.rename(columns={'num_add_points': 'num_points'}, inplace=True)
+    df = df.drop(['num_rem_points'], axis=1)
+    for i, row in df.iterrows():
+        df.at[i, 'filename'] = path2name(row['filename'])
+    dest_csv = os.path.join(*['CWFID_dataset', 'computed_metrics', 'Statistics_manual_masks2.csv'])
+    df.to_csv(dest_csv, index=False, header=True)
+    print(f"File {dest_csv} saved.")  # DONE
+
+    source_csv = os.path.join(*['CWFID_dataset', 'computed_metrics', 'Statistics_predictor_masks.csv'])
+    df = pd.read_csv(source_csv)
+    for i, row in df.iterrows():
+        df.at[i, 'filename'] = path2name(row['filename'])
+        df.at[i, 'time'] = round(row['time'], 3)
+    dest_csv = os.path.join(*['CWFID_dataset', 'computed_metrics', 'Statistics_predictor_masks2.csv'])
+    df.to_csv(dest_csv, index=False, header=True)
+    print(f"File {dest_csv} saved.")  # DONE
+
+    source_csv = os.path.join(*['CWFID_dataset', 'computed_metrics', 'SamPredictor_vs_ground_truth_on_CWFID.csv'])
+    df = pd.read_csv(source_csv)
+    df = df.drop(['predicted_mask_file', 'ground_truth_mask_file'], axis=1)
+    for i, row in df.iterrows():
+        df.at[i, 'image_file'] = path2name(row['image_file'])
+        df.at[i, 'intersectionOverUnion'] = round(row['intersectionOverUnion'], 3)
+        df.at[i, 'diceCoefficient'] = round(row['diceCoefficient'], 3)
+        df.at[i, 'pixelAccuracy'] = round(row['pixelAccuracy'], 3)
+        df.at[i, 'precision'] = round(row['precision'], 3)
+        df.at[i, 'recall'] = round(row['recall'], 3)
+        df.at[i, 'f1Score'] = round(row['f1Score'], 3)
+        df.at[i, 'avgSymmetricSurfaceDistance'] = round(row['avgSymmetricSurfaceDistance'], 3)
+        df.at[i, 'hausdorffDistance'] = round(row['hausdorffDistance'], 3)
+    dest_csv = os.path.join(*['CWFID_dataset', 'computed_metrics', 'SamPredictor_vs_ground_truth_on_CWFID2.csv'])
+    df.to_csv(dest_csv, index=False, header=True)
+    print(f"File {dest_csv} saved.")  # DONE
+    """
+
+    source_csv = os.path.join(*['CWFID_dataset', 'computed_metrics', 'SamAutomaticMaskGenerator_vs_ground_truth_on_CWFID.csv'])
+    df = pd.read_csv(source_csv)
+    df = df.drop(['predicted_mask_file', 'ground_truth_mask_file'], axis=1)
+    for i, row in df.iterrows():
+        df.at[i, 'image_file'] = path2name(row['image_file'])
+        df.at[i, 'intersectionOverUnion'] = round(row['intersectionOverUnion'], 3)
+        df.at[i, 'diceCoefficient'] = round(row['diceCoefficient'], 3)
+        df.at[i, 'pixelAccuracy'] = round(row['pixelAccuracy'], 3)
+        df.at[i, 'precision'] = round(row['precision'], 3)
+        df.at[i, 'recall'] = round(row['recall'], 3)
+        df.at[i, 'f1Score'] = round(row['f1Score'], 3)
+        df.at[i, 'avgSymmetricSurfaceDistance'] = round(row['avgSymmetricSurfaceDistance'], 3)
+        df.at[i, 'hausdorffDistance'] = round(row['hausdorffDistance'], 3)
+    dest_csv = os.path.join(*['CWFID_dataset', 'computed_metrics', 'SamAutomaticMaskGenerator_vs_ground_truth_on_CWFID2.csv'])
+    df.to_csv(dest_csv, index=False, header=True)
+    print(f"File {dest_csv} saved.")  # DONE
 
 """
 The SamAutomaticMaskGenerator took a total of 4290.769307374954 seconds to run on all 60 images 

@@ -16,6 +16,8 @@
 \usepackage{marginnote}
 \usepackage{subcaption}
 \usepackage{textcomp}
+\usepackage{csvsimple}
+\usepackage{booktabs}
 \usepackage[utopia]{mathdesign}
 %\usepackage{color}
 %\renewcommand\UrlFont{\color{blue}\rmfamily}
@@ -293,45 +295,103 @@ Our goal was to compare the performances of the foundational segmentation model 
 We uploaded {\color{red} 102} images of the healthy folder and {\color{red} 103} of the esca folder to \url{https://www.apeer.com/annotate} and  manually annotated them with the online semantic segmentation tool APEER Annotate~\cite{Zeiss23}, which allowed to classify the pixels of each image into two different semantic categories: foliage and background. The reult of the manual sementation are a total of {\color{red} 205} binary masks in which the pixels corresponding to foliage area contain the value 1 and all others contain value 0.
 
 
-
 \begin{table}[h!]
 \centering
-\begin{tabular}{|p{3.0cm}|p{3.5cm}|}
+\begin{tabular}{|p{3.0cm}|p{3.5cm}|p{3.5cm}|}
 \hline
 \makecell{\textbf{Image name}} 
 & 
-\makecell{\textbf{Manual annotation time} \\ \textbf{(minutes)}} \\
+\makecell{\textbf{Number of points} \\ \textbf{on the border}}
+& 
+\makecell{\textbf{Manual annotation time} \\ \textbf{(seconds)}} \\
 \hline
-healthy1.jpg & xx \\
+001\_annotation.yaml & 233 & 0 \\
+002\_annotation.yaml & 106 & 0 \\
+003\_annotation.yaml & 54 & 0 \\
+004\_annotation.yaml & 124 & 0 \\
+005\_annotation.yaml & 41 & 0 \\
+006\_annotation.yaml & 95 & 0 \\
+007\_annotation.yaml & 217 & 0 \\
+008\_annotation.yaml & 108 & 0 \\
+009\_annotation.yaml & 127 & 0 \\
+010\_annotation.yaml & 106 & 0 \\
+%011\_annotation.yaml & 98 & 0 \\
+%012\_annotation.yaml & 39 & 0 \\
+%013\_annotation.yaml & 118 & 0 \\
+%014\_annotation.yaml & 47 & 0 \\
+%015\_annotation.yaml & 45 & 0 \\
+%016\_annotation.yaml & 167 & 0 \\
+%017\_annotation.yaml & 98 & 0 \\
+%018\_annotation.yaml & 101 & 0 \\
+%019\_annotation.yaml & 68 & 0 \\
+%020\_annotation.yaml & 33 & 0 \\
+%021\_annotation.yaml & 49 & 0 \\
+%022\_annotation.yaml & 93 & 0 \\
+%023\_annotation.yaml & 79 & 0 \\
+%024\_annotation.yaml & 60 & 0 \\
+%025\_annotation.yaml & 78 & 0 \\
+%026\_annotation.yaml & 50 & 0 \\
+%027\_annotation.yaml & 90 & 0 \\
+%028\_annotation.yaml & 163 & 0 \\
+%029\_annotation.yaml & 137 & 0 \\
+%030\_annotation.yaml & 33 & 0 \\
+%031\_annotation.yaml & 59 & 0 \\
+%032\_annotation.yaml & 69 & 0 \\
+%033\_annotation.yaml & 110 & 0 \\
+%034\_annotation.yaml & 122 & 0 \\
+%035\_annotation.yaml & 116 & 0 \\
+%036\_annotation.yaml & 189 & 0 \\
+%037\_annotation.yaml & 66 & 0 \\
+%038\_annotation.yaml & 139 & 0 \\
+%039\_annotation.yaml & 79 & 0 \\
+%040\_annotation.yaml & 91 & 0 \\
+%041\_annotation.yaml & 113 & 0 \\
+%042\_annotation.yaml & 50 & 0 \\
+%043\_annotation.yaml & 49 & 0 \\
+%044\_annotation.yaml & 41 & 0 \\
+%045\_annotation.yaml & 131 & 0 \\
+%046\_annotation.yaml & 29 & 0 \\
+%047\_annotation.yaml & 44 & 0 \\
+%048\_annotation.yaml & 59 & 0 \\
+%049\_annotation.yaml & 38 & 0 \\
+050\_annotation.yaml & 18 & 0 \\
+051\_annotation.yaml & 150 & 0 \\
+052\_annotation.yaml & 155 & 0 \\
+053\_annotation.yaml & 55 & 0 \\
+054\_annotation.yaml & 115 & 0 \\
+055\_annotation.yaml & 105 & 0 \\
+056\_annotation.yaml & 123 & 0 \\
+057\_annotation.yaml & 148 & 0 \\
+058\_annotation.yaml & 209 & 0 \\
+059\_annotation.yaml & 204 & 0 \\
+060\_annotation.yaml & 171 & 0 \\
 \hline
-healthy2.jpg & xx \\
+
+& 
+\makecell{\textbf{Sum}}
+& 
+\makecell{\textbf{Sum} } \\
 \hline
-healthy3.jpg & xx \\
+ & 5904 & 0 \\
+ \hline
+
+& 
+\makecell{\textbf{Average}}
+& 
+\makecell{\textbf{Average} } \\
 \hline
-healthy4.jpg & xx \\
-\hline
-healthy5.jpg & xx \\
-\hline
-esca1.jpg & xx \\
-\hline
-esca2.jpg & xx \\
-\hline
-esca3.jpg & xx \\
-\hline
-esca4.jpg & xx \\
-\hline
-esca5.jpg & xx \\
+ & 98.4 & 0 \\
 \hline
 \end{tabular}
 \caption{Time spent for drawing the masks manually (ground-truth labelling).}
-\label{tab:image_annotation_on_apeer}
+\label{tab:image_annotation_manual}
 \end{table}
 
-In Table~\ref{tab:image_annotation_on_apeer} we recorded the time used to manually draw precise segmentation masks for 10 images. We keep the so-obtained 10 masks as a reference for the rest of the paper and consider them as ground-truth to measure performance of the two segmentation tools analyzed. In~\ref{tab:definitions} we summarized the classification of pixel predictions in the context of semantic segmentation applied to the task of partitioning an image into its Region Of Interest (ROI) and its background.{\color{red} Frase contorta.}
+In Table~\ref{tab:image_annotation_on_manual} we recorded the time used to manually draw precise segmentation masks for 10 images. We keep the so-obtained 10 masks as a reference for the rest of the paper and consider them as ground-truth to measure performance of the two segmentation tools analyzed. In~\ref{tab:definitions} we summarized the classification of pixel predictions in the context of semantic segmentation applied to the task of partitioning an image into its Region Of Interest (ROI) and its background.{\color{red} Frase contorta.}
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{|p{4.5cm}|p{4.5cm}|}
+\begin{tabular}{|p{5.5cm}|p{5.5cm}|}
 \hline
 \makecell{\textbf{Correct predictions}}
 &
@@ -366,6 +426,8 @@ actually belongs to the ROI  \\
 \label{tab:definitions}
 \end{table}
 
+
+
 The metrics used in this paper are:
 \begin{itemize}
 \item Intersection over Union (IoU) or Jaccard Index: it measures the overlap between the predicted segmentation mask and the ground truth mask. It is calculated as the ratio of the intersection area to the union area of the two masks (in the case of two classes only this measure is equivalent to Mean Intersection over Union - mIoU).
@@ -375,6 +437,75 @@ The metrics used in this paper are:
 \item Normalized Surface Distance (NSD): the average of the Hausdorff distance and the Symmetric Contour Distance. Hausdorff Distance: The Hausdorff distance measures the maximum distance between the predicted contour and the ground truth contour. It quantifies the largest discrepancy between the two contours and is sensitive to outliers or large deviations. Symmetric Contour Distance: The symmetric contour distance measures the average distance between the predicted contour and the ground truth contour. Unlike the Hausdorff distance, it takes into account both the under-segmentation (missing parts of the object) and over-segmentation (extraneous regions).
 \end{itemize}
 
+\begin{table}[h!]
+\centering
+\begin{tabular}{|p{4.5cm}|p{6.5cm}|}
+\hline
+\makecell{\textbf{Name}}
+&
+\makecell{\textbf{Formula}} \\
+\hline
+Intersection over Union (IoU)
+ & 
+
+\\
+
+\hline
+
+Dice Coefficient
+
+& 
+
+\\
+
+\hline
+
+Pixel Accuracy
+
+& 
+
+\\
+
+\hline
+
+Precision
+
+& 
+
+\\
+
+\hline
+
+Recall 
+
+& 
+
+\\
+\hline
+F1-score
+
+& 
+
+\\
+\hline
+Hausdorff Distance
+
+& 
+
+$$ \mathrm{max} \left\{ \mathrm{max}_{x \in \partial G} \mathrm{d}(x, \partial M), \mathrm{max}_{y \in \partial M} \mathrm{d}(y, \partial G) \right\}$$
+\\
+\hline
+Average Symmetric Surface Distance
+
+& 
+$$ \frac{\sum_{x \in \partial G} \mathrm{d}(x, \partial M) +  \sum_{y \in \partial M} \mathrm{d}(y, \partial G)}{|\partial G| + |\partial M|}$$
+\\
+\hline
+\end{tabular}
+\caption{Definitions of TP, TN, FP, and FN}
+\label{tab:metrics_used}
+\end{table}
+
 \subsection{Segmentation of vine images with SAM}
 
 SAM supports three main segmentation modes: segmenting everything in a fully automatic way, bounding box mode, and point mode. The segment-everything mode divides the whole image into six regions based on the image intensity (Fig.~\ref{fig:sam-modes}b).
@@ -383,41 +514,100 @@ We segmented {\color{red} 10} images with bounding box mode and other {\color{re
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{|p{3.0cm}|p{3.0cm}|p{3.0cm}|}
+\begin{tabular}{|p{3.0cm}|p{3.0cm}|p{3.0cm}|p{3.0cm}|}
 \hline
-\makecell{\textbf{Image name}}  
+\makecell{\textbf{Annotation file}}  
 &
-\makecell{\textbf{Annotation time} \\ \textbf{bounding box mode}}
+\makecell{\textbf{\# points inside mask}}
 &
-\makecell{\textbf{Annotation time} \\ \textbf{point mode}}\\
+\makecell{\textbf{\# points outside mask}}
+&
+\makecell{\textbf{Annotation time} \\ \textbf{point mode} \\ \textbf{(seconds)}} \\
+\hline
+001\_annotation.json & 41 & 20 & 101.696 \\
+002\_annotation.json & 35 & 21 & 95.565 \\
+003\_annotation.json & 32 & 22 & 106.857 \\
+004\_annotation.json & 46 & 29 & 125.596 \\
+005\_annotation.json & 43 & 49 & 148.657 \\
+006\_annotation.json & 53 & 71 & 210.004 \\
+007\_annotation.json & 72 & 63 & 201.255 \\
+008\_annotation.json & 58 & 68 & 186.949 \\
+009\_annotation.json & 59 & 81 & 193.657 \\
+010\_annotation.json & 51 & 68 & 197.857 \\
+%011\_annotation.json & 82 & 84 & 224.888 \\
+%012\_annotation.json & 31 & 77 & 124.534 \\
+%013\_annotation.json & 60 & 73 & 186.33 \\
+%014\_annotation.json & 44 & 64 & 145.737 \\
+%015\_annotation.json & 49 & 81 & 146.716 \\
+%016\_annotation.json & 79 & 76 & 209.166 \\
+%017\_annotation.json & 53 & 78 & 151.232 \\
+%018\_annotation.json & 60 & 89 & 155.673 \\
+%019\_annotation.json & 63 & 85 & 162.488 \\
+%020\_annotation.json & 30 & 112 & 145.248 \\
+%021\_annotation.json & 39 & 123 & 151.843 \\
+%022\_annotation.json & 75 & 112 & 242.476 \\
+%023\_annotation.json & 52 & 116 & 196.753 \\
+%024\_annotation.json & 69 & 93 & 270.024 \\
+%025\_annotation.json & 76 & 82 & 223.944 \\
+%026\_annotation.json & 32 & 96 & 153.957 \\
+%027\_annotation.json & 82 & 117 & 292.686 \\
+%028\_annotation.json & 80 & 112 & 264.466 \\
+%029\_annotation.json & 120 & 95 & 288.516 \\
+%030\_annotation.json & 24 & 119 & 122.353 \\
+%031\_annotation.json & 54 & 89 & 199.722 \\
+%032\_annotation.json & 70 & 118 & 261.031 \\
+%033\_annotation.json & 65 & 121 & 257.678 \\
+%034\_annotation.json & 69 & 99 & 293.182 \\
+%035\_annotation.json & 62 & 121 & 244.333 \\
+%036\_annotation.json & 70 & 93 & 219.324 \\
+%037\_annotation.json & 47 & 130 & 206.17 \\
+%038\_annotation.json & 74 & 123 & 239.44 \\
+%039\_annotation.json & 46 & 125 & 222.824 \\
+%040\_annotation.json & 82 & 135 & 385.179 \\
+%041\_annotation.json & 45 & 77 & 176.355 \\
+%042\_annotation.json & 29 & 79 & 109.598 \\
+%043\_annotation.json & 30 & 79 & 131.012 \\
+%044\_annotation.json & 33 & 120 & 120.934 \\
+%045\_annotation.json & 65 & 103 & 158.763 \\
+%046\_annotation.json & 19 & 117 & 105.836 \\
+%047\_annotation.json & 29 & 145 & 117.797 \\
+%048\_annotation.json & 45 & 137 & 159.498 \\
+%049\_annotation.json & 44 & 114 & 175.778 \\
+050\_annotation.json & 19 & 138 & 98.891 \\
+051\_annotation.json & 118 & 176 & 388.167 \\
+052\_annotation.json & 98 & 171 & 276.081 \\
+053\_annotation.json & 32 & 140 & 114.474 \\
+054\_annotation.json & 67 & 120 & 254.87 \\
+055\_annotation.json & 75 & 138 & 337.862 \\
+056\_annotation.json & 60 & 180 & 338.139 \\
+057\_annotation.json & 77 & 167 & 293.152 \\
+058\_annotation.json & 95 & 184 & 310.982 \\
+059\_annotation.json & 79 & 166 & 338.914 \\
+060\_annotation.json & 94 & 187 & 276.054 \\
+\hline
+
 & 
-\makecell{\textbf{(minutes)}}
+\makecell{\textbf{Sum}}
 & 
-\makecell{\textbf{(minutes)}} \\
+\makecell{\textbf{Sum}}
+& 
+\makecell{\textbf{Sum}} \\
 \hline
-healthy1.jpg & xx & xx \\
+ & 3482 & 6268 & 12239.163 \\
+ \hline
+
+& 
+\makecell{\textbf{Average}}
+& 
+\makecell{\textbf{Average}}
+& 
+\makecell{\textbf{Average}} \\
 \hline
-healthy2.jpg & xx & xx \\
-\hline
-healthy3.jpg & xx & xx \\
-\hline
-healthy4.jpg & xx & xx \\
-\hline
-healthy5.jpg & xx & xx \\
-\hline
-esca1.jpg & xx & xx \\
-\hline
-esca2.jpg & xx & xx \\
-\hline
-esca3.jpg & xx & xx \\
-\hline
-esca4.jpg & xx & xx \\
-\hline
-esca5.jpg & xx & xx \\
+ & 58.033 & 104.467 & 203.986  \\
 \hline
 \end{tabular}
-\caption{Time spent to identify object masks with SAM using its semi-automatic modes.}
-\label{tab:image_annotation_on_SAM_manual}
+\caption{Time spent to place points for SAM predictor.}
+\label{tab:image_annotation_on_SAM_predictor}
 \end{table}
 
 Figure~\ref{fig:sam-modes} shows the results of the three segmentation modes on an image of vines from the ESCA dataset~\cite{ESCA_dataset} and Table~\ref{tab:image_annotation_on_SAM_manual} reports the exact time necessary to manually draw segmentation masks for the 10 selected images~\footnote{The results are based on the online demo: \url{https://segment-anything.com/demo}.}.
@@ -488,95 +678,220 @@ Healthy & 882 &  69'' and 19.4'' & 48' and 45.4'' \\
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{|p{2.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|}
+\begin{tabular}{|p{2.5cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|}
 \hline
-\makecell{\textbf{Image Name}} & \makecell{\textbf{IoU}} & \makecell{\textbf{DC}} & \makecell{\textbf{PA}} & \makecell{\textbf{Prec}} & \makecell{\textbf{Rec}} & \makecell{\textbf{F1}} \\
+\makecell{\textbf{Image name}} 
+&
+\makecell{\textbf{IoU}} 
+&
+ \makecell{\textbf{DC}}
+  &
+ \makecell{\textbf{PA}} 
+ & 
+ \makecell{\textbf{Prec}} 
+ &
+ \makecell{\textbf{Rec}} 
+ &
+  \makecell{\textbf{F1}} 
+ &
+  \makecell{\textbf{ASSD} \\ \textbf{(mm)}} 
+   &
+  \makecell{\textbf{HD} \\ \textbf{(mm)}} 
+  \\
 \hline
-healthy1.jpg & ... & ... & ... & ... & ... & ... \\
+001\_image.png & 0.804 & 0.892 & 0.962 & 0.157 & 0.887 & 0.266 & 6.456 & 328.868 \\
+002\_image.png & 0.779 & 0.876 & 0.971 & 0.101 & 0.89 & 0.182 & 5.887 & 262.574 \\
+003\_image.png & 0.829 & 0.907 & 0.985 & 0.072 & 0.872 & 0.134 & 6.274 & 329.474 \\
+004\_image.png & 0.804 & 0.892 & 0.976 & 0.098 & 0.857 & 0.175 & 2.832 & 147.872 \\
+005\_image.png & 0.861 & 0.926 & 0.991 & 0.054 & 0.931 & 0.102 & 3.275 & 237.306 \\
+006\_image.png & 0.769 & 0.87 & 0.976 & 0.081 & 0.806 & 0.147 & 2.999 & 127.44 \\
+007\_image.png & 0.819 & 0.9 & 0.968 & 0.145 & 0.896 & 0.25 & 2.595 & 170.88 \\
+008\_image.png & 0.81 & 0.895 & 0.979 & 0.089 & 0.923 & 0.162 & 3.451 & 164.657 \\
+009\_image.png & 0.815 & 0.898 & 0.981 & 0.081 & 0.933 & 0.15 & 5.787 & 361.334 \\
+010\_image.png & 0.792 & 0.884 & 0.983 & 0.064 & 0.939 & 0.12 & 5.45 & 311.045 \\
+%011\_image.png & 0.827 & 0.905 & 0.986 & 0.068 & 0.935 & 0.127 & 3.918 & 240.075 \\
+%012\_image.png & 0.759 & 0.863 & 0.991 & 0.029 & 0.937 & 0.057 & 18.426 & 320.339 \\
+%013\_image.png & 0.858 & 0.923 & 0.988 & 0.073 & 0.92 & 0.135 & 4.568 & 314.428 \\
+%014\_image.png & 0.866 & 0.928 & 0.994 & 0.041 & 0.927 & 0.079 & 8.499 & 310.645 \\
+%015\_image.png & 0.832 & 0.908 & 0.988 & 0.058 & 0.948 & 0.109 & 14.337 & 477.009 \\
+%016\_image.png & 0.837 & 0.911 & 0.984 & 0.081 & 0.924 & 0.148 & 2.715 & 229.682 \\
+%017\_image.png & 0.876 & 0.934 & 0.993 & 0.048 & 0.934 & 0.091 & 3.288 & 174.27 \\
+%018\_image.png & 0.884 & 0.938 & 0.99 & 0.074 & 0.925 & 0.137 & 7.044 & 360.555 \\
+%019\_image.png & 0.833 & 0.909 & 0.992 & 0.04 & 0.955 & 0.077 & 3.977 & 317.918 \\
+%020\_image.png & 0.725 & 0.841 & 0.993 & 0.017 & 0.979 & 0.034 & 29.632 & 279.852 \\
+%021\_image.png & 0.595 & 0.746 & 0.985 & 0.022 & 0.958 & 0.043 & 66.132 & 583.545 \\
+%022\_image.png & 0.806 & 0.892 & 0.987 & 0.055 & 0.934 & 0.104 & 11.931 & 587.892 \\
+%023\_image.png & 0.826 & 0.905 & 0.988 & 0.059 & 0.87 & 0.111 & 8.515 & 366.072 \\
+%024\_image.png & 0.771 & 0.871 & 0.983 & 0.056 & 0.945 & 0.105 & 13.82 & 316.792 \\
+%025\_image.png & 0.818 & 0.9 & 0.986 & 0.063 & 0.927 & 0.118 & 9.818 & 258.699 \\
+%026\_image.png & 0.812 & 0.896 & 0.99 & 0.045 & 0.91 & 0.086 & 15.075 & 294.715 \\
+%027\_image.png & 0.771 & 0.871 & 0.979 & 0.07 & 0.952 & 0.13 & 9.971 & 288.647 \\
+%028\_image.png & 0.813 & 0.897 & 0.978 & 0.097 & 0.878 & 0.175 & 4.088 & 218.387 \\
+%029\_image.png & 0.832 & 0.908 & 0.965 & 0.172 & 0.898 & 0.289 & 3.807 & 224.27 \\
+%030\_image.png & 0.807 & 0.893 & 0.995 & 0.021 & 0.924 & 0.041 & 21.349 & 744.614 \\
+%031\_image.png & 0.9 & 0.948 & 0.986 & 0.13 & 0.932 & 0.228 & 2.076 & 71.176 \\
+%032\_image.png & 0.769 & 0.87 & 0.974 & 0.086 & 0.883 & 0.157 & 2.481 & 130.015 \\
+%033\_image.png & 0.872 & 0.932 & 0.988 & 0.08 & 0.919 & 0.148 & 2.164 & 32.45 \\
+%034\_image.png & 0.674 & 0.805 & 0.952 & 0.098 & 0.915 & 0.178 & 28.559 & 315.691 \\
+%035\_image.png & 0.831 & 0.908 & 0.985 & 0.073 & 0.959 & 0.135 & 5.341 & 196.759 \\
+%036\_image.png & 0.864 & 0.927 & 0.982 & 0.114 & 0.918 & 0.203 & 2.974 & 149.496 \\
+%037\_image.png & 0.789 & 0.882 & 0.99 & 0.038 & 0.957 & 0.073 & 15.494 & 484.846 \\
+%038\_image.png & 0.847 & 0.917 & 0.979 & 0.114 & 0.904 & 0.202 & 3.387 & 188.452 \\
+%039\_image.png & 0.728 & 0.843 & 0.988 & 0.033 & 0.958 & 0.063 & 30.562 & 365.472 \\
+%040\_image.png & 0.834 & 0.909 & 0.978 & 0.111 & 0.927 & 0.199 & 4.479 & 331.157 \\
+%041\_image.png & 0.835 & 0.91 & 0.99 & 0.05 & 0.938 & 0.096 & 5.494 & 425.169 \\
+%042\_image.png & 0.836 & 0.911 & 0.992 & 0.042 & 0.947 & 0.08 & 23.291 & 323.858 \\
+%043\_image.png & 0.846 & 0.917 & 0.995 & 0.03 & 0.959 & 0.058 & 6.789 & 245.367 \\
+%044\_image.png & 0.739 & 0.85 & 0.99 & 0.029 & 0.958 & 0.056 & 28.751 & 444.011 \\
+%045\_image.png & 0.804 & 0.891 & 0.983 & 0.071 & 0.94 & 0.132 & 16.478 & 373.289 \\
+%046\_image.png & 0.248 & 0.397 & 0.93 & 0.023 & 0.956 & 0.045 & 129.762 & 491.304 \\
+%047\_image.png & 0.793 & 0.885 & 0.992 & 0.031 & 0.947 & 0.059 & 34.63 & 344.501 \\
+%048\_image.png & 0.791 & 0.883 & 0.99 & 0.038 & 0.931 & 0.073 & 17.585 & 351.552 \\
+%049\_image.png & 0.831 & 0.908 & 0.993 & 0.036 & 0.962 & 0.07 & 10.07 & 321.885 \\
+050\_image.png & 0.276 & 0.433 & 0.966 & 0.013 & 0.805 & 0.025 & 150.533 & 588.205 \\
+051\_image.png & 0.846 & 0.916 & 0.975 & 0.138 & 0.912 & 0.24 & 6.189 & 499.401 \\
+052\_image.png & 0.803 & 0.89 & 0.974 & 0.106 & 0.928 & 0.19 & 11.023 & 485.956 \\
+053\_image.png & 0.722 & 0.839 & 0.978 & 0.056 & 0.944 & 0.106 & 32.785 & 456.054 \\
+054\_image.png & 0.89 & 0.942 & 0.988 & 0.099 & 0.919 & 0.178 & 2.697 & 469.998 \\
+055\_image.png & 0.802 & 0.89 & 0.979 & 0.085 & 0.884 & 0.155 & 11.072 & 358.236 \\
+056\_image.png & 0.789 & 0.882 & 0.972 & 0.103 & 0.882 & 0.184 & 7.121 & 238.481 \\
+057\_image.png & 0.81 & 0.895 & 0.977 & 0.096 & 0.905 & 0.174 & 6.389 & 218.009 \\
+058\_image.png & 0.867 & 0.929 & 0.98 & 0.132 & 0.9 & 0.231 & 4.626 & 173.807 \\
+059\_image.png & 0.756 & 0.861 & 0.967 & 0.101 & 0.88 & 0.181 & 7.385 & 252.634 \\
+060\_image.png & 0.858 & 0.924 & 0.983 & 0.102 & 0.924 & 0.184 & 5.307 & 319.265 \\
+ \hline
+
+& 
+\makecell{\textbf{Avg.}}
+& 
+\makecell{\textbf{Avg.}}
+& 
+\makecell{\textbf{Avg.}} 
+& 
+\makecell{\textbf{Avg.}}
+& 
+\makecell{\textbf{Avg.}}
+& 
+\makecell{\textbf{Avg.}}
+& 
+\makecell{\textbf{Avg.}}
+& 
+\makecell{\textbf{Avg.}} \\
 \hline
-healthy2.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-healthy3.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-healthy4.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-healthy5.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-esca1.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-esca2.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-esca3.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-esca4.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-esca5.jpg & ... & ... & ... & ... & ... & ... \\
+ & ..... & ..... & ..... & ..... & ..... & .....  & .....  & .....  \\
 \hline
 \end{tabular}
-\caption{Evaluation of semantic segmentation performet by SAM in automatic mode}
+\caption{Evaluation of semantic segmentation performed by SAM in predictor mode with input points.}
+\label{tab:segmentation_evaluation_SAM_predictor}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|p{2.5cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|}
+\hline
+\makecell{\textbf{Image name}} 
+&
+\makecell{\textbf{IoU}} 
+&
+ \makecell{\textbf{DC}}
+  &
+ \makecell{\textbf{PA}} 
+ & 
+ \makecell{\textbf{Prec}} 
+ &
+ \makecell{\textbf{Rec}} 
+ &
+  \makecell{\textbf{F1}} 
+ &
+  \makecell{\textbf{ASSD} \\ \textbf{(mm)}} 
+   &
+  \makecell{\textbf{HD} \\ \textbf{(mm)}} 
+  \\
+\hline
+001\_image.png & 0.285 & 0.444 & 0.744 & 0.102 & 0.579 & 0.174 & 29.965 & 384.033 \\
+002\_image.png & 0.167 & 0.286 & 0.666 & 0.067 & 0.588 & 0.12 & 38.636 & 274.39 \\
+003\_image.png & 0.234 & 0.379 & 0.757 & 0.074 & 0.891 & 0.137 & 95.89 & 638.719 \\
+004\_image.png & 0.186 & 0.314 & 0.716 & 0.065 & 0.571 & 0.117 & 41.91 & 326.686 \\
+005\_image.png & 0.13 & 0.23 & 0.694 & 0.046 & 0.786 & 0.086 & 120.494 & 597.759 \\
+006\_image.png & 0.168 & 0.287 & 0.721 & 0.056 & 0.56 & 0.102 & 77.322 & 518.383 \\
+007\_image.png & 0.169 & 0.29 & 0.725 & 0.056 & 0.346 & 0.097 & 50.349 & 407.836 \\
+008\_image.png & 0.11 & 0.198 & 0.729 & 0.034 & 0.35 & 0.061 & 55.287 & 399.606 \\
+009\_image.png & 0.129 & 0.229 & 0.724 & 0.041 & 0.47 & 0.075 & 79.684 & 612.148 \\
+010\_image.png & 0.046 & 0.088 & 0.67 & 0.016 & 0.232 & 0.03 & 112.531 & 615.325 \\
+%011\_image.png & 0.132 & 0.234 & 0.736 & 0.04 & 0.552 & 0.075 & 47.787 & 450.245 \\
+%012\_image.png & 0.071 & 0.133 & 0.703 & 0.023 & 0.728 & 0.044 & 110.276 & 616.41 \\
+%013\_image.png & 0.18 & 0.305 & 0.744 & 0.056 & 0.71 & 0.104 & 69.631 & 481.087 \\
+%014\_image.png & 0.094 & 0.171 & 0.677 & 0.033 & 0.753 & 0.064 & 139.856 & 780.651 \\
+%015\_image.png & 0.164 & 0.282 & 0.737 & 0.052 & 0.85 & 0.097 & 117.336 & 601.748 \\
+%016\_image.png & 0.195 & 0.326 & 0.756 & 0.059 & 0.677 & 0.109 & 109.837 & 628.5 \\
+%017\_image.png & 0.147 & 0.256 & 0.718 & 0.048 & 0.942 & 0.092 & 94.432 & 498.206 \\
+%018\_image.png & 0.269 & 0.424 & 0.812 & 0.069 & 0.861 & 0.128 & 75.694 & 513.522 \\
+%019\_image.png & 0.118 & 0.212 & 0.702 & 0.04 & 0.957 & 0.077 & 95.412 & 458.705 \\
+%020\_image.png & 0.066 & 0.124 & 0.755 & 0.017 & 0.975 & 0.034 & 146.913 & 517.92 \\
+%021\_image.png & 0.035 & 0.067 & 0.687 & 0.011 & 0.492 & 0.022 & 242.242 & 774.213 \\
+%022\_image.png & 0.02 & 0.04 & 0.058 & 0.02 & 0.334 & 0.037 & 22.044 & 472.488 \\
+%023\_image.png & 0.055 & 0.105 & 0.082 & 0.054 & 0.789 & 0.1 & 18.808 & 622.637 \\
+%024\_image.png & 0.053 & 0.101 & 0.461 & 0.03 & 0.514 & 0.057 & 73.194 & 524.681 \\
+%025\_image.png & 0.106 & 0.192 & 0.684 & 0.037 & 0.553 & 0.07 & 88.206 & 446.077 \\
+%026\_image.png & 0.13 & 0.23 & 0.772 & 0.034 & 0.69 & 0.065 & 120.902 & 613.998 \\
+%027\_image.png & 0.153 & 0.265 & 0.777 & 0.04 & 0.548 & 0.075 & 55.219 & 317.002 \\
+%028\_image.png & 0.103 & 0.187 & 0.7 & 0.035 & 0.313 & 0.062 & 90.68 & 676.244 \\
+%029\_image.png & 0.155 & 0.268 & 0.66 & 0.062 & 0.324 & 0.104 & 45.847 & 418.779 \\
+%030\_image.png & 0.055 & 0.105 & 0.654 & 0.02 & 0.892 & 0.04 & 296.39 & 964.718 \\
+%031\_image.png & 0.284 & 0.442 & 0.731 & 0.106 & 0.765 & 0.187 & 67.482 & 452.623 \\
+%032\_image.png & 0.157 & 0.271 & 0.737 & 0.049 & 0.5 & 0.089 & 70.858 & 619.604 \\
+%033\_image.png & 0.179 & 0.303 & 0.725 & 0.06 & 0.686 & 0.11 & 100.46 & 584.014 \\
+%034\_image.png & 0.103 & 0.187 & 0.66 & 0.039 & 0.363 & 0.071 & 88.405 & 551.943 \\
+%035\_image.png & 0.226 & 0.369 & 0.801 & 0.058 & 0.764 & 0.108 & 83.423 & 565.468 \\
+%036\_image.png & 0.221 & 0.362 & 0.697 & 0.086 & 0.689 & 0.153 & 46.349 & 312.181 \\
+%037\_image.png & 0.061 & 0.115 & 0.709 & 0.019 & 0.477 & 0.036 & 175.942 & 687.284 \\
+%038\_image.png & 0.102 & 0.185 & 0.468 & 0.06 & 0.48 & 0.107 & 61.447 & 539.281 \\
+%039\_image.png & 0.082 & 0.152 & 0.723 & 0.025 & 0.729 & 0.048 & 111.03 & 413.192 \\
+%040\_image.png & 0.188 & 0.317 & 0.772 & 0.053 & 0.44 & 0.094 & 71.271 & 416.544 \\
+%041\_image.png & 0.111 & 0.2 & 0.773 & 0.028 & 0.528 & 0.054 & 106.818 & 612.733 \\
+%042\_image.png & 0.109 & 0.197 & 0.656 & 0.042 & 0.961 & 0.081 & 77.454 & 450.04 \\
+%043\_image.png & 0.109 & 0.196 & 0.78 & 0.027 & 0.858 & 0.052 & 96.475 & 497.213 \\
+%044\_image.png & 0.078 & 0.145 & 0.657 & 0.029 & 0.965 & 0.057 & 157.657 & 655.857 \\
+%045\_image.png & 0.18 & 0.305 & 0.772 & 0.05 & 0.664 & 0.093 & 102.817 & 489.434 \\
+%046\_image.png & 0.044 & 0.084 & 0.487 & 0.023 & 0.964 & 0.046 & 162.531 & 658.238 \\
+%047\_image.png & 0.116 & 0.208 & 0.765 & 0.031 & 0.954 & 0.06 & 154.174 & 664.07 \\
+%048\_image.png & 0.075 & 0.139 & 0.679 & 0.026 & 0.632 & 0.05 & 106.238 & 618.044 \\
+%049\_image.png & 0.14 & 0.246 & 0.801 & 0.032 & 0.854 & 0.062 & 128.353 & 646.703 \\
+050\_image.png & 0.038 & 0.073 & 0.61 & 0.015 & 0.973 & 0.03 & 238.893 & 790.864 \\
+051\_image.png & 0.15 & 0.262 & 0.52 & 0.085 & 0.562 & 0.148 & 31.957 & 512.533 \\
+052\_image.png & 0.315 & 0.479 & 0.823 & 0.081 & 0.712 & 0.146 & 59.305 & 568.401 \\
+053\_image.png & 0.14 & 0.245 & 0.646 & 0.057 & 0.964 & 0.108 & 103.668 & 558.358 \\
+054\_image.png & 0.238 & 0.384 & 0.722 & 0.087 & 0.806 & 0.157 & 107.342 & 545.388 \\
+055\_image.png & 0.156 & 0.27 & 0.656 & 0.064 & 0.662 & 0.116 & 84.925 & 537.276 \\
+056\_image.png & 0.24 & 0.387 & 0.76 & 0.076 & 0.65 & 0.136 & 91.175 & 519.773 \\
+057\_image.png & 0.184 & 0.31 & 0.749 & 0.057 & 0.533 & 0.102 & 60.21 & 326.267 \\
+058\_image.png & 0.293 & 0.453 & 0.725 & 0.114 & 0.774 & 0.199 & 40.258 & 379.606 \\
+059\_image.png & 0.205 & 0.341 & 0.729 & 0.07 & 0.609 & 0.125 & 61.843 & 513.448 \\
+060\_image.png & 0.268 & 0.423 & 0.758 & 0.088 & 0.801 & 0.159 & 40.327 & 354.193 \\
+ \hline
+
+& 
+\makecell{\textbf{Avg.}}
+& 
+\makecell{\textbf{Avg.}}
+& 
+\makecell{\textbf{Avg.}} 
+& 
+\makecell{\textbf{Avg.}}
+& 
+\makecell{\textbf{Avg.}}
+& 
+\makecell{\textbf{Avg.}}
+& 
+\makecell{\textbf{Avg.}}
+& 
+\makecell{\textbf{Avg.}} \\
+\hline
+ & ..... & ..... & ..... & ..... & ..... & .....  & .....  & .....  \\
+\hline
+\end{tabular}
+\caption{Evaluation of semantic segmentation performed by SAM in fully automatic mode.}
 \label{tab:segmentation_evaluation_SAM_automatic}
-\end{table}
-
-\begin{table}[h!]
-\centering
-\begin{tabular}{|p{2.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|}
-\hline
-\makecell{\textbf{Image Name}} & \makecell{\textbf{IoU}} & \makecell{\textbf{DC}} & \makecell{\textbf{PA}} & \makecell{\textbf{Prec}} & \makecell{\textbf{Rec}} & \makecell{\textbf{F1}} \\
-\hline
-healthy1.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-healthy2.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-healthy3.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-healthy4.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-healthy5.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-esca1.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-esca2.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-esca3.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-esca4.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-esca5.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-\end{tabular}
-\caption{Evaluation of semantic segmentation performed by SAM in bounding box mode}
-\label{tab:segmentation_evaluation_SAM_bbox}
-\end{table}
-
-\begin{table}[h!]
-\centering
-\begin{tabular}{|p{2.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|}
-\hline
-\makecell{\textbf{Image Name}} & \makecell{\textbf{IoU}} & \makecell{\textbf{DC}} & \makecell{\textbf{PA}} & \makecell{\textbf{Prec}} & \makecell{\textbf{Rec}} & \makecell{\textbf{F1}} \\
-\hline
-healthy1.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-healthy2.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-healthy3.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-healthy4.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-healthy5.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-esca1.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-esca2.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-esca3.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-esca4.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-esca5.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-\end{tabular}
-\caption{Evaluation of semantic segmentation performed by SAM in point mode}
-\label{tab:segmentation_evaluation_SAM_point}
 \end{table}
 
 \subsection{Segmentation of vine images with U-Net}
