@@ -7,13 +7,15 @@ from skimage import metrics
 import random
 from PIL import Image
 from utils import contraction, path2name, merge_SAM_masks
+import seg_metrics.seg_metrics as sg
 
 CWFID_dataset = {
     'annotations': os.path.join(*['CWFID_dataset', 'annotations']),
+    'SAM_annotations': os.path.join(*['CWFID_dataset', 'SAM_annotations']),
     'images': os.path.join(*['CWFID_dataset', 'images']),
     'masks': os.path.join(*['CWFID_dataset', 'masks']),
-    'SamAutomaticMaskGenerator_masks': os.path.join(*['CWFID_dataset', 'SamAutomaticMaskGenerator_masks']),
-    'SAM_annotations': os.path.join(*['CWFID_dataset', 'SAM_annotations'])
+    'SamPredictor_masks': os.path.join(*['CWFID_dataset', 'SamPredictor_masks']),
+    'SamAutomaticMaskGenerator_masks': os.path.join(*['CWFID_dataset', 'SamAutomaticMaskGenerator_masks'])
 }
 
 ESCA_dataset = {
@@ -50,7 +52,7 @@ def intersectionOverUnion(ground_truth_mask, computed_mask):
     assert ground_truth_mask.shape == computed_mask.shape
     intersection = np.logical_and(ground_truth_mask, computed_mask)
     union = np.logical_or(ground_truth_mask, computed_mask)
-    result = np.sum(intersection) / np.sum(union)
+    result = float(np.sum(intersection)) / float(np.sum(union))
     return result
 
 def diceCoefficient(ground_truth_mask, computed_mask):
@@ -65,7 +67,7 @@ def diceCoefficient(ground_truth_mask, computed_mask):
     TP = np.sum(computed_mask[ground_truth_mask == 1])
     pred_pos = np.sum(computed_mask)
     ground_pos = np.sum(ground_truth_mask)
-    result = (2.0*TP) / (pred_pos + ground_pos)
+    result = (2.0*float(TP)) / float((pred_pos + ground_pos))
     return result
 
 def pixelAccuracy(ground_truth_mask, computed_mask):
@@ -82,7 +84,7 @@ def pixelAccuracy(ground_truth_mask, computed_mask):
     TP = np.sum(computed_mask[ground_truth_mask == 1])
     TN = np.sum(dual_computed_mask[ground_truth_mask == 0])
     all = computed_mask.shape[0]*computed_mask.shape[1]
-    result = (TP + TN) / all
+    result = float((TP + TN)) / float(all)
     return result
 
 def precision(ground_truth_mask, computed_mask):
@@ -96,7 +98,7 @@ def precision(ground_truth_mask, computed_mask):
     assert computed_mask.shape is not None
     assert ground_truth_mask.shape == computed_mask.shape
     TP = np.sum(computed_mask[ground_truth_mask == 1])
-    result = TP / (computed_mask.shape[0]*computed_mask.shape[1])
+    result = float(TP) / float((computed_mask.shape[0]*computed_mask.shape[1]))
     return result
 
 def recall(ground_truth_mask, computed_mask):
@@ -112,7 +114,7 @@ def recall(ground_truth_mask, computed_mask):
     TP = np.sum(computed_mask[ground_truth_mask == 1])
     dual_computed_mask = 1 - computed_mask
     FN = np.sum(dual_computed_mask[ground_truth_mask == 1])
-    result = TP / (TP + FN)
+    result = float(TP) / float(TP + FN)
     return result
 
 def f1Score(ground_truth_mask, computed_mask):
@@ -126,7 +128,7 @@ def f1Score(ground_truth_mask, computed_mask):
     assert ground_truth_mask.shape == computed_mask.shape
     p = precision(ground_truth_mask, computed_mask)
     r = recall(ground_truth_mask, computed_mask)
-    result = (2*p*r) / (p + r)
+    result = float(2*p*r) / float(p + r)
     return result
 
 def normalizedSurfaceDistance(ground_truth_mask, computed_mask):
@@ -138,7 +140,7 @@ def normalizedSurfaceDistance(ground_truth_mask, computed_mask):
     assert ground_truth_mask is not None
     assert computed_mask.shape is not None
     assert ground_truth_mask.shape == computed_mask.shape
-    result = 0 # TODO
+    result = None # TODO
     return result
 
 def symmetricContourDistance(ground_truth_mask, computed_mask):
@@ -150,7 +152,7 @@ def symmetricContourDistance(ground_truth_mask, computed_mask):
     assert ground_truth_mask is not None
     assert computed_mask.shape is not None
     assert ground_truth_mask.shape == computed_mask.shape
-    result = 0 # TODO
+    result = None # TODO
     return result
 
 def hausdorffDistance(ground_truth_mask, computed_mask):
@@ -162,10 +164,10 @@ def hausdorffDistance(ground_truth_mask, computed_mask):
     assert ground_truth_mask is not None
     assert computed_mask.shape is not None
     assert ground_truth_mask.shape == computed_mask.shape
-    result = 0 # TODO
+    result = None # TODO
     return result
 
-def compute_metrics_and_save(image_folder, predicted_masks_folder, ground_truth_masks_folder, result_file):
+def compute_metrics_and_save(image_folder, ground_truth_masks_folder, predicted_masks_folder, result_file):
     """
     @:image_folder: full path to a folder that contains all images of which the masks are either predicted or annotated.
                     It is assumed that the image files are direct children of the image_folder
@@ -211,37 +213,54 @@ def compute_metrics_and_save(image_folder, predicted_masks_folder, ground_truth_
     ground_truth_mask_list.sort()
 
     records = []
-    for image, predicted, ground_truth in list(zip(image_list, predicted_mask_list, ground_truth_mask_list)):
-        if contraction(path2name(image)) == contraction(path2name(predicted)) == contraction(path2name(ground_truth)):
+    for image, ground_truth, prediction in list(zip(image_list, ground_truth_mask_list, predicted_mask_list)):
+        ok = path2name(prediction) == path2name(ground_truth)
+        ok = ok and path2name(prediction)[:3] == path2name(image)[:3]
+        print(f"path2name(prediction) = {path2name(prediction)}")
+        print(f"path2name(ground_truth) = {path2name(ground_truth)}")
+        print(f"path2name(image)[:3] = {path2name(image)[:3]}")
+        if ok:
+            labels = [0, 1]
+            metrics = sg.write_metrics(labels=labels[1:],  # exclude background if needed
+                                       gdth_path=ground_truth,
+                                       pred_path=prediction,
+                                       csv_file=os.path.join(*['CWFID_dataset', 'computed_metrics',
+                                                               f"{path2name(image)[:3]}_comparison.csv"]),
+                                       metrics=['hd', 'msd'])
+            gt = plt.imread(ground_truth)
+            pr = plt.imread(prediction)
+            # hd  --> Hausdorff distance
+            # msd --> Average symmetric surface distance
             rec = {
-                'image': image,
-                'predicted_mask': predicted,
-                'ground_truth_mask': ground_truth,
-                'intersectionOverUnion': intersectionOverUnion(ground_truth, predicted),
-                'diceCoefficient': diceCoefficient(ground_truth, predicted),
-                'pixelAccuracy': pixelAccuracy(ground_truth, predicted),
-                'precision': precision(ground_truth, predicted),
-                'recall': recall(ground_truth, predicted),
-                'f1Score': f1Score(ground_truth, predicted),
-                'normalizedSurfaceDistance': normalizedSurfaceDistance(ground_truth, predicted),
-                'symmetricContourDistance': symmetricContourDistance(ground_truth, predicted),
-                'hausdorffDistance': hausdorffDistance(ground_truth, predicted)
+                'image_file': image,
+                'predicted_mask_file': prediction,
+                'ground_truth_mask_file': ground_truth,
+                'intersectionOverUnion': intersectionOverUnion(gt, pr),
+                'diceCoefficient': diceCoefficient(gt, pr),
+                'pixelAccuracy': pixelAccuracy(gt, pr),
+                'precision': precision(gt, pr),
+                'recall': recall(gt, pr),
+                'f1Score': f1Score(gt, pr),
+                'avgSymmetricSurfaceDistance': metrics['msd'],
+                'hausdorffDistance': metrics['hd']
             }
             records.append(rec)
+            print(f"File {image} processed with its masks.")
+
     result = pd.DataFrame(records, columns=[
-        'image',
-        'predicted_mask',
-        'ground_truth_mask',
+        'image_file',
+        'predicted_mask_file',
+        'ground_truth_mask_file',
         'intersectionOverUnion',
-        'diceCoefficient'
-        'pixelAccuracy'
-        'precision'
+        'diceCoefficient',
+        'pixelAccuracy',
+        'precision',
         'recall',
         'f1Score',
-        'normalizedSurfaceDistance',
-        'symmetricContourDistance',
+        'avgSymmetricSurfaceDistance',
         'hausdorffDistance'])
     result.to_csv(result_file, index=False, header=True)
+    print(f"File {result_file} saved.")
     pass
 
 def main():
@@ -253,12 +272,27 @@ def main():
     if not os.path.exists(dest_file):  # save the file only if it does not yet exist
         Image.fromarray(msk.astype(np.uint8)).save(dest_file)
     print(f"All masks inverted.")
+        image_list = [os.path.join(*[CWFID_dataset['SamPredictor_masks'], x]) for x in os.listdir(CWFID_dataset['SamPredictor_masks']) if
+                  x.endswith('.tiff')
+                  and not x.startswith('.')
+                  and os.path.isfile(os.path.join(*[CWFID_dataset['SamPredictor_masks'], x]))
+                  and not os.path.isdir(os.path.join(*[CWFID_dataset['SamPredictor_masks'], x]))
+                  ]
+    image_list.sort()
+    for filename in image_list:
+        old_name = filename
+        new_name = filename.replace('_image.', '_mask.')
+        if os.path.isfile(new_name):
+            print("The file already exists")
+        else:
+            os.rename(old_name, new_name)
+    print(f"Renaming operation terminated")
     """
     compute_metrics_and_save(
         image_folder=CWFID_dataset['images'],
         predicted_masks_folder=CWFID_dataset['SamAutomaticMaskGenerator_masks'],
-        ground_truth_masks_folder=CWFID_dataset['SamAutomaticMaskGenerator_masks'],
-        result_file='SAM_vs_ground_truth_on_CWFID.csv'
+        ground_truth_masks_folder=CWFID_dataset['masks'],
+        result_file=os.path.join(*['CWFID_dataset', 'computed_metrics', 'SamAutomaticMaskGenerator_vs_ground_truth_on_CWFID.csv'])
     )
 
 if __name__ == "__main__":
