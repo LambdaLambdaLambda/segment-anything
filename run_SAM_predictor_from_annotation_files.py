@@ -33,7 +33,7 @@ def show_mask(mask, ax, random_color=False):
 
 def show_points(coords, labels, ax, marker_size=280):
     pos_points = coords[labels==1]
-    ax.scatter(pos_points[:, 0], pos_points[:, 1], color='green')
+    ax.scatter(pos_points[:, 0], pos_points[:, 1], color='blue')
     neg_points = coords[labels==0]
     ax.scatter(neg_points[:, 0], neg_points[:, 1], color='red')
     #ax.scatter(pos_points[:, 0], pos_points[:, 1], color='green', marker='*', s=marker_size, edgecolor='white', linewidth=1.25)
@@ -73,8 +73,8 @@ def read_from_json(filename):
     input_points = []
     input_labels = []
     data_loaded = None
-    with open(filename) as json_file:
-        data_loaded = json.load(json_file)
+    with open(filename) as source:
+        data_loaded = json.load(source)
     # prepare the array of labels as requested by SAM in predictor mode
     # input_labels[j] == 1 ---> the point input_points[j] belongs to the mask
     # input_labels[j] == 0 ---> the point input_points[j] does not belong to the mask
@@ -84,37 +84,11 @@ def read_from_json(filename):
     temp = data_loaded['rem_points']
     input_points.extend(temp)
     input_labels.extend([0] * len(temp))
+    if 'input_points' in data_loaded:
+        input_points.extend(data_loaded['input_points'])
+    if 'input_labels' in data_loaded:
+        input_labels.extend(data_loaded['input_labels'])
     return input_points, input_labels
-
-def predict_and_show_mask(predictor, input_points, input_labels, img_file):
-    print(f"Full name: {img_file}")
-    img = plt.imread(
-        img_file)  # the png image when read becomes a 3D matrix of shape (width, height, 3) with float32 values in the interval [0, 1]
-    # SAM predictor does not work on this data type and prefers jpg images which are 3D matrices of shape (width, height, 3) with int values in the interval [0, 255]
-    # for example try to see the content of img = plt.imread('truck.jpg') in debugging mode
-    img = (img * 255).astype(np.uint8)
-    plt.figure(figsize=(10, 10))
-    plt.imshow(img)
-    input_points = np.array(input_points)
-    input_labels = np.array(input_labels)
-    show_points(input_points, input_labels, plt.gca())
-    plt.axis('on')
-    plt.show()
-    predictor.set_image(img)
-    masks, scores, logits = predictor.predict(
-        point_coords=input_points,
-        point_labels=input_labels,
-        multimask_output=False  # in order to get just the best mask
-    )
-    for i, (mask, score) in enumerate(zip(masks, scores)):
-        plt.figure(figsize=(10, 10))
-        plt.imshow(img)
-        show_mask(mask, plt.gca())
-        show_points(input_points, input_labels, plt.gca())
-        plt.title(f"Mask {i + 1}, Score: {score:.3f}", fontsize=18)
-        plt.axis('off')
-        plt.show()
-    return masks, scores, logits
 
 def main():
     sam_checkpoint = "sam_vit_h_4b8939.pth"
@@ -144,7 +118,34 @@ def main():
         #input_points, input_labels = read_from_yaml(filename)
         input_points, input_labels = read_from_json(filename)
         img_file = os.path.join(*[CWFID_dataset['images'], f'{contraction(path2name(filename))}.png'])
-        masks, scores, logits = predict_and_show_mask(predictor, input_points, input_labels, img_file)
+        print(f"Full name: {img_file}")
+        img = plt.imread(img_file)
+        # the png image when read becomes a 3D matrix of shape (width, height, 3) with float32 values in the interval [0, 1]
+        # SAM predictor does not work on this data type and prefers jpg images which are 3D matrices of shape (width, height, 3) with int values in the interval [0, 255]
+        # for example try to see the content of img = plt.imread('truck.jpg') in debugging mode
+        img = (img * 255).astype(np.uint8)
+        plt.figure(figsize=(10, 10))
+        plt.imshow(img)
+        input_points = np.array(input_points)
+        input_labels = np.array(input_labels)
+        show_points(input_points, input_labels, plt.gca())
+        plt.axis('on')
+        plt.show()
+        predictor.set_image(img)
+        masks, scores, logits = predictor.predict(
+            point_coords=input_points,
+            point_labels=input_labels,
+            multimask_output=False  # in order to get just the best mask
+        )
+        for i, (mask, score) in enumerate(zip(masks, scores)):
+            plt.figure(figsize=(10, 10))
+            plt.imshow(img)
+            show_mask(mask, plt.gca())
+            show_points(input_points, input_labels, plt.gca())
+            plt.title(f"Mask {i + 1}, Score: {score:.3f}", fontsize=18)
+            plt.axis('off')
+            plt.show()
+
         mask = masks[0]
         score = scores[0]
 
