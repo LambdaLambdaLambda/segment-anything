@@ -22,7 +22,7 @@
 %\usepackage{color}
 %\renewcommand\UrlFont{\color{blue}\rmfamily}
 %\usepackage[pagebackref=true,breaklinks=true,colorlinks,bookmarks=false]{hyperref}
-%
+%Viale dell'Università 16 - 35020 Legnaro (PD)
 \begin{document}
 %
 \title{Is Segment Anything Model a revolution in precision agriculture?}
@@ -168,17 +168,19 @@ There are also large-scale datasets commonly used for semantic segmentation in p
 
 These datasets offer substantial amounts of labeled data for semantic segmentation tasks in precision agriculture. Researchers often utilize them to develop and evaluate models for crop analysis, disease detection, weed detection, and other applications in precision agriculture.
 
-Recently, segmentation foundation models have seen tremendous advancements in the field of natural image segmentation~\cite{2023-SegGPT}\cite{2023-SEEM}, enabling accurate and efficient segmentation of objects in a fully automatic or interactive way. These models are typically based on transformer architectures and leverage pre-trained weights to achieve state-of-the-art performance and unprecedented generalisation ability on a wide range of natural images. Among these the Segment Anything (SA) project \cite{2023-SAM-Meta} is a task, a model, and a dataset for image segmentation. The Segment Aanything Model (SAM) in particular has learned a general notion of what objects are and this understanding enables \emph{zero-shot} generalization to unfamiliar objects and images without requiring additional training. SAM has been trained on the SA-1B dataset~\cite{SA-1B_dataset}, the largest segmentation dataset to date, with over 1 billion masks on 11 million images. 
+Recently, segmentation foundation models have seen tremendous advancements in the field of natural image segmentation~\cite{2023-SegGPT}\cite{2023-SEEM}, enabling accurate and efficient segmentation of objects in a fully automatic or interactive way. These models are typically based on transformer architectures and leverage pre-trained weights to achieve state-of-the-art performance and unprecedented generalisation ability on a wide range of natural images. Among these the Segment Anything project \cite{2023-SAM-Meta} by Meta\textsuperscript{\tiny\textregistered} is a task, a model, and a dataset for image segmentation. The Segment Aanything Model (SAM) in particular has learned a general notion of what objects are and this understanding enables \emph{zero-shot} generalization to unfamiliar objects and images without requiring additional training. SAM has been trained on the SA-1B dataset~\cite{SA-1B_dataset}, the largest segmentation dataset to date, with over 1 billion masks on 11 million images. 
 
-SAM is designed and trained to be promptable, so its segmentation capabilities can be extended and transferred to new image distributions and tasks. We evaluate its capabilities on the specific tasks of segmenting objects inside the pictures of vines of the ESCA dataset~\cite{ESCA_dataset}. 
+SAM is designed and trained to be promptable, so its segmentation capabilities can be extended and transferred to new image distributions and tasks. We evaluate its capabilities on the specific tasks of segmenting objects 
+inside the pictures of weed and crop of the CWFID dataset~\cite{CWFID_dataset}. 
+%inside the pictures of vines of the ESCA dataset~\cite{ESCA_dataset}. 
 
 \section{Materials and methods}
 
-Our goal is to compare the performances of the foundational segmentation model SAM with no training to the previously available segmentation model U-Net, which requires manual annotation. The chosen task is semantic segmentation i.e. to classify the pixels of each image into two different semantic categories: foliage (foreground) and background. This task could be an important first part in a Machine Learing pipeline whose later stages focus on the analysis of the Region of Interest inside the pictures, which in this case we considered to be the area occupied by foliage. Figure~\ref{fig:fore_vs_back} illustrates {\color{red} what we considered as foreground: all entities that were at the distance of within 1m from the camera.}
+Our goal is to compare the performances of the foundational segmentation model SAM with no training. The chosen task is semantic segmentation i.e. to classify the pixels of each image into two different semantic categories: foliage (foreground) and background. This task could be an important first part in a Machine Learing pipeline whose later stages focus on the analysis of the Region of Interest inside the pictures, which in this case we considered to be the area occupied by foliage. Figure~\ref{fig:fore_vs_back} illustrates {\color{red} what we considered as foreground: all entities that were at the distance of within 1m from the camera.}
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.5\textwidth]{imgs/fore_vs_back.png}
+\includegraphics[width=0.3\textwidth]{imgs/fore_vs_back.png}
 \caption{Foreground vs background.}
 \label{fig:fore_vs_back}
 \end{figure}
@@ -228,72 +230,33 @@ To summarize, when applying SAM for agricultural image segmentation, the segment
 
 Since the image encoder can be applied prior to prompting the model, we can pre-compute the image embedding for all training images to avoid replicated computing of the image embedding per prompt, which can significantly improve the training efficiency. The mask decoder only needs to generate one mask rather than three masks because the bounding box prompt can clearly specify the expected segmentation target in most situations. 
 
-\subsection{U-Net and EfficientNet}
-
-U-Net is a Convolutional Neural Network (CNN) originally proposed for the segmentation of biomedical images~\cite{ronneberger2015unet}.  Afterwards the same net has been used for tackling segmentation of Urban Environment surfaces from High Resolution Satellite Imagery~\cite{McGlinchy2019}. Variations of U-Net have been used in precisoin agriculture, for example to segment cucumber leaves with disease spots \cite{WANG2021106373}, or images of Cichorium intybus L. root~\cite{smith_segmentation_2020}.
-
-%perform environmental microorganism image segmentation \cite{ZHANG2021107885}. Further modifications have been used to segment cucumber leaves with disease spots \cite{WANG2021106373} and to tackle Iris segmentation \cite{LIAN2018296} with occurrence of occlusion and reflection problems, blurring and poor or overexposed illumination. The use of U-Net covers also segmentation of Cichorium intybus L. root images \cite{smith_segmentation_2020}.
-
-The U-Net architecture is, specifically, a Fully Convolutional Neural Network (FCNN) model commonly used for semantics segmentation and instance segmentation tasks. This architecture derives its name from its U-shaped structure (Figure~\ref{fig:unet}) consisting of two main parts, from left to right: the contracting path (encoder) and the expanding path (decoder). The contracting path of U-Net consists of multiple convolutional and pooling layers. These layers gradually reduce the spatial dimensions while increasing the number of feature channels, which helps capture a wide range of features at different scales. Each contracting block typically consists of two convolutional layers followed by a downsampling operation such as max pooling. The expanding path is the decoder part of U-Net and is responsible for generating the segmentation map. It consists of upconvolutional (also known as transposed convolutional) layers, which perform upsampling and increase the spatial dimensions. The expanding path also includes skip connections that concatenate feature maps from the corresponding contracting path. These skip connections enable the decoder to access the high-resolution feature maps from the encoder, aiding in the precise localization of objects. At the end of the U-Net architecture, a final convolutional layer is typically applied to produce the segmentation map with the desired number of output channels, representing the class probabilities or pixel-wise labels. 
-
-\begin{figure}[h!]
-\centering
-   \includegraphics[width=\linewidth]{imgs/U_Net.png}
-\caption{U-net architecture% (example for 32$\times$32 pixels in the lowest resolution). Each blue
-%box corresponds to a multi-channel feature map. The number of channels is denoted
-%on top of the box. The x-y-size is provided at the lower left edge of the box. White
-%boxes represent copied feature maps. The arrows denote the different operations.
-}
-\label{fig:unet}
-\end{figure}
-
-EfficientNet~\cite{EfficientNet} is a family of convolutional neural network (CNN) models that are designed to achieve state-of-the-art performance while being highly efficient in terms of computational resources.
-
-EfficientNet models are based on a concept called compound scaling, which optimizes the depth, width, and resolution of the network to achieve a good balance between accuracy and efficiency.  The compound scaling technique involves uniformly scaling the network width, depth, and resolution using a coefficient called the compound scaling factor. This factor ensures that all dimensions of the network grow proportionally. By scaling up the network, it captures more complex patterns and features, while scaling down reduces the number of parameters and computations required. EfficientNet models have achieved state-of-the-art performance on various computer vision tasks, including image classification, object detection, and segmentation, across different benchmark datasets. They have demonstrated superior accuracy compared to other popular CNN architectures, such as ResNet, while maintaining high efficiency in terms of memory usage and computational requirements.
-
-%\cite{Learning_for_Structured_Prediction}
-
-EfficientNet models are often used as a backbone or encoder in various architectures, such as UNet, to improve performance and efficiency in tasks like image segmentation. The UNet architecture with an EfficientNet encoder combines the strengths of both models to achieve highly efficient and accurate image segmentation: it has been used in biomedical applications~\cite{le2022cell}~\cite{liu_automatic_2022} and it is implemented in the  APEER ML toolkit by {\color{red}{Zeiss\textsuperscript{\tiny\textregistered}}}(\cite{Zeiss23}).
-
-The UNet architecture, known for its U-shaped design, and EfficientNet, a state-of-the-art convolutional neural network (CNN) model, complement each other to improve performance. The EfficientNet encoder serves as the backbone of the network and is responsible for capturing high-level features from the input image. EfficientNet models are known for their superior performance and efficiency by leveraging compound scaling, which optimizes the depth, width, and resolution of the network based on a given resource constraint. In the UNet architecture, the contracting path (encoder) is responsible for capturing context and extracting features at different scales, while the expanding path (decoder) performs precise localization using skip connections. In the UNet with EfficientNet encoder, the contracting path is replaced with the EfficientNet backbone. The EfficientNet encoder provides a powerful feature extraction capability, capturing both low-level and high-level features from the input image. The extracted features are then passed to the expanding path, where upsampling and skip connections are used to recover the spatial resolution and refine the segmentation output.
-
-%By combining the UNet architecture with the EfficientNet encoder, the model benefits from the efficient and accurate feature extraction capabilities of EfficientNet, along with the precise localization ability of UNet. This combination enables the network to effectively handle complex image segmentation tasks while maintaining efficiency in terms of memory usage and computational resources.
-%
-%Overall, the UNet with EfficientNet encoder architecture offers a powerful and efficient solution for image segmentation tasks, leveraging the strengths of both models to achieve superior performance.
-
-\begin{figure}[h!]
-\centering
-   \includegraphics[width=\linewidth]{imgs/U-Net-with-EfficientNet-b4-Encoder_W640.jpg}
-\caption{U-Net architecture with EfficientNet encoder~\cite{liu_automatic_2022}}
-\label{fig:efficientnet}
-\end{figure}
-
 \section{Experiments and Results}
 
-The ESCA dataset~\cite{ESCA_dataset} contains 1770 RGB images in jpg format taken at a working distance of approximately 30 cm from grapevine plants during sunny and windy days and considering scenarios with background variety. In 882 of these images, the totality of plants appearing therein is healthy (not affected by Esca). In contrast, the other 888 images contain at least one depiction of shoots with visible foliar symptoms of Esca disease. The ESCA dataset consists of two folders, esca and healthy, each containing images of the relative class.
+The CWFID dataset~\cite{CWFID_dataset} contains 60 RGB images in png format taken at a working distance of approximately 30 cm from plants .....
 
 Deep neural networks require large amounts of training data to tune millions of parameters and develop a learned model for subsequent predictions. While it is possible to crowdsource image annotation for natural scenes and collect large datsets as shown in Table~\ref{tab:models_datasets}, it is difficult to find experts to annotate images for specific scientific domains. Each research topic requires researchers to annotate their own images. Annotation being a very time consuming task, a researcher can end up with a handful of annotated images containing only tens of labeled objects. 
 
-Our goal was to compare the performances of the foundational segmentation model SAM with no training to the previously available segmentation model U-Net, which requires manual annotation. The chosen task is semantic segmentation i.e. to classify the pixels of each image into two different semantic categories: foliage and background. This task could be an important first part in a Machine Learing pipeline whose later stages focus on the analysis of the Region of Interest inside the pictures, which in this case we considered to be the area occupied by foliage.
+Our goal was to evalluate the performances of the foundational segmentation model SAM with no training. The chosen task is semantic segmentation i.e. to classify the pixels of each image into two different semantic categories: plants and background. This task could be an important first part in a Machine Learing pipeline whose later stages focus on the analysis of the Region of Interest inside the pictures, which in this case we considered to be the area occupied by plants.
 
 \begin{figure}[h!]
 \centering
 \begin{subfigure}[b]{.47\linewidth}
-\includegraphics[width=\linewidth]{imgs/placeholder.jpg}
+\includegraphics[width=\linewidth]{imgs/050_image.png}
 \caption{}
 \label{fig:sam1a}
 \end{subfigure}
 \begin{subfigure}[b]{.47\linewidth}
-\includegraphics[width=\linewidth]{imgs/placeholder.jpg}
+\includegraphics[width=\linewidth]{imgs/050_ground_truth_mask.png}
 \caption{}
 \label{fig:sam1b}
 \end{subfigure}
-\caption{Ground truth segmentation of foliage (hand-made mask) for {\color{red}healthy1.jpg} and {\color{red}esca1.jpg}}
+\caption{Ground truth segmentation of foliage (hand-made mask) for the file 050\_image.png}
 \label{fig:true_segmentation}
 \end{figure}
 
-We uploaded {\color{red} 102} images of the healthy folder and {\color{red} 103} of the esca folder to \url{https://www.apeer.com/annotate} and  manually annotated them with the online semantic segmentation tool APEER Annotate~\cite{Zeiss23}, which allowed to classify the pixels of each image into two different semantic categories: foliage and background. The reult of the manual sementation are a total of {\color{red} 205} binary masks in which the pixels corresponding to foliage area contain the value 1 and all others contain value 0.
+The 60 image dataset was captured at a commercial organic carrot farm in Northern Germany in 2013 just before manual weed control was applied. The carrots were grown in single rows on small soil dams.
 
+The 60 images have been manually annotated by the authors of the CWFID dataset ...... The result of the manual segmentation are a total of 60 ``.yaml" files containing the coordinates of contour points that define masks delineating weed and crop inside each image.....
 
 \begin{table}[h!]
 \centering
@@ -387,7 +350,7 @@ We uploaded {\color{red} 102} images of the healthy folder and {\color{red} 103}
 \label{tab:image_annotation_manual}
 \end{table}
 
-In Table~\ref{tab:image_annotation_on_manual} we recorded the time used to manually draw precise segmentation masks for 10 images. We keep the so-obtained 10 masks as a reference for the rest of the paper and consider them as ground-truth to measure performance of the two segmentation tools analyzed. In~\ref{tab:definitions} we summarized the classification of pixel predictions in the context of semantic segmentation applied to the task of partitioning an image into its Region Of Interest (ROI) and its background.{\color{red} Frase contorta.}
+In Table~\ref{tab:image_annotation_on_manual} we recorded the time used to manually draw precise segmentation masks for 60 images. We keep the so-obtained 60 masks as a reference for the rest of the paper and consider them as ground-truth to measure performance of the two segmentation tools analyzed. In~\ref{tab:definitions} we summarized the classification of pixel predictions in the context of semantic segmentation applied to the task of partitioning an image into its Region Of Interest (ROI) and its background.{\color{red} Frase contorta.}
 
 \begin{table}[h!]
 \centering
@@ -426,66 +389,69 @@ actually belongs to the ROI  \\
 \label{tab:definitions}
 \end{table}
 
-
-
-The metrics used in this paper are:
-\begin{itemize}
-\item Intersection over Union (IoU) or Jaccard Index: it measures the overlap between the predicted segmentation mask and the ground truth mask. It is calculated as the ratio of the intersection area to the union area of the two masks (in the case of two classes only this measure is equivalent to Mean Intersection over Union - mIoU).
-\item Dice Coefficient (DC): It measures the similarity between the predicted boundaries and the ground truth boundaries. It calculates the ratio of twice the intersection of the boundaries to the sum of their areas.
-\item Pixel Accuracy (PA): it measures the percentage of correctly classified pixels compared to the total number of pixels in the image. It calculates the overall accuracy of the segmentation.
-\item Precision, Recall, and F1-score: these metrics are commonly used in multi-class semantic segmentation evaluation. Precision measures the proportion of correctly classified positive pixels, recall measures the proportion of actual positive pixels that are correctly classified, and F1-score combines precision and recall to provide a balanced measure.
-\item Normalized Surface Distance (NSD): the average of the Hausdorff distance and the Symmetric Contour Distance. Hausdorff Distance: The Hausdorff distance measures the maximum distance between the predicted contour and the ground truth contour. It quantifies the largest discrepancy between the two contours and is sensitive to outliers or large deviations. Symmetric Contour Distance: The symmetric contour distance measures the average distance between the predicted contour and the ground truth contour. Unlike the Hausdorff distance, it takes into account both the under-segmentation (missing parts of the object) and over-segmentation (extraneous regions).
-\end{itemize}
-
 \begin{table}[h!]
 \centering
-\begin{tabular}{|p{4.5cm}|p{6.5cm}|}
+\begin{tabular}{|p{3.0cm}|p{6.3cm}|p{4.0cm}|}
 \hline
-\makecell{\textbf{Name}}
+\makecell{\textbf{Measure name}}
 &
-\makecell{\textbf{Formula}} \\
+\makecell{\textbf{Formula}} 
+&
+\makecell{\textbf{Description}} \\
 \hline
-Intersection over Union (IoU)
+Intersection over Union (IoU), or Jaccard Index
  & 
-
+$$\frac{|M \cap G|}{|M \cup G|}$$
+&
+measures the overlap between the predicted segmentation mask and the ground truth mask. It is calculated as the ratio of the intersection area to the union area of the two masks
 \\
 
 \hline
 
-Dice Coefficient
+Dice Coefficient (DC)
 
 & 
-
+$$\frac{2|M \cap G|}{|M| + |G|}$$
+&
+measures the similarity between the predicted boundaries and the ground truth boundaries. It calculates the ratio of twice the intersection of the boundaries to the sum of their areas
 \\
 
 \hline
 
-Pixel Accuracy
+Pixel Accuracy (PA)
 
 & 
-
+$$\frac{TP + TN}{TP + TN + FP + FN}$$
+&
+measures the percentage of correctly classified pixels compared to the total number of pixels in the image. It calculates the overall accuracy of the segmentation
 \\
 
 \hline
 
-Precision
+Precision (P)
 
 & 
-
+$$\frac{TP}{TP + FP} $$
+&
+measures the proportion of positive predictions relative to total positive predictions
 \\
 
 \hline
 
-Recall 
+Recall (R)
 
 & 
-
+$$\frac{TP}{TP + FN}$$
+& 
+measures the proportion of correct positive predictions relative to total actual positives
 \\
 \hline
 F1-score
 
 & 
-
+$$ \frac{2 \cdot P \cdot R}{P+R} $$
+& 
+combines precision and recall using their harmonic mean; meaningful when there is imbalance between positives and negtives in the dataset.
 \\
 \hline
 Hausdorff Distance
@@ -493,20 +459,24 @@ Hausdorff Distance
 & 
 
 $$ \mathrm{max} \left\{ \mathrm{max}_{x \in \partial G} \mathrm{d}(x, \partial M), \mathrm{max}_{y \in \partial M} \mathrm{d}(y, \partial G) \right\}$$
+&
+measures the maximum distance (in millimeters) between the predicted contour and the ground truth contour. It quantifies the largest discrepancy between the two contours and is sensitive to outliers or large deviations
 \\
 \hline
-Average Symmetric Surface Distance
+Average Symmetric Surface Distance (ASSD)
 
 & 
 $$ \frac{\sum_{x \in \partial G} \mathrm{d}(x, \partial M) +  \sum_{y \in \partial M} \mathrm{d}(y, \partial G)}{|\partial G| + |\partial M|}$$
+&
+measures the average distance between the predicted contour and the ground truth contour. Unlike the Hausdorff distance, it takes into account both the under-segmentation (missing parts of the object) and over-segmentation (extraneous regions
 \\
 \hline
 \end{tabular}
-\caption{Definitions of TP, TN, FP, and FN}
+\caption{Definitions of each similarity / dissimilarity measure used in this paper.}
 \label{tab:metrics_used}
 \end{table}
 
-\subsection{Segmentation of vine images with SAM}
+\subsection{Segmentation of plant images with SAM}
 
 SAM supports three main segmentation modes: segmenting everything in a fully automatic way, bounding box mode, and point mode. The segment-everything mode divides the whole image into six regions based on the image intensity (Fig.~\ref{fig:sam-modes}b).
 
@@ -894,78 +864,6 @@ Healthy & 882 &  69'' and 19.4'' & 48' and 45.4'' \\
 \label{tab:segmentation_evaluation_SAM_automatic}
 \end{table}
 
-\subsection{Segmentation of vine images with U-Net}
-
-In order to test semantic segmentation of vine images with U-Net we used the APEER ML toolkit by {\color{red}{Zeiss\textsuperscript{\tiny\textregistered}} ?}. The toolkit offers the possibility to train a U-Net with EfficientNet encoder that was then used to perform semantic segmentation on all 1770 images of the ESCA dataset. All generated masks were then downloaded.
-
-\begin{figure}[h!]
-\centering
-\begin{subfigure}[b]{.47\linewidth}
-\includegraphics[width=\linewidth]{imgs/placeholder.jpg}
-\caption{}
-\end{subfigure}
-\begin{subfigure}[b]{.47\linewidth}
-\includegraphics[width=\linewidth]{imgs/healthy_033_cam3_finalprediction_over_healthy_033_cam3.png}
-\caption{}
-\end{subfigure}
-\caption{Segmentation produced by U-Net on {\color{red}healthy.jpg} and {\color{red}esca1.jpg}}
-\label{fig:unet_segmentation}
-\end{figure}
-
-\begin{table}[h!]
-\centering
-\begin{tabular}{|p{3.0cm}|p{3.0cm}|p{3.7cm}|}
-\hline
-\makecell{\textbf{Image folder}}
-&
-\makecell{\textbf{Number of images}}
-&
-\makecell{\textbf{Image segmentation time}} \\
-\hline
-Esca     & 888 & ???  \\
-\hline
-Healthy & 882 &  ???  \\
-\hline
-\end{tabular}
-\caption{Image segmentation time with UNet}
-\label{tab:image_segmentation_on_UNet_automatic}
-\end{table}
-
-\begin{table}[h!]
-\centering
-\begin{tabular}{|p{2.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|p{1.0cm}|}
-\hline
-\makecell{\textbf{Image Name}} & \makecell{\textbf{IoU}} & \makecell{\textbf{DC}} & \makecell{\textbf{PA}} & \makecell{\textbf{Prec}} & \makecell{\textbf{Rec}} & \makecell{\textbf{F1}} \\
-\hline
-image1.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-image2.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-image3.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-image4.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-image5.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-image6.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-image7.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-image8.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-image9.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-image10.jpg & ... & ... & ... & ... & ... & ... \\
-\hline
-\end{tabular}
-\caption{Evaluation of semantic segmentation performed by UNet.}
-\label{tab:segmentation_evaluation_UNet}
-\end{table}
-
-% \subsection{Future work}
-% 
-
-% multi-mask output could be useful in some nested segmentation tasks, brain tumor
 \section{Discussion and Conclusion}
 
 {\color{red} 
@@ -975,8 +873,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 }
-
-
 
 
 \subsubsection{Acknowledgements} 

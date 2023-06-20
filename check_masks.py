@@ -38,6 +38,12 @@ def main():
         and os.path.isfile(os.path.join(*[CWFID_dataset['SamAutomaticMaskGenerator_masks'], f]))
     ]
     """
+    source = os.path.join(*[CWFID_dataset['masks'], '050_mask.tiff'])
+    img = (plt.imread(source)*255).astype(np.uint8)
+    dest = os.path.join(*[CWFID_dataset['masks'], '050_image.png'])
+    if not os.path.exists(dest):  # save the file only if it does not yet exist
+        Image.fromarray(img).save(dest)
+
     file_list = [
         os.path.join(*[CWFID_dataset['masks'], f]) for f in os.listdir(CWFID_dataset['masks'])
         if

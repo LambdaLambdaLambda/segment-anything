@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.12.13)  20 JUN 2023 00:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.12.13)  20 JUN 2023 22:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1098,13 +1098,6 @@ Overfull \hbox (51.7757pt too wide) in paragraph at lines 74--75
 / pii / S0168169921002593 /
  []
 
-
-LaTeX Warning: Citation `yuan_advanced_2022' on page 1 undefined on input line 
-78.
-
-
-LaTeX Warning: Citation `QIAO2019104958' on page 1 undefined on input line 78.
-
 [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
@@ -1113,32 +1106,6 @@ Overfull \hbox (1.85178pt too wide) in paragraph at lines 80--81
 ec-tion, which cre-ates bound-
  []
 
-
-LaTeX Warning: Citation `RIEHLE2020105201' on page 2 undefined on input line 82
-.
-
-
-LaTeX Warning: Citation `YANG2015149' on page 2 undefined on input line 82.
-
-
-LaTeX Warning: Citation `ZHANG202282' on page 2 undefined on input line 82.
-
-
-LaTeX Warning: Citation `simonyan2015vgg' on page 2 undefined on input line 82.
-
-
-
-LaTeX Warning: Citation `ronneberger2015unet' on page 2 undefined on input line
- 82.
-
-
-LaTeX Warning: Citation `badrinarayanan2016segnet' on page 2 undefined on input
- line 82.
-
-
-LaTeX Warning: Citation `chen2017deeplab' on page 2 undefined on input line 82.
-
-
 LaTeX Font Info:    Font shape `OT1/mdput/m/n' will be
 (Font)              scaled to size 8.46002pt on input line 86.
 LaTeX Font Info:    Font shape `OT1/mdput/m/n' will be
@@ -1167,101 +1134,18 @@ LaTeX Font Info:    Font shape `MDB/mdput/m/n' will be
 (Font)              scaled to size 8.46002pt on input line 86.
 LaTeX Font Info:    Font shape `MDB/mdput/m/n' will be
 (Font)              scaled to size 5.64001pt on input line 86.
-
-LaTeX Warning: Citation `krizhevsky2012alexnet' on page 2 undefined on input li
-ne 94.
-
-
-LaTeX Warning: Citation `deng2009imagenet' on page 2 undefined on input line 94
-.
-
-
-LaTeX Warning: Citation `simonyan2015vgg' on page 2 undefined on input line 96.
-
-
-
-LaTeX Warning: Citation `he2016resnet' on page 2 undefined on input line 98.
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 98--99
 []|\T1/mdput/m/n/9 Image [], Ob-ject
  []
 
 
-LaTeX Warning: Citation `ronneberger2015unet' on page 2 undefined on input line
- 100.
-
-
-LaTeX Warning: Citation `landman2012miccai' on page 2 undefined on input line 1
-06.
-
-
-LaTeX Warning: Citation `menze2015miccai' on page 2 undefined on input line 106
-.
-
-
-LaTeX Warning: Citation `codella2019skin' on page 2 undefined on input line 106
-.
-
-
-LaTeX Warning: Citation `chen2017deeplab' on page 2 undefined on input line 110
-.
-
-
-LaTeX Warning: Citation `everingham2010pascal' on page 2 undefined on input lin
-e 117.
-
-
-LaTeX Warning: Citation `cordts2016cityscapes' on page 2 undefined on input lin
-e 117.
-
-
-LaTeX Warning: Citation `zhou2017scene' on page 2 undefined on input line 117.
-
-
-LaTeX Warning: Citation `lin2014microsoft' on page 2 undefined on input line 11
-7.
-
-
-LaTeX Warning: Citation `redmon2016yolo' on page 2 undefined on input line 121.
-
-
-
-LaTeX Warning: Citation `badrinarayanan2016segnet' on page 2 undefined on input
- line 123.
-
-
-LaTeX Warning: Citation `brostow2009semantic' on page 2 undefined on input line
- 130.
-
-
-LaTeX Warning: Citation `song2015sun' on page 2 undefined on input line 130.
-
-
-LaTeX Warning: Citation `EfficientNet' on page 2 undefined on input line 134.
+Overfull \hbox (4.02347pt too wide) in paragraph at lines 134--135
+[]|\T1/mdput/m/n/9 EfficientNet [[]]| 
+ []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: Citation `zhuang2020comprehensive' on page 2 undefined on input 
-line 145.
-
-
-LaTeX Warning: Citation `paymode_transfer_2022' on page 2 undefined on input li
-ne 145.
-
-
-LaTeX Warning: Citation `nowakowski_crop_2021' on page 2 undefined on input lin
-e 145.
-
-
-LaTeX Warning: Citation `10.1145/3209811.3212707' on page 2 undefined on input 
-line 145.
-
-
-LaTeX Warning: Citation `mohanty2016plantvillage' on page 2 undefined on input 
-line 147.
 
 
 Overfull \hbox (0.95633pt too wide) in paragraph at lines 147--148
@@ -1273,19 +1157,10 @@ ing and ad-di-tional train-
 Underfull \vbox (badness 2158) has occurred while \output is active []
 
  [2]
-
-LaTeX Warning: Citation `plantclef' on page 3 undefined on input line 154.
-
-
-LaTeX Warning: Citation `plant_phenotyping_dataset' on page 3 undefined on inpu
-t line 155.
-
-
-LaTeX Warning: Citation `cropseg' on page 3 undefined on input line 159.
-
-
-LaTeX Warning: Citation `crop_deeplab_dataset' on page 3 undefined on input lin
-e 160.
+Overfull \hbox (1.4752pt too wide) in paragraph at lines 159--160
+[]\T1/mdput/m/n/10 CropSeg [[]]: A dataset with high-resolution aerial im-ages 
+of dif-fer-ent crops,
+ []
 
 
 Overfull \hbox (10.28831pt too wide) in paragraph at lines 162--163
@@ -1293,244 +1168,257 @@ Overfull \hbox (10.28831pt too wide) in paragraph at lines 162--163
 -ages cap-tured by drones
  []
 
-
-LaTeX Warning: Citation `isprs_semantic_labeling' on page 3 undefined on input 
-line 164.
-
-
-LaTeX Warning: Citation `deepglobe_land_cover' on page 3 undefined on input lin
-e 165.
-
 [3]
-
-LaTeX Warning: Citation `2023-SegGPT' on page 4 undefined on input line 171.
-
-
-LaTeX Warning: Citation `2023-SEEM' on page 4 undefined on input line 171.
-
-
-LaTeX Warning: Citation `2023-SAM-Meta' on page 4 undefined on input line 171.
-
+LaTeX Font Info:    Font shape `T1/mdput/m/n' will be
+(Font)              scaled to size 6.58002pt on input line 171.
+LaTeX Font Info:    Font shape `T1/mdput/m/n' will be
+(Font)              scaled to size 4.70001pt on input line 171.
+LaTeX Font Info:    Font shape `TS1/mdput/m/n' will be
+(Font)              scaled to size 4.70001pt on input line 171.
 LaTeX Font Info:    Font shape `T1/mdput/m/it' will be
 (Font)              scaled to size 9.40002pt on input line 171.
-
-LaTeX Warning: Citation `SA-1B_dataset' on page 4 undefined on input line 171.
-
 
 Overfull \hbox (7.12279pt too wide) in paragraph at lines 171--172
 []\T1/mdput/m/n/10 Recently, seg-men-ta-tion foun-da-tion mod-els have seen tre
 men-dous ad-vance-ments
  []
 
-
-LaTeX Warning: Citation `ESCA_dataset' on page 4 undefined on input line 173.
-
-<imgs/fore_vs_back.png, id=41, 1250.6725pt x 1292.83pt>
+<imgs/fore_vs_back.png, id=161, 523.9575pt x 738.76pt>
 File: imgs/fore_vs_back.png Graphic file (type png)
 
 <use imgs/fore_vs_back.png>
-Package pdftex.def Info: imgs/fore_vs_back.png used on input line 181.
-(pdftex.def)             Requested size: 173.56177pt x 179.39708pt.
+Package pdftex.def Info: imgs/fore_vs_back.png used on input line 183.
+(pdftex.def)             Requested size: 104.1381pt x 146.82503pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-LaTeX Warning: Citation `attention-Nips17' on page 4 undefined on input line 18
-8.
-
-
-LaTeX Warning: Citation `GPT-3' on page 4 undefined on input line 188.
-
-
-LaTeX Warning: Citation `ViT2020' on page 4 undefined on input line 188.
-
-<imgs/SAM_model_diagram.png, id=43, 1210.5225pt x 257.96375pt>
+<imgs/SAM_model_diagram.png, id=169, 1210.5225pt x 257.96375pt>
 File: imgs/SAM_model_diagram.png Graphic file (type png)
 
 <use imgs/SAM_model_diagram.png>
-Package pdftex.def Info: imgs/SAM_model_diagram.png used on input line 192.
+Package pdftex.def Info: imgs/SAM_model_diagram.png used on input line 194.
 (pdftex.def)             Requested size: 605.25977pt x 128.98155pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-LaTeX Warning: Citation `FourierPE-Nips20' on page 4 undefined on input line 19
-8.
-
-
-LaTeX Warning: Citation `CLIP-ICML2021' on page 4 undefined on input line 198.
-
-
-Overfull \hbox (4.63422pt too wide) in paragraph at lines 198--200
-\T1/mdput/m/n/10 po-si-tional en-cod-ing [\T1/mdput/b/n/10 ?\T1/mdput/m/n/10 ] 
-and two learn-able to-kens for spec-i-fy-ing fore-ground and back-
- []
-
-[4] <imgs/segmentation_modes_original.png, id=52, 1213.53375pt x 682.55pt>
+[4] <imgs/segmentation_modes_original.png, id=191, 1300.86pt x 969.6225pt>
 File: imgs/segmentation_modes_original.png Graphic file (type png)
 
 <use imgs/segmentation_modes_original.png>
 Package pdftex.def Info: imgs/segmentation_modes_original.png used on input lin
-e 204.
-(pdftex.def)             Requested size: 156.20453pt x 87.84935pt.
+e 206.
+(pdftex.def)             Requested size: 156.20453pt x 116.42365pt.
 
-<imgs/segmentation_modes_everything.png, id=53, 1212.53pt x 682.55pt>
+<imgs/segmentation_modes_everything.png, id=192, 897.3525pt x 669.50125pt>
 File: imgs/segmentation_modes_everything.png Graphic file (type png)
 
 <use imgs/segmentation_modes_everything.png>
 Package pdftex.def Info: imgs/segmentation_modes_everything.png used on input l
-ine 208.
-(pdftex.def)             Requested size: 156.20453pt x 87.92226pt.
+ine 210.
+(pdftex.def)             Requested size: 156.20453pt x 116.5413pt.
 
-<imgs/segmentation_modes_bbox.png, id=54, 1211.52625pt x 682.55pt>
+<imgs/segmentation_modes_bbox.png, id=193, 895.345pt x 669.50125pt>
 File: imgs/segmentation_modes_bbox.png Graphic file (type png)
 
 <use imgs/segmentation_modes_bbox.png>
 Package pdftex.def Info: imgs/segmentation_modes_bbox.png used on input line 21
-3.
-(pdftex.def)             Requested size: 156.20453pt x 87.99515pt.
+5.
+(pdftex.def)             Requested size: 156.20453pt x 116.7967pt.
 
-<imgs/segmentation_modes_1point.png, id=55, 1212.53pt x 683.55376pt>
+<imgs/segmentation_modes_1point.png, id=194, 897.3525pt x 669.50125pt>
 File: imgs/segmentation_modes_1point.png Graphic file (type png)
 
 <use imgs/segmentation_modes_1point.png>
 Package pdftex.def Info: imgs/segmentation_modes_1point.png used on input line 
-217.
-(pdftex.def)             Requested size: 156.20453pt x 88.05154pt.
+219.
+(pdftex.def)             Requested size: 156.20453pt x 116.5413pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [5 <./imgs/fore_vs_back.png> <./imgs/SAM_model_diagram.png>]
+<imgs/050_image.png, id=207, 1300.86pt x 969.6225pt>
+File: imgs/050_image.png Graphic file (type png)
+ <use imgs/050_image.png>
+Package pdftex.def Info: imgs/050_image.png used on input line 244.
+(pdftex.def)             Requested size: 163.14848pt x 121.60197pt.
 
-LaTeX Warning: Citation `ronneberger2015unet' on page 6 undefined on input line
- 233.
+<imgs/050_ground_truth_mask.png, id=208, 1300.86pt x 969.6225pt>
+File: imgs/050_ground_truth_mask.png Graphic file (type png)
 
+<use imgs/050_ground_truth_mask.png>
+Package pdftex.def Info: imgs/050_ground_truth_mask.png used on input line 249.
 
-LaTeX Warning: Citation `McGlinchy2019' on page 6 undefined on input line 233.
-
-
-LaTeX Warning: Citation `WANG2021106373' on page 6 undefined on input line 233.
-
-
-
-LaTeX Warning: Citation `smith_segmentation_2020' on page 6 undefined on input 
-line 233.
-
-[6 <./imgs/segmentation_modes_original.png> <./imgs/segmentation_modes_everythi
-ng.png> <./imgs/segmentation_modes_bbox.png> <./imgs/segmentation_modes_1point.
-png>] <imgs/U_Net.png, id=76, 1405.25pt x 917.4275pt>
-File: imgs/U_Net.png Graphic file (type png)
- <use imgs/U_Net.png>
-Package pdftex.def Info: imgs/U_Net.png used on input line 241.
-(pdftex.def)             Requested size: 347.12354pt x 226.62654pt.
-
-
-LaTeX Warning: Citation `EfficientNet' on page 7 undefined on input line 250.
-
-[7 <./imgs/U_Net.png>]
-
-LaTeX Warning: Citation `le2022cell' on page 8 undefined on input line 256.
-
-
-LaTeX Warning: Citation `liu_automatic_2022' on page 8 undefined on input line 
-256.
-
-LaTeX Font Info:    Font shape `T1/mdput/m/n' will be
-(Font)              scaled to size 6.58002pt on input line 256.
-LaTeX Font Info:    Font shape `T1/mdput/m/n' will be
-(Font)              scaled to size 4.70001pt on input line 256.
-LaTeX Font Info:    Font shape `TS1/mdput/m/n' will be
-(Font)              scaled to size 4.70001pt on input line 256.
-
-LaTeX Warning: Citation `Zeiss23' on page 8 undefined on input line 256.
-
-
-<imgs/U-Net-with-EfficientNet-b4-Encoder_W640.jpg, id=83, 154.69164pt x 75.1704
-7pt>
-File: imgs/U-Net-with-EfficientNet-b4-Encoder_W640.jpg Graphic file (type jpg)
- <use imgs/U-Net-with-EfficientNet-b4-Encoder_W640.jpg>
-Package pdftex.def Info: imgs/U-Net-with-EfficientNet-b4-Encoder_W640.jpg used 
-on input line 266.
-(pdftex.def)             Requested size: 347.12354pt x 168.68349pt.
-
-
-LaTeX Warning: Citation `liu_automatic_2022' on page 8 undefined on input line 
-267.
-
-
-LaTeX Warning: Citation `liu_automatic_2022' on page 8 undefined on input line 
-267.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: Citation `ESCA_dataset' on page 8 undefined on input line 273.
-
-[8] <imgs/placeholder.jpg, id=90, 695.59875pt x 462.72874pt>
-File: imgs/placeholder.jpg Graphic file (type jpg)
-
-<use imgs/placeholder.jpg>
-Package pdftex.def Info: imgs/placeholder.jpg used on input line 282.
-(pdftex.def)             Requested size: 163.14848pt x 108.52945pt.
-File: imgs/placeholder.jpg Graphic file (type jpg)
- <use imgs/placeholder.jpg>
-Package pdftex.def Info: imgs/placeholder.jpg used on input line 287.
-(pdftex.def)             Requested size: 163.14848pt x 108.52945pt.
-
-
-LaTeX Warning: Citation `Zeiss23' on page 9 undefined on input line 295.
-
-
-Overfull \hbox (6.39691pt too wide) in paragraph at lines 295--296
-[]\T1/mdput/m/n/10 We up-loaded []102[] im-ages of the healthy folder and []103
-[] of the esca folder to []$\T1/cmtt/m/n/10 https :
- []
-
-[9 <./imgs/U-Net-with-EfficientNet-b4-Encoder_W640.jpg> <./imgs/placeholder.jpg
->]
-
-LaTeX Warning: Reference `tab:image_annotation_on_manual' on page 10 undefined 
-on input line 390.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[10]
-Overfull \hbox (4.23483pt too wide) in paragraph at lines 437--438
-\T1/mdput/m/n/10 mea-sures the max-i-mum dis-tance be-tween the pre-dicted con-
-tour and the ground
- []
-
-
-Underfull \hbox (badness 1117) in paragraph at lines 498--499
-[]|\T1/mdput/m/n/9 Average Sym-met-ric Sur-face Dis-
+(pdftex.def)             Requested size: 163.14848pt x 121.60197pt.
+ [6 <./imgs/segmentation_modes_original.png> <./imgs/segmentation_modes_everyth
+ing.png> <./imgs/segmentation_modes_bbox.png> <./imgs/segmentation_modes_1point
+.png>]
+Overfull \hbox (2.93037pt too wide) in paragraph at lines 257--258
+[]\T1/mdput/m/n/10 The 60 im-age dataset was cap-tured at a com-mer-cial or-gan
+ic car-rot farm in North-
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Overfull \hbox (5.51776pt too wide) in paragraph at lines 511--512
+LaTeX Warning: Reference `tab:image_annotation_on_manual' on page 7 undefined o
+n input line 353.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 402--403
+[]|\T1/mdput/m/n/9 Intersection over
+ []
+
+
+Underfull \hbox (badness 4556) in paragraph at lines 402--403
+\T1/mdput/m/n/9 Union (IoU), or Jac-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 406--408
+[]|\T1/mdput/m/n/9 measures the over-lap be-
+ []
+
+
+Underfull \hbox (badness 1748) in paragraph at lines 406--408
+\T1/mdput/m/n/9 the ra-tio of the in-ter-sec-tion
+ []
+
+
+Underfull \hbox (badness 4467) in paragraph at lines 416--418
+[]|\T1/mdput/m/n/9 measures the sim-i-lar-ity be-
+ []
+
+
+Underfull \hbox (badness 1490) in paragraph at lines 416--418
+\T1/mdput/m/n/9 tween the pre-dicted bound-
+ []
+
+
+Underfull \hbox (badness 4279) in paragraph at lines 416--418
+\T1/mdput/m/n/9 aries and the ground truth
+ []
+
+
+Underfull \hbox (badness 1043) in paragraph at lines 416--418
+\T1/mdput/m/n/9 bound-aries. It cal-cu-lates the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 426--428
+[]|\T1/mdput/m/n/9 measures the per-cent-age
+ []
+
+
+Underfull \hbox (badness 3525) in paragraph at lines 426--428
+\T1/mdput/m/n/9 of cor-rectly clas-si-fied pix-els
+ []
+
+
+Underfull \hbox (badness 3525) in paragraph at lines 436--438
+[]|\T1/mdput/m/n/9 measures the pro-por-tion of
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 446--448
+[]|\T1/mdput/m/n/9 measures the pro-por-tion
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 446--448
+\T1/mdput/m/n/9 of cor-rect pos-i-tive pre-dic-
+ []
+
+
+Underfull \hbox (badness 1817) in paragraph at lines 446--448
+\T1/mdput/m/n/9 tions rel-a-tive to to-tal ac-tual
+ []
+
+
+Underfull \hbox (badness 1748) in paragraph at lines 454--456
+\T1/mdput/m/n/9 us-ing their har-monic mean;
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 454--456
+\T1/mdput/m/n/9 mean-ing-ful when there is
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 463--465
+[]|\T1/mdput/m/n/9 measures the max-i-mum
+ []
+
+
+Underfull \hbox (badness 4927) in paragraph at lines 463--465
+\T1/mdput/m/n/9 and the ground truth con-
+ []
+
+
+Underfull \hbox (badness 1742) in paragraph at lines 463--465
+\T1/mdput/m/n/9 con-tours and is sen-si-tive to
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 466--467
+[]|\T1/mdput/m/n/9 Average Sym-met-ric
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 466--467
+\T1/mdput/m/n/9 Sur-face Dis-tance
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 471--473
+[]|\T1/mdput/m/n/9 measures the av-er-age dis-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 471--473
+\T1/mdput/m/n/9 (miss-ing parts of the ob-
+ []
+
+
+Underfull \hbox (badness 3386) in paragraph at lines 471--473
+\T1/mdput/m/n/9 ject) and over-segmentation
+ []
+
+
+Overfull \hbox (41.7056pt too wide) in paragraph at lines 394--475
+ [][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 34.28659pt on input line 477.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Overfull \hbox (5.51776pt too wide) in paragraph at lines 481--482
 \T1/mdput/m/n/10 au-to-matic way, bound-ing box mode, and point mode. The segme
 nt-everything mode
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 523--524
+Underfull \hbox (badness 10000) in paragraph at lines 493--494
 |[]
  []
 
 
-Overfull \hbox (0.53622pt too wide) in paragraph at lines 523--524
+Overfull \hbox (0.53622pt too wide) in paragraph at lines 493--494
 []
  []
 
 
-Overfull \hbox (8.01877pt too wide) in paragraph at lines 517--609
+Overfull \hbox (8.01877pt too wide) in paragraph at lines 487--579
  [][] 
  []
 
@@ -1538,161 +1426,154 @@ Overfull \hbox (8.01877pt too wide) in paragraph at lines 517--609
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-LaTeX Warning: Citation `ESCA_dataset' on page 11 undefined on input line 613.
-
-
-LaTeX Warning: Reference `tab:image_annotation_on_SAM_manual' on page 11 undefi
-ned on input line 613.
+LaTeX Warning: Reference `tab:image_annotation_on_SAM_manual' on page 7 undefin
+ed on input line 583.
 
 LaTeX Font Info:    Font shape `T1/mdput/m/n' will be
-(Font)              scaled to size 5.64001pt on input line 613.
+(Font)              scaled to size 5.64001pt on input line 583.
 LaTeX Font Info:    Font shape `T1/cmtt/m/n' will be
-(Font)              scaled to size 9.63007pt on input line 613.
+(Font)              scaled to size 9.63007pt on input line 583.
 LaTeX Font Info:    Font shape `TS1/mdput/m/n' will be
-(Font)              scaled to size 6.58002pt on input line 615.
+(Font)              scaled to size 6.58002pt on input line 585.
 
-LaTeX Warning: Citation `ViT-H' on page 11 undefined on input line 615.
-
-
-Overfull \hbox (10.7671pt too wide) in paragraph at lines 615--616
+Overfull \hbox (16.44472pt too wide) in paragraph at lines 585--586
 \T1/mdput/m/n/10 NVIDIA RTX$[]$ A6000 GPU. For the in-stan-ti-a-tion of the mod
-el we adopted the \T1/cmtt/m/n/10 ViT-H \T1/mdput/m/n/10 [\T1/mdput/b/n/10 ?\T1
-/mdput/m/n/10 ]
+el we adopted the \T1/cmtt/m/n/10 ViT-H \T1/mdput/m/n/10 [[]]
  []
 
-[11]
-Overfull \hbox (36.47153pt too wide) in paragraph at lines 623--640
+[7 <./imgs/050_image.png (PNG copy)> <./imgs/050_ground_truth_mask.png (PNG cop
+y)>]
+Underfull \vbox (badness 1688) has occurred while \output is active []
+
+ [8]
+Overfull \hbox (36.47153pt too wide) in paragraph at lines 593--610
  [][] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/18_over_healthy_033_cam3.png, id=117, 1927.2pt x 1084.05pt>
+<imgs/18_over_healthy_033_cam3.png, id=246, 1927.2pt x 1084.05pt>
 File: imgs/18_over_healthy_033_cam3.png Graphic file (type png)
 
 <use imgs/18_over_healthy_033_cam3.png>
 Package pdftex.def Info: imgs/18_over_healthy_033_cam3.png used on input line 6
-49.
+19.
 (pdftex.def)             Requested size: 114.55139pt x 64.42816pt.
 
-<imgs/19_over_healthy_033_cam3.png, id=118, 1927.2pt x 1084.05pt>
+<imgs/19_over_healthy_033_cam3.png, id=247, 1927.2pt x 1084.05pt>
 File: imgs/19_over_healthy_033_cam3.png Graphic file (type png)
 
 <use imgs/19_over_healthy_033_cam3.png>
 Package pdftex.def Info: imgs/19_over_healthy_033_cam3.png used on input line 6
-54.
+24.
 (pdftex.def)             Requested size: 114.55139pt x 64.42816pt.
 
-<imgs/healthy_033_cam3_mask_over_healthy_033_cam3.png, id=119, 1927.2pt x 1084.
+<imgs/healthy_033_cam3_mask_over_healthy_033_cam3.png, id=248, 1927.2pt x 1084.
 05pt>
 File: imgs/healthy_033_cam3_mask_over_healthy_033_cam3.png Graphic file (type p
 ng)
  <use imgs/healthy_033_cam3_mask_over_healthy_033_cam3.png>
 Package pdftex.def Info: imgs/healthy_033_cam3_mask_over_healthy_033_cam3.png u
-sed on input line 671.
+sed on input line 641.
 (pdftex.def)             Requested size: 229.1028pt x 128.85632pt.
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 702--703
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 672--673
 []|\T1/mdput/m/n/9 328.868| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 703--704
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 673--674
 []|\T1/mdput/m/n/9 262.574| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 704--705
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 674--675
 []|\T1/mdput/m/n/9 329.474| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 705--706
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 675--676
 []|\T1/mdput/m/n/9 147.872| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 706--707
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 676--677
 []|\T1/mdput/m/n/9 237.306| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 709--710
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 679--680
 []|\T1/mdput/m/n/9 164.657| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 710--711
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 680--681
 []|\T1/mdput/m/n/9 361.334| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 711--751
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 681--721
 []|\T1/mdput/m/n/9 311.045| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 751--751
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 721--721
 []|\T1/mdput/m/n/9 150.533| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 751--752
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 721--722
 []|\T1/mdput/m/n/9 588.205| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 752--753
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 722--723
 []|\T1/mdput/m/n/9 499.401| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 753--754
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 723--724
 []|\T1/mdput/m/n/9 485.956| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 754--755
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 724--725
 []|\T1/mdput/m/n/9 456.054| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 755--756
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 725--726
 []|\T1/mdput/m/n/9 469.998| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 756--757
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 726--727
 []|\T1/mdput/m/n/9 358.236| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 757--758
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 727--728
 []|\T1/mdput/m/n/9 238.481| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 758--759
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 728--729
 []|\T1/mdput/m/n/9 218.009| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 759--760
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 729--730
 []|\T1/mdput/m/n/9 173.807| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 760--761
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 730--731
 []|\T1/mdput/m/n/9 252.634| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 761--762
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 731--732
 []|\T1/mdput/m/n/9 319.265| 
  []
 
@@ -1700,177 +1581,275 @@ Overfull \hbox (0.69193pt too wide) in paragraph at lines 761--762
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 811--812
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 781--782
 []|\T1/mdput/m/n/9 384.033| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 813--814
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 783--784
 []|\T1/mdput/m/n/9 638.719| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 814--815
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 784--785
 []|\T1/mdput/m/n/9 326.686| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 815--815
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 785--785
 []|\T1/mdput/m/n/9 120.494| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 815--816
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 785--786
 []|\T1/mdput/m/n/9 597.759| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 816--817
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 786--787
 []|\T1/mdput/m/n/9 518.383| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 817--818
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 787--788
 []|\T1/mdput/m/n/9 407.836| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 818--819
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 788--789
 []|\T1/mdput/m/n/9 399.606| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 819--820
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 789--790
 []|\T1/mdput/m/n/9 612.148| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 820--820
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 790--790
 []|\T1/mdput/m/n/9 112.531| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 820--860
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 790--830
 []|\T1/mdput/m/n/9 615.325| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 860--860
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 830--830
 []|\T1/mdput/m/n/9 238.893| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 860--861
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 830--831
 []|\T1/mdput/m/n/9 790.864| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 861--862
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 831--832
 []|\T1/mdput/m/n/9 512.533| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 862--863
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 832--833
 []|\T1/mdput/m/n/9 568.401| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 863--863
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 833--833
 []|\T1/mdput/m/n/9 103.668| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 863--864
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 833--834
 []|\T1/mdput/m/n/9 558.358| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 864--864
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 834--834
 []|\T1/mdput/m/n/9 107.342| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 864--865
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 834--835
 []|\T1/mdput/m/n/9 545.388| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 865--866
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 835--836
 []|\T1/mdput/m/n/9 537.276| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 866--867
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 836--837
 []|\T1/mdput/m/n/9 519.773| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 867--868
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 837--838
 []|\T1/mdput/m/n/9 326.267| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 868--869
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 838--839
 []|\T1/mdput/m/n/9 379.606| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 869--870
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 839--840
 []|\T1/mdput/m/n/9 513.448| 
  []
 
 
-Overfull \hbox (0.69193pt too wide) in paragraph at lines 870--871
+Overfull \hbox (0.69193pt too wide) in paragraph at lines 840--841
 []|\T1/mdput/m/n/9 354.193| 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-Overfull \hbox (3.04561pt too wide) in paragraph at lines 899--900
-\T1/mdput/m/n/10 In or-der to test se-man-tic seg-men-ta-tion of vine im-ages w
-ith U-Net we used the APEER
+[9 <./imgs/18_over_healthy_033_cam3.png> <./imgs/19_over_healthy_033_cam3.png> 
+<./imgs/healthy_033_cam3_mask_over_healthy_033_cam3.png>] [10]
+(./main_new_version.bbl
+Underfull \hbox (badness 6608) in paragraph at lines 7--11
+[]\T1/mdput/m/n/9 Alessandrini, M., Calero Fuentes Rivera, R., Falaschetti, L.,
+ Pau, D., Tomaselli,
  []
 
-File: imgs/placeholder.jpg Graphic file (type jpg)
-<use imgs/placeholder.jpg>
-Package pdftex.def Info: imgs/placeholder.jpg used on input line 904.
-(pdftex.def)             Requested size: 163.14848pt x 108.52945pt.
 
-<imgs/healthy_033_cam3_finalprediction_over_healthy_033_cam3.png, id=120, 1927.
-2pt x 1084.05pt>
-File: imgs/healthy_033_cam3_finalprediction_over_healthy_033_cam3.png Graphic f
-ile (type png)
-
-<use imgs/healthy_033_cam3_finalprediction_over_healthy_033_cam3.png>
-Package pdftex.def Info: imgs/healthy_033_cam3_finalprediction_over_healthy_033
-_cam3.png used on input line 908.
-(pdftex.def)             Requested size: 163.14848pt x 91.77084pt.
+Underfull \hbox (badness 10000) in paragraph at lines 7--11
+\T1/mdput/m/n/9 V., Turchetti, C.: Esca-dataset. Mende-ley Data, V1, []$\T1/cmt
+t/m/n/9 https : / / data . mendeley .
+ []
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+Underfull \hbox (badness 10000) in paragraph at lines 7--11
+\T1/cmtt/m/n/9 com / datasets / 89cnxc58kj / 1$[] \T1/mdput/m/n/9 (2021). [][]$
+\T1/cmtt/m/n/9 https : / / doi . org / doi : 10 . 17632 /
+ []
+
+[11]
+Underfull \hbox (badness 5119) in paragraph at lines 93--98
+[]\T1/mdput/m/n/9 Kirillov, A., Mintun, E., Ravi, N., Mao, H., Rol-land, C., Gu
+stafson, L., Xiao, T.,
+ []
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+Underfull \hbox (badness 4391) in paragraph at lines 93--98
+\T1/mdput/m/n/9 White-head, S., Berg, A.C., Lo, W.Y., et al.: Vit-h sam model (
+May 2023), avail-
+ []
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+Underfull \hbox (badness 7759) in paragraph at lines 93--98
+\T1/mdput/m/n/9 able at: []$\T1/cmtt/m/n/9 https : / / dl . fbaipublicfiles . c
+om / segment _ anything / sam _ vit _ h _
+ []
+
+
+Underfull \hbox (badness 1924) in paragraph at lines 131--134
+[]\T1/mdput/m/n/9 Mohanty, S.P., Hughes, D.P., Salathé, M.: Plantvil-lage datas
+et: A pub-licly avail-able
+ []
+
+
+Underfull \hbox (badness 5460) in paragraph at lines 131--134
+\T1/mdput/m/n/9 dataset for deep learn-ing in agri-cul-ture. []$\T1/cmtt/m/n/9 
+https : / / doi . org / 10 . 5281 / zenodo .
+ []
+
+
+Underfull \hbox (badness 4328) in paragraph at lines 136--142
+[]\T1/mdput/m/n/9 Nowakowski, A., Mrziglod, J., Spiller, D., Boni-fa-cio, R., F
+er-rari, I., Math-ieu, P.P.,
+ []
+
+
+Underfull \hbox (badness 1014) in paragraph at lines 136--142
+\T1/mdput/m/n/9 Garcia-Herranz, M., Kim, D.H.: Crop type map-ping by us-ing tra
+ns-fer learn-ing. In-
+ []
+
+
+Underfull \hbox (badness 2608) in paragraph at lines 136--142
+\T1/mdput/m/n/9 ter-na-tional Jour-nal of Ap-plied Earth Ob-ser-va-tion and Geo
+in-for-ma-tion \T1/mdput/b/n/9 98 \T1/mdput/m/n/9 (2021).
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 136--142
+[][]$\T1/cmtt/m/n/9 https : / / doi . org / https : / / doi . org / 10 . 1016 /
+ j . jag . 2021 . 102313$[][]\T1/mdput/m/n/9 , []$\T1/cmtt/m/n/9 https :
+ []
+
+
+Underfull \hbox (badness 3460) in paragraph at lines 144--149
+[]\T1/mdput/m/n/9 Paymode, A.S., Mal-ode, V.B.: Trans-fer Learn-ing for Multi-C
+rop Leaf Dis-ease Im-
+ []
+
+
+Underfull \hbox (badness 1546) in paragraph at lines 144--149
+\T1/mdput/m/n/9 age Clas-si-fi-ca-tion us-ing Con-vo-lu-tional Neu-ral Net-work
+ VGG. Ar-ti-fi-cial In-tel-li-gence
+ []
+
+
+Underfull \hbox (badness 2221) in paragraph at lines 144--149
+\T1/mdput/m/n/9 in Agri-cul-ture \T1/mdput/b/n/9 6\T1/mdput/m/n/9 , 23--33 (202
+2). [][]$\T1/cmtt/m/n/9 https : / / doi . org / https : / / doi . org / 10 . 10
+16 /
+ []
+
+
+Underfull \hbox (badness 3989) in paragraph at lines 144--149
+\T1/cmtt/m/n/9 j . aiia . 2021 . 12 . 002$[][]\T1/mdput/m/n/9 , []$\T1/cmtt/m/n
+/9 https : / / www . sciencedirect . com / science / article /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 172--177
+[]\T1/mdput/m/n/9 Riehle, D., Reiser, D., Griepen-trog, H.W.: Ro-bust index-bas
+ed se-man-tic
+ []
+
+
+Underfull \hbox (badness 5288) in paragraph at lines 172--177
+\T1/mdput/m/n/9 plant/background seg-men-ta-tion for rgb- im-ages. Com-put-ers 
+and Elec-tron-ics in
+ []
+
+
+Underfull \hbox (badness 3989) in paragraph at lines 172--177
+\T1/cmtt/m/n/9 compag . 2019 . 105201$[][]\T1/mdput/m/n/9 , []$\T1/cmtt/m/n/9 h
+ttps : / / www . sciencedirect . com / science / article /
+ []
 
 [12]
-Underfull \vbox (badness 6173) has occurred while \output is active []
+Underfull \hbox (badness 3989) in paragraph at lines 221--226
+\T1/cmtt/m/n/9 / / doi . org / https : / / doi . org / 10 . 1016 / j . inpa . 2
+015 . 07 . 003$[][]\T1/mdput/m/n/9 , []$\T1/cmtt/m/n/9 https : / / www .
+ []
 
- [13]
-[14 <./imgs/18_over_healthy_033_cam3.png> <./imgs/19_over_healthy_033_cam3.png>
- <./imgs/healthy_033_cam3_mask_over_healthy_033_cam3.png> <./imgs/healthy_033_c
-am3_finalprediction_over_healthy_033_cam3.png>] [15]
-No file main_new_version.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 993.
-[16]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 993.
+
+Underfull \hbox (badness 3989) in paragraph at lines 228--233
+\T1/cmtt/m/n/9 / / doi . org / https : / / doi . org / 10 . 1016 / j . inpa . 2
+021 . 01 . 003$[][]\T1/mdput/m/n/9 , []$\T1/cmtt/m/n/9 https : / / www .
+ []
+
+
+Underfull \hbox (badness 3989) in paragraph at lines 235--239
+\T1/cmtt/m/n/9 doi . org / https : / / doi . org / 10 . 1016 / j . future . 202
+1 . 06 . 059$[][]\T1/mdput/m/n/9 , []$\T1/cmtt/m/n/9 https : / / www .
+ []
+
+[13]) [14]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 889.
+ [15] [16] [17] [18]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 889.
  (./main_new_version.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 993.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 993.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 889.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 889.
 Package rerunfilecheck Info: File `main_new_version.out' has not changed.
 (rerunfilecheck)             Checksum: 207D90D5EAB0F40284218E065B2FAE32;99.
 
@@ -1880,16 +1859,16 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 993.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 889.
  ) 
 Here is how much of TeX's memory you used:
- 19513 strings out of 493089
- 365109 string characters out of 6134841
- 492974 words of memory out of 5000000
- 22537 multiletter control sequences out of 15000+600000
+ 19535 strings out of 493089
+ 365208 string characters out of 6134841
+ 494246 words of memory out of 5000000
+ 22518 multiletter control sequences out of 15000+600000
  131107 words of font info for 100 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,17n,75p,1528b,718s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,18n,75p,1418b,718s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/ly1/texnansi.enc}</usr/loca
 l/texlive/2015/texmf-dist/fonts/type1/public/mathdesign/mdput/md-utr7t.pfb></us
@@ -1902,10 +1881,10 @@ ia/putb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/adobe/utopia/putr
 8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb><
 /usr/local/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on main_new_version.pdf (16 pages, 29644572 bytes).
+Output written on main_new_version.pdf (18 pages, 21319052 bytes).
 PDF statistics:
- 211 PDF objects out of 1000 (max. 8388607)
- 156 compressed objects within 2 object streams
- 50 named destinations out of 1000 (max. 500000)
- 86 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 417 PDF objects out of 1000 (max. 8388607)
+ 311 compressed objects within 4 object streams
+ 92 named destinations out of 1000 (max. 500000)
+ 76 words of extra memory for PDF output out of 10000 (max. 10000000)
 
